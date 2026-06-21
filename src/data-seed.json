@@ -1,0 +1,6076 @@
+{
+  "users": [
+    {
+      "userId": "u1",
+      "name": "Rohit Mehta",
+      "email": "rohit.m@gmail.com",
+      "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+      "userName": "rohitCodes"
+    },
+    {
+      "userId": "u2",
+      "name": "Emily Carter",
+      "email": "emily.c@gmail.com",
+      "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+      "userName": "emReads"
+    },
+    {
+      "userId": "u3",
+      "name": "Kwame Mensah",
+      "email": "kwame.m@gmail.com",
+      "photo": "https://randomuser.me/api/portraits/men/3.jpg",
+      "userName": "kwameTalks"
+    },
+    {
+      "userId": "u4",
+      "name": "Priya Sharma",
+      "email": "priya.s@gmail.com",
+      "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+      "userName": "priyaWrites"
+    },
+    {
+      "userId": "u5",
+      "name": "Lucas Brown",
+      "email": "lucas.b@gmail.com",
+      "photo": "https://randomuser.me/api/portraits/men/5.jpg",
+      "userName": "lucasFan"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "user": {
+        "userId": "u1",
+        "name": "Rohit Mehta",
+        "email": "rohit.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+        "userName": "rohitCodes"
+      },
+      "post": "Rewatching Goblet of Fire and honestly, the way Harry handles the Triwizard Tournament feels less like bravery and more like being forced into trauma after trauma. Dude barely processes Cedric\u2019s death and everyone expects him to just move on like nothing happened. The graveyard scene still gives chills \u2014 Voldemort\u2019s return is so cold and calculated. Also, Hogwarts suddenly feels unsafe after that point. It\u2019s like childhood ends right there.",
+      "tags": [
+        {
+          "tagId": 1,
+          "type": "person",
+          "label": "Harry Potter"
+        },
+        {
+          "tagId": 2,
+          "type": "event",
+          "label": "Triwizard Tournament"
+        },
+        {
+          "tagId": 3,
+          "type": "place",
+          "label": "Little Hangleton Graveyard"
+        }
+      ],
+      "comments": [
+        {
+          "id": 101,
+          "comment": "That graveyard scene changed the entire tone of the series.",
+          "user": {
+            "userId": "u2",
+            "name": "Emily Carter",
+            "email": "emily.c@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+            "userName": "emReads"
+          },
+          "replies": [
+            {
+              "id": 102,
+              "comment": "Exactly. It stops being a kids story right there.",
+              "user": {
+                "userId": "u3",
+                "name": "Kwame Mensah",
+                "email": "kwame.m@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/3.jpg",
+                "userName": "kwameTalks"
+              },
+              "replies": null,
+              "likeCount": 62,
+              "replyCount": 0,
+              "offsetDays": 1,
+              "fixedTime": "09:48"
+            }
+          ],
+          "likeCount": 71,
+          "replyCount": 1,
+          "offsetDays": 1,
+          "fixedTime": "09:05"
+        },
+        {
+          "id": 103,
+          "comment": "Cedric deserved better \ud83d\ude1e",
+          "user": {
+            "userId": "u4",
+            "name": "Priya Sharma",
+            "email": "priya.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+            "userName": "priyaWrites"
+          },
+          "replies": null,
+          "likeCount": 16,
+          "replyCount": 0,
+          "offsetDays": 1,
+          "fixedTime": "10:22"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 539,
+      "commentCount": 2,
+      "offsetDays": 2,
+      "fixedTime": "08:14"
+    },
+    {
+      "id": 2,
+      "user": {
+        "userId": "u3",
+        "name": "Kwame Mensah",
+        "email": "kwame.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/3.jpg",
+        "userName": "kwameTalks"
+      },
+      "post": "I still can\u2019t forgive what happened at the Red Wedding. Robb Stark wasn\u2019t perfect, sure, but the betrayal by Walder Frey just hits differently. The way the music shifts and you realize something is off \u2014 it\u2019s one of the most brutal scenes I\u2019ve ever watched. Also, Catelyn\u2019s reaction? Pure heartbreak. That scene alone defines Game of Thrones\u2019 unpredictability.",
+      "tags": [
+        {
+          "tagId": 4,
+          "type": "person",
+          "label": "Robb Stark"
+        },
+        {
+          "tagId": 5,
+          "type": "event",
+          "label": "Red Wedding"
+        },
+        {
+          "tagId": 6,
+          "type": "place",
+          "label": "The Twins"
+        }
+      ],
+      "comments": [
+        {
+          "id": 201,
+          "comment": "I stopped trusting weddings after that episode.",
+          "user": {
+            "userId": "u5",
+            "name": "Lucas Brown",
+            "email": "lucas.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/5.jpg",
+            "userName": "lucasFan"
+          },
+          "replies": null,
+          "likeCount": 111,
+          "replyCount": 0,
+          "offsetDays": 1,
+          "fixedTime": "11:47"
+        },
+        {
+          "id": 202,
+          "comment": "Catelyn\u2019s scream still haunts me.",
+          "user": {
+            "userId": "u2",
+            "name": "Emily Carter",
+            "email": "emily.c@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+            "userName": "emReads"
+          },
+          "replies": null,
+          "likeCount": 156,
+          "replyCount": 0,
+          "offsetDays": 1,
+          "fixedTime": "12:15"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 906,
+      "commentCount": 2,
+      "offsetDays": 1,
+      "fixedTime": "11:03"
+    },
+    {
+      "id": 3,
+      "user": {
+        "userId": "u4",
+        "name": "Priya Sharma",
+        "email": "priya.s@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+        "userName": "priyaWrites"
+      },
+      "post": "Am I the only one who feels Hermione carries the trio most of the time? Especially in Prisoner of Azkaban. The Time-Turner usage alone shows how insanely smart she is. Harry gets the spotlight, but Hermione is literally solving problems before others even understand them. Also, the Patronus scene is iconic \u2014 Harry seeing his own strength through time is such a powerful metaphor.",
+      "tags": [
+        {
+          "tagId": 7,
+          "type": "person",
+          "label": "Hermione Granger"
+        },
+        {
+          "tagId": 8,
+          "type": "artifact",
+          "label": "Time-Turner"
+        },
+        {
+          "tagId": 9,
+          "type": "spell",
+          "label": "Expecto Patronum"
+        }
+      ],
+      "comments": [
+        {
+          "id": 301,
+          "comment": "Hermione is the real MVP, no debate.",
+          "user": {
+            "userId": "u1",
+            "name": "Rohit Mehta",
+            "email": "rohit.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+            "userName": "rohitCodes"
+          },
+          "replies": null,
+          "likeCount": 300,
+          "replyCount": 0,
+          "offsetDays": 14,
+          "fixedTime": "13:40"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 799,
+      "commentCount": 1,
+      "offsetDays": 15,
+      "fixedTime": "13:02"
+    },
+    {
+      "id": 4,
+      "user": {
+        "userId": "u5",
+        "name": "Lucas Brown",
+        "email": "lucas.b@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/5.jpg",
+        "userName": "lucasFan"
+      },
+      "post": "Jon Snow\u2019s entire arc feels like a tragic loop of doing the right thing and still getting punished for it. From the Night\u2019s Watch to the Battle of the Bastards, he keeps choosing honor over strategy. And honestly, in a world like Westeros, that\u2019s almost a weakness. Still, you root for him because he stays consistent. That\u2019s rare in GOT.",
+      "tags": [
+        {
+          "tagId": 10,
+          "type": "person",
+          "label": "Jon Snow"
+        },
+        {
+          "tagId": 11,
+          "type": "event",
+          "label": "Battle of the Bastards"
+        },
+        {
+          "tagId": 12,
+          "type": "place",
+          "label": "Winterfell"
+        }
+      ],
+      "comments": [
+        {
+          "id": 401,
+          "comment": "Honor doesn\u2019t work in Westeros.",
+          "user": {
+            "userId": "u3",
+            "name": "Kwame Mensah",
+            "email": "kwame.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/3.jpg",
+            "userName": "kwameTalks"
+          },
+          "replies": null,
+          "likeCount": 29,
+          "replyCount": 0,
+          "offsetDays": 9,
+          "fixedTime": "14:55"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 497,
+      "commentCount": 1,
+      "offsetDays": 10,
+      "fixedTime": "14:18"
+    },
+    {
+      "id": 5,
+      "user": {
+        "userId": "u2",
+        "name": "Emily Carter",
+        "email": "emily.c@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+        "userName": "emReads"
+      },
+      "post": "The way Dumbledore orchestrates things sometimes feels borderline manipulative. Like he knew Harry had to die all along? That revelation hits hard in Deathly Hallows. Makes you question whether he was guiding or just using him as a pawn against Voldemort.",
+      "tags": [
+        {
+          "tagId": 13,
+          "type": "person",
+          "label": "Albus Dumbledore"
+        },
+        {
+          "tagId": 14,
+          "type": "person",
+          "label": "Harry Potter"
+        },
+        {
+          "tagId": 15,
+          "type": "event",
+          "label": "Horcrux Hunt"
+        }
+      ],
+      "comments": [
+        {
+          "id": 501,
+          "comment": "Dumbledore was playing chess while others played checkers.",
+          "user": {
+            "userId": "u1",
+            "name": "Rohit Mehta",
+            "email": "rohit.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+            "userName": "rohitCodes"
+          },
+          "replies": null,
+          "likeCount": 498,
+          "replyCount": 0,
+          "offsetDays": 7,
+          "fixedTime": "16:08"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 778,
+      "commentCount": 1,
+      "offsetDays": 7,
+      "fixedTime": "15:30"
+    },
+    {
+      "id": 6,
+      "user": {
+        "userId": "u1",
+        "name": "Rohit Mehta",
+        "email": "rohit.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+        "userName": "rohitCodes"
+      },
+      "post": "Tyrion Lannister is probably the most layered character in GOT. His wit isn\u2019t just humor \u2014 it\u2019s survival. Watching him navigate King's Landing politics is honestly more entertaining than the battles. The trial scene where he finally snaps? Absolute peak writing.",
+      "tags": [
+        {
+          "tagId": 16,
+          "type": "person",
+          "label": "Tyrion Lannister"
+        },
+        {
+          "tagId": 17,
+          "type": "event",
+          "label": "Trial of Tyrion"
+        },
+        {
+          "tagId": 18,
+          "type": "place",
+          "label": "King's Landing"
+        }
+      ],
+      "comments": [
+        {
+          "id": 601,
+          "comment": "That speech still gives goosebumps.",
+          "user": {
+            "userId": "u4",
+            "name": "Priya Sharma",
+            "email": "priya.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+            "userName": "priyaWrites"
+          },
+          "replies": null,
+          "likeCount": 113,
+          "replyCount": 0,
+          "offsetDays": 11,
+          "fixedTime": "17:22"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 571,
+      "commentCount": 1,
+      "offsetDays": 11,
+      "fixedTime": "16:44"
+    },
+    {
+      "id": 7,
+      "user": {
+        "userId": "u3",
+        "name": "Kwame Mensah",
+        "email": "kwame.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/3.jpg",
+        "userName": "kwameTalks"
+      },
+      "post": "Snape\u2019s character arc is honestly one of the best written in fiction. From being perceived as a villain to revealing his true loyalty \u2014 it completely flips your understanding of the story. 'Always' might be overused now, but the emotional weight behind it is undeniable.",
+      "tags": [
+        {
+          "tagId": 19,
+          "type": "person",
+          "label": "Severus Snape"
+        },
+        {
+          "tagId": 20,
+          "type": "event",
+          "label": "Snape Memories Reveal"
+        },
+        {
+          "tagId": 21,
+          "type": "place",
+          "label": "Pensieve"
+        }
+      ],
+      "comments": [
+        {
+          "id": 701,
+          "comment": "Snape went from hated to legendary in minutes.",
+          "user": {
+            "userId": "u5",
+            "name": "Lucas Brown",
+            "email": "lucas.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/5.jpg",
+            "userName": "lucasFan"
+          },
+          "replies": null,
+          "likeCount": 349,
+          "replyCount": 0,
+          "offsetDays": 12,
+          "fixedTime": "19:10"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 702,
+      "commentCount": 1,
+      "offsetDays": 13,
+      "fixedTime": "18:05"
+    },
+    {
+      "id": 8,
+      "user": {
+        "userId": "u4",
+        "name": "Priya Sharma",
+        "email": "priya.s@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+        "userName": "priyaWrites"
+      },
+      "post": "Daenerys\u2019 transformation was either brilliant storytelling or rushed writing \u2014 still can\u2019t decide. From freeing slaves to burning King\u2019s Landing, the shift felt abrupt but also somewhat foreshadowed. Power really does change people, especially when unchecked.",
+      "tags": [
+        {
+          "tagId": 22,
+          "type": "person",
+          "label": "Daenerys Targaryen"
+        },
+        {
+          "tagId": 23,
+          "type": "event",
+          "label": "Burning of King's Landing"
+        },
+        {
+          "tagId": 24,
+          "type": "place",
+          "label": "King's Landing"
+        }
+      ],
+      "comments": [
+        {
+          "id": 801,
+          "comment": "It needed more buildup honestly.",
+          "user": {
+            "userId": "u2",
+            "name": "Emily Carter",
+            "email": "emily.c@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+            "userName": "emReads"
+          },
+          "replies": null,
+          "likeCount": 168,
+          "replyCount": 0,
+          "offsetDays": 14,
+          "fixedTime": "20:47"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 618,
+      "commentCount": 1,
+      "offsetDays": 14,
+      "fixedTime": "20:03"
+    },
+    {
+      "id": 9,
+      "user": {
+        "userId": "u5",
+        "name": "Lucas Brown",
+        "email": "lucas.b@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/5.jpg",
+        "userName": "lucasFan"
+      },
+      "post": "Hogwarts itself feels like a character. The moving staircases, hidden rooms, and the overall mystery make it feel alive. It\u2019s not just a school \u2014 it\u2019s a place that shapes every character who walks through it.",
+      "tags": [
+        {
+          "tagId": 25,
+          "type": "place",
+          "label": "Hogwarts"
+        },
+        {
+          "tagId": 26,
+          "type": "event",
+          "label": "Sorting Ceremony"
+        }
+      ],
+      "comments": [
+        {
+          "id": 901,
+          "comment": "Best fictional school ever.",
+          "user": {
+            "userId": "u1",
+            "name": "Rohit Mehta",
+            "email": "rohit.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+            "userName": "rohitCodes"
+          },
+          "replies": null,
+          "likeCount": 47,
+          "replyCount": 0,
+          "offsetDays": 10,
+          "fixedTime": "22:08"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 491,
+      "commentCount": 1,
+      "offsetDays": 10,
+      "fixedTime": "21:15"
+    },
+    {
+      "id": 10,
+      "user": {
+        "userId": "u2",
+        "name": "Emily Carter",
+        "email": "emily.c@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+        "userName": "emReads"
+      },
+      "post": "Arya Stark\u2019s journey from a scared girl to a trained assassin is one of the most satisfying arcs in GOT. The Faceless Men storyline adds such a mysterious layer, even if it felt rushed towards the end.",
+      "tags": [
+        {
+          "tagId": 27,
+          "type": "person",
+          "label": "Arya Stark"
+        },
+        {
+          "tagId": 28,
+          "type": "place",
+          "label": "Braavos"
+        },
+        {
+          "tagId": 29,
+          "type": "event",
+          "label": "Faceless Men Training"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1001,
+          "comment": "A girl has no name \ud83d\udd25",
+          "user": {
+            "userId": "u3",
+            "name": "Kwame Mensah",
+            "email": "kwame.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/3.jpg",
+            "userName": "kwameTalks"
+          },
+          "replies": null,
+          "likeCount": 45,
+          "replyCount": 0,
+          "offsetDays": 9,
+          "fixedTime": "08:14"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 1062,
+      "commentCount": 1,
+      "offsetDays": 10,
+      "fixedTime": "22:41"
+    },
+    {
+      "id": 11,
+      "user": {
+        "userId": "u6",
+        "name": "Aarav Patel",
+        "email": "aarav.p@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/6.jpg",
+        "userName": "aaravSpeaks"
+      },
+      "post": "Low-key feel like Draco Malfoy was one of the most realistic characters in Harry Potter. Not evil, just a kid raised in a toxic ideology. The Half-Blood Prince scenes where he\u2019s struggling with the Vanishing Cabinet really humanize him. He looks terrified, not villainous. Makes you think how many 'villains' are just products of their environment.",
+      "tags": [
+        {
+          "tagId": 30,
+          "type": "person",
+          "label": "Draco Malfoy"
+        },
+        {
+          "tagId": 31,
+          "type": "artifact",
+          "label": "Vanishing Cabinet"
+        },
+        {
+          "tagId": 32,
+          "type": "event",
+          "label": "Dumbledore Assassination Plot"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1101,
+          "comment": "Exactly. He never had a choice growing up.",
+          "user": {
+            "userId": "u4",
+            "name": "Priya Sharma",
+            "email": "priya.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+            "userName": "priyaWrites"
+          },
+          "replies": [
+            {
+              "id": 1102,
+              "comment": "True, but he still made choices later. That matters too.",
+              "user": {
+                "userId": "u7",
+                "name": "Marcus Lee",
+                "email": "marcus.l@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/7.jpg",
+                "userName": "marcusViews"
+              },
+              "replies": null,
+              "likeCount": 74,
+              "replyCount": 0,
+              "offsetDays": 1,
+              "fixedTime": "10:22"
+            }
+          ],
+          "likeCount": 69,
+          "replyCount": 1,
+          "offsetDays": 1,
+          "fixedTime": "09:48"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 478,
+      "commentCount": 1,
+      "offsetDays": 1,
+      "fixedTime": "09:05"
+    },
+    {
+      "id": 12,
+      "user": {
+        "userId": "u7",
+        "name": "Marcus Lee",
+        "email": "marcus.l@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/7.jpg",
+        "userName": "marcusViews"
+      },
+      "post": "The Battle of Blackwater is honestly one of the most underrated episodes in GOT. Tyrion using wildfire was both genius and terrifying. The visual of the green explosion still sticks with me. Also, that moment where Joffrey runs away and Tyrion just steps up? Peak character contrast.",
+      "tags": [
+        {
+          "tagId": 33,
+          "type": "event",
+          "label": "Battle of Blackwater"
+        },
+        {
+          "tagId": 34,
+          "type": "artifact",
+          "label": "Wildfire"
+        },
+        {
+          "tagId": 35,
+          "type": "person",
+          "label": "Tyrion Lannister"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1201,
+          "comment": "Wildfire scene is still one of the best VFX moments.",
+          "user": {
+            "userId": "u6",
+            "name": "Aarav Patel",
+            "email": "aarav.p@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/6.jpg",
+            "userName": "aaravSpeaks"
+          },
+          "replies": null,
+          "likeCount": 30,
+          "replyCount": 0,
+          "offsetDays": 12,
+          "fixedTime": "11:47"
+        },
+        {
+          "id": 1202,
+          "comment": "Tyrion carried that entire battle.",
+          "user": {
+            "userId": "u2",
+            "name": "Emily Carter",
+            "email": "emily.c@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+            "userName": "emReads"
+          },
+          "replies": null,
+          "likeCount": 437,
+          "replyCount": 0,
+          "offsetDays": 11,
+          "fixedTime": "12:15"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 703,
+      "commentCount": 2,
+      "offsetDays": 12,
+      "fixedTime": "11:03"
+    },
+    {
+      "id": 13,
+      "user": {
+        "userId": "u8",
+        "name": "Fatima Noor",
+        "email": "fatima.n@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/8.jpg",
+        "userName": "fatimaWrites"
+      },
+      "post": "Honestly, the Room of Requirement is one of the coolest magical concepts. A place that literally adapts to your needs? That\u2019s insane. The DA using it for training in Order of the Phoenix felt like a rebellion in the most Hogwarts way possible.",
+      "tags": [
+        {
+          "tagId": 36,
+          "type": "place",
+          "label": "Room of Requirement"
+        },
+        {
+          "tagId": 37,
+          "type": "event",
+          "label": "Dumbledore's Army Training"
+        },
+        {
+          "tagId": 38,
+          "type": "person",
+          "label": "Harry Potter"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1301,
+          "comment": "Wish I had that room during exams.",
+          "user": {
+            "userId": "u1",
+            "name": "Rohit Mehta",
+            "email": "rohit.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+            "userName": "rohitCodes"
+          },
+          "replies": null,
+          "likeCount": 38,
+          "replyCount": 0,
+          "offsetDays": 6,
+          "fixedTime": "13:40"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 340,
+      "commentCount": 1,
+      "offsetDays": 6,
+      "fixedTime": "13:02"
+    },
+    {
+      "id": 14,
+      "user": {
+        "userId": "u9",
+        "name": "Daniel Okoye",
+        "email": "daniel.o@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/9.jpg",
+        "userName": "danielDebates"
+      },
+      "post": "Jaime Lannister\u2019s redemption arc was going so well\u2026 until it wasn\u2019t. From pushing Bran to saving Brienne, his character growth was incredible. But going back to Cersei in the end just felt like a reset. Still conflicted about that decision.",
+      "tags": [
+        {
+          "tagId": 39,
+          "type": "person",
+          "label": "Jaime Lannister"
+        },
+        {
+          "tagId": 40,
+          "type": "person",
+          "label": "Cersei Lannister"
+        },
+        {
+          "tagId": 41,
+          "type": "event",
+          "label": "Fall of King's Landing"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1401,
+          "comment": "That arc deserved a better ending.",
+          "user": {
+            "userId": "u5",
+            "name": "Lucas Brown",
+            "email": "lucas.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/5.jpg",
+            "userName": "lucasFan"
+          },
+          "replies": null,
+          "likeCount": 54,
+          "replyCount": 0,
+          "offsetDays": 9,
+          "fixedTime": "14:55"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 730,
+      "commentCount": 1,
+      "offsetDays": 10,
+      "fixedTime": "14:18"
+    },
+    {
+      "id": 15,
+      "user": {
+        "userId": "u10",
+        "name": "Neha Kapoor",
+        "email": "neha.k@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/10.jpg",
+        "userName": "nehaThoughts"
+      },
+      "post": "Hot take: The Marauders storyline deserved its own series. James, Sirius, Lupin, Snape \u2014 the dynamics are so rich. The whole 'Prank on Snape' and their school days feel like an untapped goldmine of storytelling.",
+      "tags": [
+        {
+          "tagId": 42,
+          "type": "person",
+          "label": "Sirius Black"
+        },
+        {
+          "tagId": 43,
+          "type": "person",
+          "label": "Remus Lupin"
+        },
+        {
+          "tagId": 44,
+          "type": "event",
+          "label": "Marauders Era"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1501,
+          "comment": "I would 100% watch that spin-off.",
+          "user": {
+            "userId": "u8",
+            "name": "Fatima Noor",
+            "email": "fatima.n@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/8.jpg",
+            "userName": "fatimaWrites"
+          },
+          "replies": null,
+          "likeCount": 167,
+          "replyCount": 0,
+          "offsetDays": 3,
+          "fixedTime": "16:08"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 499,
+      "commentCount": 1,
+      "offsetDays": 3,
+      "fixedTime": "15:30"
+    },
+    {
+      "id": 16,
+      "user": {
+        "userId": "u6",
+        "name": "Aarav Patel",
+        "email": "aarav.p@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/6.jpg",
+        "userName": "aaravSpeaks"
+      },
+      "post": "The Night King was hyped for so long, and then\u2026 ended so quickly. Don\u2019t get me wrong, Arya killing him was epic, but the buildup vs payoff felt unbalanced. It needed more depth, more lore, more explanation.",
+      "tags": [
+        {
+          "tagId": 45,
+          "type": "person",
+          "label": "Night King"
+        },
+        {
+          "tagId": 46,
+          "type": "event",
+          "label": "Battle of Winterfell"
+        },
+        {
+          "tagId": 47,
+          "type": "place",
+          "label": "Winterfell"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1601,
+          "comment": "Biggest missed opportunity in the series.",
+          "user": {
+            "userId": "u7",
+            "name": "Marcus Lee",
+            "email": "marcus.l@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/7.jpg",
+            "userName": "marcusViews"
+          },
+          "replies": null,
+          "likeCount": 76,
+          "replyCount": 0,
+          "offsetDays": 8,
+          "fixedTime": "17:22"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 662,
+      "commentCount": 1,
+      "offsetDays": 9,
+      "fixedTime": "16:44"
+    },
+    {
+      "id": 17,
+      "user": {
+        "userId": "u9",
+        "name": "Daniel Okoye",
+        "email": "daniel.o@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/9.jpg",
+        "userName": "danielDebates"
+      },
+      "post": "Hagrid doesn\u2019t get enough credit. He\u2019s the emotional backbone of Harry\u2019s early life. The way he introduces Harry to the wizarding world is so wholesome. Also, man casually raises dangerous creatures like it\u2019s a hobby.",
+      "tags": [
+        {
+          "tagId": 48,
+          "type": "person",
+          "label": "Rubeus Hagrid"
+        },
+        {
+          "tagId": 49,
+          "type": "place",
+          "label": "Hogwarts"
+        },
+        {
+          "tagId": 50,
+          "type": "event",
+          "label": "Harry's First Hogwarts Visit"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1701,
+          "comment": "Hagrid deserved better treatment throughout.",
+          "user": {
+            "userId": "u10",
+            "name": "Neha Kapoor",
+            "email": "neha.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/10.jpg",
+            "userName": "nehaThoughts"
+          },
+          "replies": null,
+          "likeCount": 135,
+          "replyCount": 0,
+          "offsetDays": 6,
+          "fixedTime": "19:10"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 435,
+      "commentCount": 1,
+      "offsetDays": 7,
+      "fixedTime": "18:05"
+    },
+    {
+      "id": 18,
+      "user": {
+        "userId": "u8",
+        "name": "Fatima Noor",
+        "email": "fatima.n@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/8.jpg",
+        "userName": "fatimaWrites"
+      },
+      "post": "Littlefinger might be one of the smartest manipulators in GOT. The chaos he creates indirectly shapes so many major events. His 'chaos is a ladder' speech basically defines his entire philosophy.",
+      "tags": [
+        {
+          "tagId": 51,
+          "type": "person",
+          "label": "Petyr Baelish"
+        },
+        {
+          "tagId": 52,
+          "type": "event",
+          "label": "War of the Five Kings"
+        },
+        {
+          "tagId": 53,
+          "type": "place",
+          "label": "King's Landing"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1801,
+          "comment": "He played everyone until the end.",
+          "user": {
+            "userId": "u3",
+            "name": "Kwame Mensah",
+            "email": "kwame.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/3.jpg",
+            "userName": "kwameTalks"
+          },
+          "replies": null,
+          "likeCount": 42,
+          "replyCount": 0,
+          "offsetDays": 13,
+          "fixedTime": "20:47"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 392,
+      "commentCount": 1,
+      "offsetDays": 13,
+      "fixedTime": "20:03"
+    },
+    {
+      "id": 19,
+      "user": {
+        "userId": "u7",
+        "name": "Marcus Lee",
+        "email": "marcus.l@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/7.jpg",
+        "userName": "marcusViews"
+      },
+      "post": "The invisibility cloak is honestly one of the most underrated magical objects. It\u2019s not flashy like a wand or a spell, but its importance across the series is huge. It literally saves Harry multiple times.",
+      "tags": [
+        {
+          "tagId": 54,
+          "type": "artifact",
+          "label": "Invisibility Cloak"
+        },
+        {
+          "tagId": 55,
+          "type": "person",
+          "label": "Harry Potter"
+        },
+        {
+          "tagId": 56,
+          "type": "event",
+          "label": "Philosopher's Stone Quest"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1901,
+          "comment": "And it's one of the Deathly Hallows too!",
+          "user": {
+            "userId": "u6",
+            "name": "Aarav Patel",
+            "email": "aarav.p@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/6.jpg",
+            "userName": "aaravSpeaks"
+          },
+          "replies": null,
+          "likeCount": 15,
+          "replyCount": 0,
+          "offsetDays": 8,
+          "fixedTime": "22:08"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 578,
+      "commentCount": 1,
+      "offsetDays": 8,
+      "fixedTime": "21:15"
+    },
+    {
+      "id": 20,
+      "user": {
+        "userId": "u10",
+        "name": "Neha Kapoor",
+        "email": "neha.k@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/10.jpg",
+        "userName": "nehaThoughts"
+      },
+      "post": "Sansa Stark\u2019s growth is probably the most realistic in GOT. From being naive and dreaming of fairy tales to becoming politically aware and strategic \u2014 it\u2019s a slow, believable evolution shaped by trauma.",
+      "tags": [
+        {
+          "tagId": 57,
+          "type": "person",
+          "label": "Sansa Stark"
+        },
+        {
+          "tagId": 58,
+          "type": "place",
+          "label": "Winterfell"
+        },
+        {
+          "tagId": 59,
+          "type": "event",
+          "label": "Battle of the Bastards"
+        }
+      ],
+      "comments": [
+        {
+          "id": 2001,
+          "comment": "She learned the game the hard way.",
+          "user": {
+            "userId": "u2",
+            "name": "Emily Carter",
+            "email": "emily.c@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+            "userName": "emReads"
+          },
+          "replies": null,
+          "likeCount": 125,
+          "replyCount": 0,
+          "offsetDays": 4,
+          "fixedTime": "08:14"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 636,
+      "commentCount": 1,
+      "offsetDays": 5,
+      "fixedTime": "22:41"
+    },
+    {
+      "id": 21,
+      "user": {
+        "userId": "u11",
+        "name": "Ananya Rao",
+        "email": "ananya.rao@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/11.jpg",
+        "userName": "ananyaFrames"
+      },
+      "post": "Maybe this is unpopular, but Order of the Phoenix becomes way more interesting once you stop expecting Harry to be calm and heroic all the time. He is angry, impulsive, grieving, and honestly kind of unbearable in parts \u2014 which is exactly why it works for me now. Cedric died, adults keep secrets from him, Umbridge is running Hogwarts like a bureaucratic nightmare, and everyone still expects him to act composed. The DA scenes hit because they feel like teenagers building their own space inside a broken system. Also, the Ministry battle is chaos in the best way. Messy, emotional, and finally honest about how young these kids actually are.",
+      "tags": [
+        {
+          "tagId": 60,
+          "type": "person",
+          "label": "Harry Potter"
+        },
+        {
+          "tagId": 61,
+          "type": "event",
+          "label": "Dumbledore's Army"
+        },
+        {
+          "tagId": 62,
+          "type": "place",
+          "label": "Ministry of Magic"
+        }
+      ],
+      "comments": [
+        {
+          "id": 2101,
+          "comment": "Yes. Teen Harry being frustrated is one of the most realistic parts of the series.",
+          "user": {
+            "userId": "u8",
+            "name": "Fatima Noor",
+            "email": "fatima.n@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/8.jpg",
+            "userName": "fatimaWrites"
+          },
+          "replies": [
+            {
+              "id": 2102,
+              "comment": "People call him annoying, but I think they just wanted a cleaner hero than the story was giving.",
+              "user": {
+                "userId": "u6",
+                "name": "Aarav Patel",
+                "email": "aarav.p@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/6.jpg",
+                "userName": "aaravSpeaks"
+              },
+              "replies": null,
+              "likeCount": 25,
+              "replyCount": 0,
+              "offsetDays": 14,
+              "fixedTime": "10:22"
+            }
+          ],
+          "likeCount": 75,
+          "replyCount": 1,
+          "offsetDays": 14,
+          "fixedTime": "09:48"
+        },
+        {
+          "id": 2103,
+          "comment": "Umbridge makes that whole book feel stressful in a very non-magical but effective way.",
+          "user": {
+            "userId": "u2",
+            "name": "Emily Carter",
+            "email": "emily.c@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+            "userName": "emReads"
+          },
+          "replies": null,
+          "likeCount": 120,
+          "replyCount": 0,
+          "offsetDays": 14,
+          "fixedTime": "11:03"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 237,
+      "commentCount": 2,
+      "offsetDays": 14,
+      "fixedTime": "09:05"
+    },
+    {
+      "id": 22,
+      "user": {
+        "userId": "u12",
+        "name": "Jamal Brooks",
+        "email": "jamal.b@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/12.jpg",
+        "userName": "jamalRecaps"
+      },
+      "post": "Every time I rewatch the Purple Wedding, I\u2019m reminded that Game of Thrones was funniest when it was cruel in a very specific way: giving Joffrey exactly the kind of dramatic, public downfall his ego would have hated most. The whole scene is tense, ugly, and weirdly satisfying. Tyrion getting blamed after all that is classic Westeros logic too \u2014 actual chaos happens, and somehow the most convenient person gets dragged into it. Also, Olenna remains one of the coldest operators in the entire series. No screaming, no speeches, just efficiency. That level of political violence wrapped in grandmother energy? Incredible television.",
+      "tags": [
+        {
+          "tagId": 63,
+          "type": "event",
+          "label": "Purple Wedding"
+        },
+        {
+          "tagId": 64,
+          "type": "person",
+          "label": "Joffrey Baratheon"
+        },
+        {
+          "tagId": 65,
+          "type": "person",
+          "label": "Olenna Tyrell"
+        }
+      ],
+      "comments": [
+        {
+          "id": 2201,
+          "comment": "Grandmother energy is exactly the phrase. Olenna was lethal with a smile.",
+          "user": {
+            "userId": "u9",
+            "name": "Daniel Okoye",
+            "email": "daniel.o@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/9.jpg",
+            "userName": "danielDebates"
+          },
+          "replies": [
+            {
+              "id": 2202,
+              "comment": "And she never felt cartoonishly evil either. Just sharper than everyone else.",
+              "user": {
+                "userId": "u4",
+                "name": "Priya Sharma",
+                "email": "priya.s@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+                "userName": "priyaWrites"
+              },
+              "replies": null,
+              "likeCount": 44,
+              "replyCount": 0,
+              "offsetDays": 16,
+              "fixedTime": "13:02"
+            }
+          ],
+          "likeCount": 104,
+          "replyCount": 1,
+          "offsetDays": 16,
+          "fixedTime": "12:15"
+        },
+        {
+          "id": 2203,
+          "comment": "Joffrey dying at his own wedding might be the most Thrones sentence ever written.",
+          "user": {
+            "userId": "u5",
+            "name": "Lucas Brown",
+            "email": "lucas.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/5.jpg",
+            "userName": "lucasFan"
+          },
+          "replies": null,
+          "likeCount": 72,
+          "replyCount": 0,
+          "offsetDays": 17,
+          "fixedTime": "13:40"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 397,
+      "commentCount": 2,
+      "offsetDays": 17,
+      "fixedTime": "11:47"
+    },
+    {
+      "id": 23,
+      "user": {
+        "userId": "u13",
+        "name": "Sofia Martinez",
+        "email": "sofia.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/13.jpg",
+        "userName": "sofiaRewatches"
+      },
+      "post": "Can we talk about how absurdly brave Neville becomes by the end? Early-series Neville feels like the kid everyone overlooks, and then suddenly you realize he\u2019s been quietly building courage the whole time. Pulling the sword from the Sorting Hat and standing up in the Battle of Hogwarts is not a side-character moment \u2014 it\u2019s payoff. Honestly, one reason Harry Potter still works for so many people is that it lets the shy, awkward, underestimated kids matter. Not in a sentimental way either. Neville earns every bit of that arc. Also, yes, I will always defend him as one of the most emotionally satisfying character journeys in the series.",
+      "tags": [
+        {
+          "tagId": 66,
+          "type": "person",
+          "label": "Neville Longbottom"
+        },
+        {
+          "tagId": 67,
+          "type": "artifact",
+          "label": "Sorting Hat"
+        },
+        {
+          "tagId": 68,
+          "type": "event",
+          "label": "Battle of Hogwarts"
+        }
+      ],
+      "comments": [
+        {
+          "id": 2301,
+          "comment": "Neville's growth feels earned because it happens in the background for so long.",
+          "user": {
+            "userId": "u10",
+            "name": "Neha Kapoor",
+            "email": "neha.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/10.jpg",
+            "userName": "nehaThoughts"
+          },
+          "replies": [
+            {
+              "id": 2302,
+              "comment": "Exactly. The story never pauses and announces it. You just notice one day that he became solid.",
+              "user": {
+                "userId": "u1",
+                "name": "Rohit Mehta",
+                "email": "rohit.m@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+                "userName": "rohitCodes"
+              },
+              "replies": null,
+              "likeCount": 18,
+              "replyCount": 0,
+              "offsetDays": 5,
+              "fixedTime": "15:30"
+            }
+          ],
+          "likeCount": 24,
+          "replyCount": 1,
+          "offsetDays": 5,
+          "fixedTime": "14:55"
+        },
+        {
+          "id": 2303,
+          "comment": "Also his speech to the crowd before facing Voldemort? Underrated.",
+          "user": {
+            "userId": "u11",
+            "name": "Ananya Rao",
+            "email": "ananya.rao@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/11.jpg",
+            "userName": "ananyaFrames"
+          },
+          "replies": null,
+          "likeCount": 333,
+          "replyCount": 0,
+          "offsetDays": 5,
+          "fixedTime": "16:08"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 538,
+      "commentCount": 2,
+      "offsetDays": 6,
+      "fixedTime": "14:18"
+    },
+    {
+      "id": 24,
+      "user": {
+        "userId": "u14",
+        "name": "Ethan Walker",
+        "email": "ethan.w@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/14.jpg",
+        "userName": "ethanThread"
+      },
+      "post": "Brienne of Tarth is one of those characters who makes the whole world around her look smaller and meaner. Not because she\u2019s louder, but because her sense of honor exposes how fake everyone else is. Her scenes with Jaime are some of the best writing in the show because they\u2019re not just romantic tension or partnership \u2014 they\u2019re two people forcing each other to become more honest. The bath scene confession about the Mad King still stands out as one of the moments GOT actually slows down and lets character work breathe. Also, Brienne getting mocked by half of Westeros while still being the most decent person in the room never stops making me angry.",
+      "tags": [
+        {
+          "tagId": 69,
+          "type": "person",
+          "label": "Brienne of Tarth"
+        },
+        {
+          "tagId": 70,
+          "type": "person",
+          "label": "Jaime Lannister"
+        },
+        {
+          "tagId": 71,
+          "type": "place",
+          "label": "Harrenhal"
+        }
+      ],
+      "comments": [
+        {
+          "id": 2401,
+          "comment": "Brienne has that rare effect where her morality makes other characters more interesting too.",
+          "user": {
+            "userId": "u12",
+            "name": "Jamal Brooks",
+            "email": "jamal.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/12.jpg",
+            "userName": "jamalRecaps"
+          },
+          "replies": [
+            {
+              "id": 2402,
+              "comment": "Yes, especially Jaime. You can almost watch him become more human around her.",
+              "user": {
+                "userId": "u7",
+                "name": "Marcus Lee",
+                "email": "marcus.l@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/7.jpg",
+                "userName": "marcusViews"
+              },
+              "replies": null,
+              "likeCount": 182,
+              "replyCount": 0,
+              "offsetDays": 11,
+              "fixedTime": "18:05"
+            }
+          ],
+          "likeCount": 32,
+          "replyCount": 1,
+          "offsetDays": 11,
+          "fixedTime": "17:22"
+        },
+        {
+          "id": 2403,
+          "comment": "One of the few characters whose goodness never felt naive to me.",
+          "user": {
+            "userId": "u8",
+            "name": "Fatima Noor",
+            "email": "fatima.n@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/8.jpg",
+            "userName": "fatimaWrites"
+          },
+          "replies": null,
+          "likeCount": 184,
+          "replyCount": 0,
+          "offsetDays": 11,
+          "fixedTime": "19:10"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 565,
+      "commentCount": 2,
+      "offsetDays": 12,
+      "fixedTime": "16:44"
+    },
+    {
+      "id": 25,
+      "user": {
+        "userId": "u15",
+        "name": "Meera Iyer",
+        "email": "meera.i@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/15.jpg",
+        "userName": "meeraMuses"
+      },
+      "post": "Azkaban as a concept is actually horrifying when you stop and think about it for more than five seconds. A prison guarded by creatures that literally force you to relive despair is not 'strict,' it\u2019s nightmare fuel. And the fact that the series introduces Dementors while Harry is already carrying so much trauma makes it worse. Prisoner of Azkaban is where the worldbuilding gets darker in a way that feels political, not just spooky. Also, Lupin teaching Harry Patronus is one of the warmest teacher-student dynamics in the whole series. It feels protective without ever being sentimental overload.",
+      "tags": [
+        {
+          "tagId": 72,
+          "type": "place",
+          "label": "Azkaban"
+        },
+        {
+          "tagId": 73,
+          "type": "person",
+          "label": "Remus Lupin"
+        },
+        {
+          "tagId": 74,
+          "type": "spell",
+          "label": "Expecto Patronum"
+        }
+      ],
+      "comments": [
+        {
+          "id": 2501,
+          "comment": "PoA is the point where the world stops feeling whimsical and starts feeling institutionally messed up.",
+          "user": {
+            "userId": "u13",
+            "name": "Sofia Martinez",
+            "email": "sofia.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/13.jpg",
+            "userName": "sofiaRewatches"
+          },
+          "replies": [
+            {
+              "id": 2502,
+              "comment": "That is such a good way to put it. The fear comes from systems, not just monsters.",
+              "user": {
+                "userId": "u3",
+                "name": "Kwame Mensah",
+                "email": "kwame.m@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/3.jpg",
+                "userName": "kwameTalks"
+              },
+              "replies": null,
+              "likeCount": 75,
+              "replyCount": 0,
+              "offsetDays": 8,
+              "fixedTime": "21:15"
+            }
+          ],
+          "likeCount": 118,
+          "replyCount": 1,
+          "offsetDays": 8,
+          "fixedTime": "20:47"
+        },
+        {
+          "id": 2503,
+          "comment": "Lupin remains the teacher I would have trusted most at Hogwarts.",
+          "user": {
+            "userId": "u4",
+            "name": "Priya Sharma",
+            "email": "priya.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+            "userName": "priyaWrites"
+          },
+          "replies": null,
+          "likeCount": 176,
+          "replyCount": 0,
+          "offsetDays": 9,
+          "fixedTime": "22:08"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 584,
+      "commentCount": 2,
+      "offsetDays": 9,
+      "fixedTime": "20:03"
+    },
+    {
+      "id": 26,
+      "user": {
+        "userId": "u16",
+        "name": "Noah Bennett",
+        "email": "noah.b@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/16.jpg",
+        "userName": "noahNoted"
+      },
+      "post": "Stannis Baratheon is one of the funniest characters in the show and I don\u2019t even mean that as an insult. He walks around like he personally invented disappointment. Every line delivery is basically 'I have reviewed your joy and denied it.' But that dry, rigid energy is also why he works. He feels like a man so committed to duty that he hollowed himself out. The problem is that Thrones keeps making you think discipline equals seriousness, and Stannis is proof that seriousness without mercy becomes something ugly. Also, Davos being his moral Wi-Fi for most of the story is deeply underappreciated.",
+      "tags": [
+        {
+          "tagId": 75,
+          "type": "person",
+          "label": "Stannis Baratheon"
+        },
+        {
+          "tagId": 76,
+          "type": "person",
+          "label": "Davos Seaworth"
+        },
+        {
+          "tagId": 77,
+          "type": "event",
+          "label": "War of the Five Kings"
+        }
+      ],
+      "comments": [
+        {
+          "id": 2601,
+          "comment": "Reviewed your joy and denied it is painfully accurate.",
+          "user": {
+            "userId": "u14",
+            "name": "Ethan Walker",
+            "email": "ethan.w@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/14.jpg",
+            "userName": "ethanThread"
+          },
+          "replies": [
+            {
+              "id": 2602,
+              "comment": "He really does feel like a legal notice in human form.",
+              "user": {
+                "userId": "u10",
+                "name": "Neha Kapoor",
+                "email": "neha.k@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/10.jpg",
+                "userName": "nehaThoughts"
+              },
+              "replies": null,
+              "likeCount": 35,
+              "replyCount": 0,
+              "offsetDays": 7,
+              "fixedTime": "09:05"
+            }
+          ],
+          "likeCount": 38,
+          "replyCount": 1,
+          "offsetDays": 7,
+          "fixedTime": "08:14"
+        },
+        {
+          "id": 2603,
+          "comment": "Davos is the only reason I stayed emotionally invested in Stannis for as long as I did.",
+          "user": {
+            "userId": "u5",
+            "name": "Lucas Brown",
+            "email": "lucas.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/5.jpg",
+            "userName": "lucasFan"
+          },
+          "replies": null,
+          "likeCount": 72,
+          "replyCount": 0,
+          "offsetDays": 7,
+          "fixedTime": "09:48"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 257,
+      "commentCount": 2,
+      "offsetDays": 8,
+      "fixedTime": "22:41"
+    },
+    {
+      "id": 27,
+      "user": {
+        "userId": "u17",
+        "name": "Riya Sen",
+        "email": "riya.s@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/17.jpg",
+        "userName": "riyaReadsLate"
+      },
+      "post": "One thing Harry Potter quietly does well is make ordinary magical objects feel more intimate than flashy. The Marauder\u2019s Map is a great example. It isn\u2019t powerful because it destroys something or wins a battle. It matters because it changes how characters move through space, secrecy, and trust. It makes Hogwarts feel even more alive and layered. Also, emotionally, it gets better once you know who made it. There\u2019s something a little devastating about Harry using this clever artifact made by people tied so deeply to his parents\u2019 past without fully understanding the weight of it at first.",
+      "tags": [
+        {
+          "tagId": 78,
+          "type": "artifact",
+          "label": "Marauder's Map"
+        },
+        {
+          "tagId": 79,
+          "type": "place",
+          "label": "Hogwarts"
+        },
+        {
+          "tagId": 80,
+          "type": "person",
+          "label": "Sirius Black"
+        }
+      ],
+      "comments": [
+        {
+          "id": 2701,
+          "comment": "The emotional value of that map goes up every single rewatch.",
+          "user": {
+            "userId": "u15",
+            "name": "Meera Iyer",
+            "email": "meera.i@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/15.jpg",
+            "userName": "meeraMuses"
+          },
+          "replies": [
+            {
+              "id": 2702,
+              "comment": "Especially once you connect it to Lupin seeing Peter's name on it. That detail hurts more later.",
+              "user": {
+                "userId": "u11",
+                "name": "Ananya Rao",
+                "email": "ananya.rao@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/11.jpg",
+                "userName": "ananyaFrames"
+              },
+              "replies": null,
+              "likeCount": 33,
+              "replyCount": 0,
+              "offsetDays": 12,
+              "fixedTime": "11:47"
+            }
+          ],
+          "likeCount": 123,
+          "replyCount": 1,
+          "offsetDays": 12,
+          "fixedTime": "11:03"
+        },
+        {
+          "id": 2703,
+          "comment": "It\u2019s one of those objects that feels mischievous and tragic at the same time.",
+          "user": {
+            "userId": "u6",
+            "name": "Aarav Patel",
+            "email": "aarav.p@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/6.jpg",
+            "userName": "aaravSpeaks"
+          },
+          "replies": null,
+          "likeCount": 193,
+          "replyCount": 0,
+          "offsetDays": 12,
+          "fixedTime": "12:15"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 430,
+      "commentCount": 2,
+      "offsetDays": 12,
+      "fixedTime": "10:22"
+    },
+    {
+      "id": 28,
+      "user": {
+        "userId": "u18",
+        "name": "Chloe Adams",
+        "email": "chloe.a@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/18.jpg",
+        "userName": "chloeAnalyzes"
+      },
+      "post": "The Hound and Arya road-trip phase is still one of my favorite stretches in all of Game of Thrones because it strips the world down to survival, grief, and extremely reluctant comedy. The Hound acts like he hates everything, but the show is smart enough not to make him secretly soft in some easy way. He\u2019s brutal, damaged, and weirdly practical about keeping Arya alive. Their scenes work because neither one becomes adorable. They just become legible to each other. Also, Arya laughing when he asks for help near the end is cruel, yes, but it also feels like a brutally honest mirror of everything she learned.",
+      "tags": [
+        {
+          "tagId": 81,
+          "type": "person",
+          "label": "Arya Stark"
+        },
+        {
+          "tagId": 82,
+          "type": "person",
+          "label": "Sandor Clegane"
+        },
+        {
+          "tagId": 83,
+          "type": "event",
+          "label": "Arya and Hound Journey"
+        }
+      ],
+      "comments": [
+        {
+          "id": 2801,
+          "comment": "Their dynamic is one of the few times the show lets trauma and dark humor coexist naturally.",
+          "user": {
+            "userId": "u12",
+            "name": "Jamal Brooks",
+            "email": "jamal.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/12.jpg",
+            "userName": "jamalRecaps"
+          },
+          "replies": [
+            {
+              "id": 2802,
+              "comment": "Yes, and because neither of them becomes sentimental, the bond feels more real.",
+              "user": {
+                "userId": "u18",
+                "name": "Chloe Adams",
+                "email": "chloe.a@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/18.jpg",
+                "userName": "chloeAnalyzes"
+              },
+              "replies": null,
+              "likeCount": 62,
+              "replyCount": 0,
+              "offsetDays": 17,
+              "fixedTime": "14:18"
+            }
+          ],
+          "likeCount": 155,
+          "replyCount": 1,
+          "offsetDays": 17,
+          "fixedTime": "13:40"
+        },
+        {
+          "id": 2803,
+          "comment": "The chicken scene alone deserves its own hall of fame.",
+          "user": {
+            "userId": "u9",
+            "name": "Daniel Okoye",
+            "email": "daniel.o@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/9.jpg",
+            "userName": "danielDebates"
+          },
+          "replies": null,
+          "likeCount": 136,
+          "replyCount": 0,
+          "offsetDays": 18,
+          "fixedTime": "14:55"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 669,
+      "commentCount": 2,
+      "offsetDays": 18,
+      "fixedTime": "13:02"
+    },
+    {
+      "id": 29,
+      "user": {
+        "userId": "u19",
+        "name": "Kabir Malhotra",
+        "email": "kabir.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/19.jpg",
+        "userName": "kabirBackbench"
+      },
+      "post": "There is something deeply funny to me about how Hogwarts is supposed to be the safest place for children and yet the annual school calendar is basically: mystery creature, cursed object, dark wizard activity, emotionally unstable teacher, repeat. And I say this with love. The chaos is part of the charm. But if you step back for one second, sending your kid there requires a level of trust I absolutely do not possess. Still, Chamber of Secrets remains elite school-horror energy. A hidden monster, students getting petrified, creepy messages on walls \u2014 that book understood how to turn a magical castle into a paranoia machine.",
+      "tags": [
+        {
+          "tagId": 84,
+          "type": "place",
+          "label": "Hogwarts"
+        },
+        {
+          "tagId": 85,
+          "type": "event",
+          "label": "Chamber of Secrets"
+        },
+        {
+          "tagId": 86,
+          "type": "person",
+          "label": "Ginny Weasley"
+        }
+      ],
+      "comments": [
+        {
+          "id": 2901,
+          "comment": "The Hogwarts safety record is genuinely indefensible and also central to the brand.",
+          "user": {
+            "userId": "u17",
+            "name": "Riya Sen",
+            "email": "riya.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/17.jpg",
+            "userName": "riyaReadsLate"
+          },
+          "replies": [
+            {
+              "id": 2902,
+              "comment": "Exactly. If Hogwarts had normal regulations, we would have no plot and much less personality.",
+              "user": {
+                "userId": "u2",
+                "name": "Emily Carter",
+                "email": "emily.c@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+                "userName": "emReads"
+              },
+              "replies": null,
+              "likeCount": 162,
+              "replyCount": 0,
+              "offsetDays": 9,
+              "fixedTime": "16:44"
+            }
+          ],
+          "likeCount": 192,
+          "replyCount": 1,
+          "offsetDays": 9,
+          "fixedTime": "16:08"
+        },
+        {
+          "id": 2903,
+          "comment": "Chamber of Secrets really is the most 'why are parents still allowing this' entry.",
+          "user": {
+            "userId": "u1",
+            "name": "Rohit Mehta",
+            "email": "rohit.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+            "userName": "rohitCodes"
+          },
+          "replies": null,
+          "likeCount": 31,
+          "replyCount": 0,
+          "offsetDays": 9,
+          "fixedTime": "17:22"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 389,
+      "commentCount": 2,
+      "offsetDays": 9,
+      "fixedTime": "15:30"
+    },
+    {
+      "id": 30,
+      "user": {
+        "userId": "u20",
+        "name": "Tessa Coleman",
+        "email": "tessa.c@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/20.jpg",
+        "userName": "tessaTakes"
+      },
+      "post": "Margaery Tyrell understood image management better than almost anyone in Westeros, and I feel like that gets flattened too often into 'she was manipulative.' Of course she was. Everyone with power in that world is performing something. The difference is that Margaery actually understood how public affection, symbols, and visibility work. She plays religion, royalty, and charity like overlapping stages. What makes her compelling is that she doesn\u2019t just flatter power \u2014 she tries to redirect it through perception. In another genre she would absolutely be called media-savvy and brilliant. In Thrones, that same skill set becomes survival. And honestly, Natalie Dormer played that balance perfectly.",
+      "tags": [
+        {
+          "tagId": 87,
+          "type": "person",
+          "label": "Margaery Tyrell"
+        },
+        {
+          "tagId": 88,
+          "type": "place",
+          "label": "King's Landing"
+        },
+        {
+          "tagId": 89,
+          "type": "event",
+          "label": "Faith Militant Crisis"
+        }
+      ],
+      "comments": [
+        {
+          "id": 3001,
+          "comment": "Calling her manipulative without calling the men strategic has always felt like a double standard to me.",
+          "user": {
+            "userId": "u16",
+            "name": "Noah Bennett",
+            "email": "noah.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/16.jpg",
+            "userName": "noahNoted"
+          },
+          "replies": [
+            {
+              "id": 3002,
+              "comment": "Exactly. She understood optics, and the show treats optics as real power because they are.",
+              "user": {
+                "userId": "u18",
+                "name": "Chloe Adams",
+                "email": "chloe.a@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/18.jpg",
+                "userName": "chloeAnalyzes"
+              },
+              "replies": null,
+              "likeCount": 58,
+              "replyCount": 0,
+              "offsetDays": 9,
+              "fixedTime": "20:03"
+            }
+          ],
+          "likeCount": 340,
+          "replyCount": 1,
+          "offsetDays": 9,
+          "fixedTime": "19:10"
+        },
+        {
+          "id": 3003,
+          "comment": "She was one of the few players who could feel warm and calculating at the same time.",
+          "user": {
+            "userId": "u7",
+            "name": "Marcus Lee",
+            "email": "marcus.l@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/7.jpg",
+            "userName": "marcusViews"
+          },
+          "replies": null,
+          "likeCount": 139,
+          "replyCount": 0,
+          "offsetDays": 10,
+          "fixedTime": "20:47"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 362,
+      "commentCount": 2,
+      "offsetDays": 10,
+      "fixedTime": "18:05"
+    },
+    {
+      "id": 31,
+      "user": {
+        "userId": "u21",
+        "name": "Vikram Singh",
+        "email": "vikram.s@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/21.jpg",
+        "userName": "vikramThinks"
+      },
+      "post": "The more I think about it, the more I feel the Elder Wand is less about power and more about obsession. Everyone who chases it ends up losing something bigger than they gain. Voldemort literally believes owning the wand guarantees victory, but the story quietly shows that misunderstanding power is what destroys him. Harry, on the other hand, just chooses not to play that game at all. That contrast is what makes the ending work for me. It\u2019s not about who has the strongest weapon, it\u2019s about who understands what power actually means.",
+      "tags": [
+        {
+          "tagId": 90,
+          "type": "artifact",
+          "label": "Elder Wand"
+        },
+        {
+          "tagId": 91,
+          "type": "person",
+          "label": "Voldemort"
+        },
+        {
+          "tagId": 92,
+          "type": "event",
+          "label": "Final Battle at Hogwarts"
+        }
+      ],
+      "comments": [
+        {
+          "id": 3101,
+          "comment": "Yeah, the wand is basically a trap for people who think power is ownership.",
+          "user": {
+            "userId": "u15",
+            "name": "Meera Iyer",
+            "email": "meera.i@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/15.jpg",
+            "userName": "meeraMuses"
+          },
+          "replies": [
+            {
+              "id": 3102,
+              "comment": "And Harry breaking the cycle is what actually makes him different from everyone else chasing it.",
+              "user": {
+                "userId": "u11",
+                "name": "Ananya Rao",
+                "email": "ananya.rao@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/11.jpg",
+                "userName": "ananyaFrames"
+              },
+              "replies": null,
+              "likeCount": 87,
+              "replyCount": 0,
+              "offsetDays": 1,
+              "fixedTime": "22:41"
+            }
+          ],
+          "likeCount": 36,
+          "replyCount": 1,
+          "offsetDays": 1,
+          "fixedTime": "22:08"
+        },
+        {
+          "id": 3103,
+          "comment": "Voldemort really thought hardware upgrade = guaranteed win.",
+          "user": {
+            "userId": "u1",
+            "name": "Rohit Mehta",
+            "email": "rohit.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+            "userName": "rohitCodes"
+          },
+          "replies": null,
+          "likeCount": 317,
+          "replyCount": 0,
+          "offsetDays": 0,
+          "fixedTime": "08:14"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 495,
+      "commentCount": 2,
+      "offsetDays": 1,
+      "fixedTime": "21:15"
+    },
+    {
+      "id": 32,
+      "user": {
+        "userId": "u22",
+        "name": "Liam O'Connor",
+        "email": "liam.o@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/22.jpg",
+        "userName": "liamObserves"
+      },
+      "post": "The Battle of the Bastards is one of those episodes that feels overwhelming in a way that actually mirrors the characters\u2019 perspective. The suffocating pile-up, Jon getting buried under bodies, the chaos of not knowing where anything is \u2014 it\u2019s less a 'cool battle' and more a stress simulation. Also, Ramsay\u2019s downfall is satisfying, but what really stands out is how close Jon comes to losing everything despite doing everything right. That unpredictability is what Thrones did best in its peak seasons.",
+      "tags": [
+        {
+          "tagId": 93,
+          "type": "event",
+          "label": "Battle of the Bastards"
+        },
+        {
+          "tagId": 94,
+          "type": "person",
+          "label": "Jon Snow"
+        },
+        {
+          "tagId": 95,
+          "type": "person",
+          "label": "Ramsay Bolton"
+        }
+      ],
+      "comments": [
+        {
+          "id": 3201,
+          "comment": "That suffocation scene is one of the most intense things I\u2019ve watched on TV.",
+          "user": {
+            "userId": "u18",
+            "name": "Chloe Adams",
+            "email": "chloe.a@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/18.jpg",
+            "userName": "chloeAnalyzes"
+          },
+          "replies": [
+            {
+              "id": 3202,
+              "comment": "It almost stops feeling like fiction at that point, more like panic.",
+              "user": {
+                "userId": "u9",
+                "name": "Daniel Okoye",
+                "email": "daniel.o@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/9.jpg",
+                "userName": "danielDebates"
+              },
+              "replies": null,
+              "likeCount": 88,
+              "replyCount": 0,
+              "offsetDays": 1,
+              "fixedTime": "10:22"
+            }
+          ],
+          "likeCount": 72,
+          "replyCount": 1,
+          "offsetDays": 1,
+          "fixedTime": "09:48"
+        },
+        {
+          "id": 3203,
+          "comment": "And Sansa arriving late is peak strategic timing.",
+          "user": {
+            "userId": "u2",
+            "name": "Emily Carter",
+            "email": "emily.c@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+            "userName": "emReads"
+          },
+          "replies": null,
+          "likeCount": 330,
+          "replyCount": 0,
+          "offsetDays": 2,
+          "fixedTime": "11:03"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 243,
+      "commentCount": 2,
+      "offsetDays": 2,
+      "fixedTime": "09:05"
+    },
+    {
+      "id": 33,
+      "user": {
+        "userId": "u23",
+        "name": "Arjun Nair",
+        "email": "arjun.n@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/23.jpg",
+        "userName": "arjunLogs"
+      },
+      "post": "The Half-Blood Prince twist still hits differently because it reframes everything we thought we knew about Snape. It\u2019s not just a reveal, it\u2019s a recontextualization. Suddenly every interaction, every harsh word, every moment of ambiguity becomes layered. Also, the potion book itself is such an interesting artifact \u2014 knowledge without context can be dangerous, even when it helps you succeed.",
+      "tags": [
+        {
+          "tagId": 96,
+          "type": "person",
+          "label": "Severus Snape"
+        },
+        {
+          "tagId": 97,
+          "type": "artifact",
+          "label": "Half-Blood Prince's Potion Book"
+        },
+        {
+          "tagId": 98,
+          "type": "event",
+          "label": "Snape Identity Reveal"
+        }
+      ],
+      "comments": [
+        {
+          "id": 3301,
+          "comment": "That twist works because it changes past scenes, not just future ones.",
+          "user": {
+            "userId": "u17",
+            "name": "Riya Sen",
+            "email": "riya.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/17.jpg",
+            "userName": "riyaReadsLate"
+          },
+          "replies": null,
+          "likeCount": 56,
+          "replyCount": 0,
+          "offsetDays": 5,
+          "fixedTime": "12:15"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 696,
+      "commentCount": 1,
+      "offsetDays": 5,
+      "fixedTime": "11:47"
+    },
+    {
+      "id": 34,
+      "user": {
+        "userId": "u24",
+        "name": "Olivia Green",
+        "email": "olivia.g@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/24.jpg",
+        "userName": "oliviaViews"
+      },
+      "post": "Cersei blowing up the Sept of Baelor is one of the most cold-blooded power moves in the entire series. No hesitation, no remorse, just calculation. The music, the pacing, the slow realization of what\u2019s about to happen \u2014 it\u2019s cinematic perfection. And then Tommen\u2019s reaction right after? Quiet devastation.",
+      "tags": [
+        {
+          "tagId": 99,
+          "type": "event",
+          "label": "Sept of Baelor Explosion"
+        },
+        {
+          "tagId": 100,
+          "type": "person",
+          "label": "Cersei Lannister"
+        },
+        {
+          "tagId": 101,
+          "type": "place",
+          "label": "King's Landing"
+        }
+      ],
+      "comments": [
+        {
+          "id": 3401,
+          "comment": "That entire sequence is probably the best-directed moment in the show.",
+          "user": {
+            "userId": "u22",
+            "name": "Liam O'Connor",
+            "email": "liam.o@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/22.jpg",
+            "userName": "liamObserves"
+          },
+          "replies": [
+            {
+              "id": 3402,
+              "comment": "The music alone carries so much tension.",
+              "user": {
+                "userId": "u8",
+                "name": "Fatima Noor",
+                "email": "fatima.n@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/8.jpg",
+                "userName": "fatimaWrites"
+              },
+              "replies": null,
+              "likeCount": 10,
+              "replyCount": 0,
+              "offsetDays": 15,
+              "fixedTime": "14:18"
+            }
+          ],
+          "likeCount": 159,
+          "replyCount": 1,
+          "offsetDays": 15,
+          "fixedTime": "13:40"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 294,
+      "commentCount": 1,
+      "offsetDays": 15,
+      "fixedTime": "13:02"
+    },
+    {
+      "id": 35,
+      "user": {
+        "userId": "u25",
+        "name": "Dev Malhotra",
+        "email": "dev.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/25.jpg",
+        "userName": "devHottakes"
+      },
+      "post": "Hot take: Ron Weasley doesn\u2019t get enough credit for emotional intelligence. He reacts like a normal person would \u2014 jealous, insecure, sometimes immature \u2014 but he also comes back, apologizes, and grows. That\u2019s way more relatable than being perfect all the time.",
+      "tags": [
+        {
+          "tagId": 102,
+          "type": "person",
+          "label": "Ron Weasley"
+        },
+        {
+          "tagId": 103,
+          "type": "event",
+          "label": "Horcrux Hunt"
+        }
+      ],
+      "comments": [
+        {
+          "id": 3501,
+          "comment": "Ron is basically the audience POV most of the time.",
+          "user": {
+            "userId": "u23",
+            "name": "Arjun Nair",
+            "email": "arjun.n@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/23.jpg",
+            "userName": "arjunLogs"
+          },
+          "replies": null,
+          "likeCount": 148,
+          "replyCount": 0,
+          "offsetDays": 5,
+          "fixedTime": "15:30"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 327,
+      "commentCount": 1,
+      "offsetDays": 5,
+      "fixedTime": "14:55"
+    },
+    {
+      "id": 36,
+      "user": {
+        "userId": "u26",
+        "name": "Zara Khan",
+        "email": "zara.k@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/26.jpg",
+        "userName": "zaraSpeaks"
+      },
+      "post": "Honestly, Varys playing the long game across multiple seasons is kind of insane. He doesn\u2019t have armies or dragons, just information. And yet he shapes outcomes at the highest level. That\u2019s power in its purest form.",
+      "tags": [
+        {
+          "tagId": 104,
+          "type": "person",
+          "label": "Varys"
+        },
+        {
+          "tagId": 105,
+          "type": "place",
+          "label": "King's Landing"
+        },
+        {
+          "tagId": 106,
+          "type": "event",
+          "label": "Political Intrigue"
+        }
+      ],
+      "comments": null,
+      "universe": "GOT",
+      "likeCount": 644,
+      "commentCount": 0,
+      "offsetDays": 14,
+      "fixedTime": "16:08"
+    },
+    {
+      "id": 37,
+      "user": {
+        "userId": "u27",
+        "name": "Sahil Verma",
+        "email": "sahil.v@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/27.jpg",
+        "userName": "sahilCodes"
+      },
+      "post": "Felix Felicis is such a fun concept. Liquid luck sounds simple, but the way it plays out is so subtle. It doesn\u2019t just make things easy, it nudges events in your favor. That\u2019s way more interesting than just instant success.",
+      "tags": [
+        {
+          "tagId": 107,
+          "type": "artifact",
+          "label": "Felix Felicis"
+        },
+        {
+          "tagId": 108,
+          "type": "person",
+          "label": "Harry Potter"
+        },
+        {
+          "tagId": 109,
+          "type": "event",
+          "label": "Slughorn Memory Retrieval"
+        }
+      ],
+      "comments": [
+        {
+          "id": 3701,
+          "comment": "That scene where Harry just 'knows' what to do is so satisfying.",
+          "user": {
+            "userId": "u25",
+            "name": "Dev Malhotra",
+            "email": "dev.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/25.jpg",
+            "userName": "devHottakes"
+          },
+          "replies": null,
+          "likeCount": 147,
+          "replyCount": 0,
+          "offsetDays": 8,
+          "fixedTime": "17:22"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 534,
+      "commentCount": 1,
+      "offsetDays": 8,
+      "fixedTime": "16:44"
+    },
+    {
+      "id": 38,
+      "user": {
+        "userId": "u28",
+        "name": "Ethan Clark",
+        "email": "ethan.c@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/28.jpg",
+        "userName": "ethanBreaksDown"
+      },
+      "post": "The Wall is such a powerful symbol in GOT. It\u2019s not just a physical barrier, it represents denial. People south of it ignore the real threat while fighting petty wars. Sound familiar?",
+      "tags": [
+        {
+          "tagId": 110,
+          "type": "place",
+          "label": "The Wall"
+        },
+        {
+          "tagId": 111,
+          "type": "event",
+          "label": "White Walker Threat"
+        },
+        {
+          "tagId": 112,
+          "type": "person",
+          "label": "Jon Snow"
+        }
+      ],
+      "comments": [
+        {
+          "id": 3801,
+          "comment": "That metaphor hits harder with every rewatch.",
+          "user": {
+            "userId": "u26",
+            "name": "Zara Khan",
+            "email": "zara.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/26.jpg",
+            "userName": "zaraSpeaks"
+          },
+          "replies": null,
+          "likeCount": 136,
+          "replyCount": 0,
+          "offsetDays": 1,
+          "fixedTime": "19:10"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 635,
+      "commentCount": 1,
+      "offsetDays": 1,
+      "fixedTime": "18:05"
+    },
+    {
+      "id": 39,
+      "user": {
+        "userId": "u29",
+        "name": "Aditi Gupta",
+        "email": "aditi.g@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/29.jpg",
+        "userName": "aditiNotes"
+      },
+      "post": "Luna Lovegood is such a refreshing character because she doesn\u2019t try to fit in at all. She\u2019s completely comfortable being herself, and that confidence is rare. Also, her perspective often ends up being surprisingly insightful.",
+      "tags": [
+        {
+          "tagId": 113,
+          "type": "person",
+          "label": "Luna Lovegood"
+        },
+        {
+          "tagId": 114,
+          "type": "place",
+          "label": "Hogwarts"
+        },
+        {
+          "tagId": 115,
+          "type": "event",
+          "label": "DA Meetings"
+        }
+      ],
+      "comments": [
+        {
+          "id": 3901,
+          "comment": "Luna is the kind of character you appreciate more as you grow older.",
+          "user": {
+            "userId": "u27",
+            "name": "Sahil Verma",
+            "email": "sahil.v@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/27.jpg",
+            "userName": "sahilCodes"
+          },
+          "replies": null,
+          "likeCount": 64,
+          "replyCount": 0,
+          "offsetDays": 4,
+          "fixedTime": "20:47"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 433,
+      "commentCount": 1,
+      "offsetDays": 4,
+      "fixedTime": "20:03"
+    },
+    {
+      "id": 40,
+      "user": {
+        "userId": "u30",
+        "name": "Ryan Mitchell",
+        "email": "ryan.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/30.jpg",
+        "userName": "ryanThreads"
+      },
+      "post": "The Iron Throne itself is such a brutal symbol. Made of swords, uncomfortable, dangerous \u2014 it\u2019s literally telling you that ruling is not supposed to be easy or safe. And yet everyone still fights for it like it\u2019s some kind of prize.",
+      "tags": [
+        {
+          "tagId": 116,
+          "type": "artifact",
+          "label": "Iron Throne"
+        },
+        {
+          "tagId": 117,
+          "type": "place",
+          "label": "King's Landing"
+        },
+        {
+          "tagId": 118,
+          "type": "event",
+          "label": "War for the Throne"
+        }
+      ],
+      "comments": [
+        {
+          "id": 4001,
+          "comment": "It\u2019s basically a warning disguised as a reward.",
+          "user": {
+            "userId": "u28",
+            "name": "Ethan Clark",
+            "email": "ethan.c@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/28.jpg",
+            "userName": "ethanBreaksDown"
+          },
+          "replies": null,
+          "likeCount": 28,
+          "replyCount": 0,
+          "offsetDays": 12,
+          "fixedTime": "22:08"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 260,
+      "commentCount": 1,
+      "offsetDays": 12,
+      "fixedTime": "21:15"
+    },
+    {
+      "id": 41,
+      "user": {
+        "userId": "u31",
+        "name": "Karan Bhatia",
+        "email": "karan.b@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/31.jpg",
+        "userName": "karanRants"
+      },
+      "post": "Every time I revisit Deathly Hallows, I feel like the Horcrux concept is one of the darkest ideas hidden inside a 'young adult' series. Splitting your soul intentionally just to avoid death is disturbing on a philosophical level. It\u2019s not just about immortality, it\u2019s about what you\u2019re willing to destroy within yourself to achieve it. Voldemort becomes less human with each Horcrux, and by the end, he\u2019s basically a hollow shell driven by fear. Meanwhile, Harry\u2019s journey is about preserving humanity even when facing death. That contrast is what elevates the final arc for me.",
+      "tags": [
+        {
+          "tagId": 119,
+          "type": "artifact",
+          "label": "Horcrux"
+        },
+        {
+          "tagId": 120,
+          "type": "person",
+          "label": "Voldemort"
+        },
+        {
+          "tagId": 121,
+          "type": "event",
+          "label": "Horcrux Destruction"
+        }
+      ],
+      "comments": [
+        {
+          "id": 4101,
+          "comment": "It\u2019s basically the opposite of healing \u2014 it\u2019s intentional self-damage.",
+          "user": {
+            "userId": "u29",
+            "name": "Aditi Gupta",
+            "email": "aditi.g@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/29.jpg",
+            "userName": "aditiNotes"
+          },
+          "replies": [
+            {
+              "id": 4102,
+              "comment": "And the more he tries to escape death, the less alive he actually becomes.",
+              "user": {
+                "userId": "u23",
+                "name": "Arjun Nair",
+                "email": "arjun.n@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/23.jpg",
+                "userName": "arjunLogs"
+              },
+              "replies": null,
+              "likeCount": 67,
+              "replyCount": 0,
+              "offsetDays": 9,
+              "fixedTime": "09:05"
+            }
+          ],
+          "likeCount": 117,
+          "replyCount": 1,
+          "offsetDays": 9,
+          "fixedTime": "08:14"
+        },
+        {
+          "id": 4103,
+          "comment": "That\u2019s why Harry choosing to walk into death hits so hard.",
+          "user": {
+            "userId": "u15",
+            "name": "Meera Iyer",
+            "email": "meera.i@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/15.jpg",
+            "userName": "meeraMuses"
+          },
+          "replies": null,
+          "likeCount": 162,
+          "replyCount": 0,
+          "offsetDays": 9,
+          "fixedTime": "09:48"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 590,
+      "commentCount": 2,
+      "offsetDays": 10,
+      "fixedTime": "22:41"
+    },
+    {
+      "id": 42,
+      "user": {
+        "userId": "u32",
+        "name": "Dylan Scott",
+        "email": "dylan.s@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/32.jpg",
+        "userName": "dylanDeepDive"
+      },
+      "post": "One thing GOT absolutely nails is showing how power doesn\u2019t always come from strength or birthright. The rise of characters like Bronn proves that adaptability and survival instincts can take you just as far as legacy. He doesn\u2019t pretend to be honorable or noble \u2014 he just understands the game better than most.",
+      "tags": [
+        {
+          "tagId": 122,
+          "type": "person",
+          "label": "Bronn"
+        },
+        {
+          "tagId": 123,
+          "type": "event",
+          "label": "War of the Five Kings"
+        },
+        {
+          "tagId": 124,
+          "type": "place",
+          "label": "King's Landing"
+        }
+      ],
+      "comments": [
+        {
+          "id": 4201,
+          "comment": "Bronn is basically pure pragmatism in human form.",
+          "user": {
+            "userId": "u30",
+            "name": "Ryan Mitchell",
+            "email": "ryan.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/30.jpg",
+            "userName": "ryanThreads"
+          },
+          "replies": null,
+          "likeCount": 91,
+          "replyCount": 0,
+          "offsetDays": 6,
+          "fixedTime": "11:03"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 812,
+      "commentCount": 1,
+      "offsetDays": 7,
+      "fixedTime": "10:22"
+    },
+    {
+      "id": 43,
+      "user": {
+        "userId": "u33",
+        "name": "Simran Kaur",
+        "email": "simran.k@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/33.jpg",
+        "userName": "simranSays"
+      },
+      "post": "Honestly, the Weasley family dynamic is one of the warmest parts of the entire Harry Potter series. It\u2019s chaotic, loud, sometimes messy, but always supportive. Harry finding a home with them feels just as important as any magical victory.",
+      "tags": [
+        {
+          "tagId": 125,
+          "type": "person",
+          "label": "Molly Weasley"
+        },
+        {
+          "tagId": 126,
+          "type": "place",
+          "label": "The Burrow"
+        },
+        {
+          "tagId": 127,
+          "type": "event",
+          "label": "Harry's First Visit to Burrow"
+        }
+      ],
+      "comments": [
+        {
+          "id": 4301,
+          "comment": "The Burrow scenes always feel like a safe space.",
+          "user": {
+            "userId": "u31",
+            "name": "Karan Bhatia",
+            "email": "karan.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/31.jpg",
+            "userName": "karanRants"
+          },
+          "replies": null,
+          "likeCount": 493,
+          "replyCount": 0,
+          "offsetDays": 2,
+          "fixedTime": "12:15"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 669,
+      "commentCount": 1,
+      "offsetDays": 3,
+      "fixedTime": "11:47"
+    },
+    {
+      "id": 44,
+      "user": {
+        "userId": "u34",
+        "name": "Ahmed Hassan",
+        "email": "ahmed.h@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/34.jpg",
+        "userName": "ahmedReflects"
+      },
+      "post": "Theon's arc is one of the most painful to watch, but also one of the most complete. From arrogance to complete breakdown and then redemption \u2014 it\u2019s messy and uncomfortable, but it feels real. His final stand at Winterfell was quiet but meaningful.",
+      "tags": [
+        {
+          "tagId": 128,
+          "type": "person",
+          "label": "Theon Greyjoy"
+        },
+        {
+          "tagId": 129,
+          "type": "event",
+          "label": "Battle of Winterfell"
+        },
+        {
+          "tagId": 130,
+          "type": "place",
+          "label": "Winterfell"
+        }
+      ],
+      "comments": [
+        {
+          "id": 4401,
+          "comment": "Theon's redemption works because it doesn\u2019t erase his past.",
+          "user": {
+            "userId": "u32",
+            "name": "Dylan Scott",
+            "email": "dylan.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/32.jpg",
+            "userName": "dylanDeepDive"
+          },
+          "replies": [
+            {
+              "id": 4402,
+              "comment": "Exactly. It acknowledges it and still moves forward.",
+              "user": {
+                "userId": "u18",
+                "name": "Chloe Adams",
+                "email": "chloe.a@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/18.jpg",
+                "userName": "chloeAnalyzes"
+              },
+              "replies": null,
+              "likeCount": 24,
+              "replyCount": 0,
+              "offsetDays": 16,
+              "fixedTime": "14:18"
+            }
+          ],
+          "likeCount": 180,
+          "replyCount": 1,
+          "offsetDays": 16,
+          "fixedTime": "13:40"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 390,
+      "commentCount": 1,
+      "offsetDays": 16,
+      "fixedTime": "13:02"
+    },
+    {
+      "id": 45,
+      "user": {
+        "userId": "u35",
+        "name": "Rahul Jain",
+        "email": "rahul.j@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/35.jpg",
+        "userName": "rahulExplains"
+      },
+      "post": "The Triwizard Tournament is such a cool concept but also wildly dangerous for students. Dragons, underwater challenges, a literal maze trying to kill you \u2014 and everyone treats it like a school competition. The wizarding world really has a questionable safety policy.",
+      "tags": [
+        {
+          "tagId": 131,
+          "type": "event",
+          "label": "Triwizard Tournament"
+        },
+        {
+          "tagId": 132,
+          "type": "place",
+          "label": "Hogwarts"
+        },
+        {
+          "tagId": 133,
+          "type": "person",
+          "label": "Cedric Diggory"
+        }
+      ],
+      "comments": [
+        {
+          "id": 4501,
+          "comment": "Wizard schools have zero concept of risk management.",
+          "user": {
+            "userId": "u33",
+            "name": "Simran Kaur",
+            "email": "simran.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/33.jpg",
+            "userName": "simranSays"
+          },
+          "replies": null,
+          "likeCount": 35,
+          "replyCount": 0,
+          "offsetDays": 7,
+          "fixedTime": "15:30"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 791,
+      "commentCount": 1,
+      "offsetDays": 8,
+      "fixedTime": "14:55"
+    },
+    {
+      "id": 46,
+      "user": {
+        "userId": "u36",
+        "name": "Carlos Mendes",
+        "email": "carlos.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/36.jpg",
+        "userName": "carlosTalks"
+      },
+      "post": "The dragons in GOT are not just weapons, they\u2019re symbols of power shifting back to something ancient and uncontrollable. Every time they appear, the balance of the world changes. And honestly, the sound design alone makes them feel terrifying.",
+      "tags": [
+        {
+          "tagId": 134,
+          "type": "person",
+          "label": "Daenerys Targaryen"
+        },
+        {
+          "tagId": 135,
+          "type": "event",
+          "label": "Dragons Return"
+        },
+        {
+          "tagId": 136,
+          "type": "place",
+          "label": "Essos"
+        }
+      ],
+      "comments": [
+        {
+          "id": 4601,
+          "comment": "Dragons basically break the rules of the game.",
+          "user": {
+            "userId": "u34",
+            "name": "Ahmed Hassan",
+            "email": "ahmed.h@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/34.jpg",
+            "userName": "ahmedReflects"
+          },
+          "replies": null,
+          "likeCount": 59,
+          "replyCount": 0,
+          "offsetDays": 11,
+          "fixedTime": "16:44"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 456,
+      "commentCount": 1,
+      "offsetDays": 11,
+      "fixedTime": "16:08"
+    },
+    {
+      "id": 47,
+      "user": {
+        "userId": "u37",
+        "name": "Nisha Arora",
+        "email": "nisha.a@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/37.jpg",
+        "userName": "nishaReads"
+      },
+      "post": "Dobby\u2019s character arc is surprisingly emotional. From being afraid and controlled to choosing freedom and sacrifice \u2014 it\u2019s a short journey, but impactful. His final scene is one of the most heartbreaking moments in the series.",
+      "tags": [
+        {
+          "tagId": 137,
+          "type": "person",
+          "label": "Dobby"
+        },
+        {
+          "tagId": 138,
+          "type": "event",
+          "label": "Dobby's Death"
+        },
+        {
+          "tagId": 139,
+          "type": "place",
+          "label": "Malfoy Manor"
+        }
+      ],
+      "comments": [
+        {
+          "id": 4701,
+          "comment": "That scene always hits harder than expected.",
+          "user": {
+            "userId": "u35",
+            "name": "Rahul Jain",
+            "email": "rahul.j@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/35.jpg",
+            "userName": "rahulExplains"
+          },
+          "replies": null,
+          "likeCount": 468,
+          "replyCount": 0,
+          "offsetDays": 8,
+          "fixedTime": "18:05"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 390,
+      "commentCount": 1,
+      "offsetDays": 9,
+      "fixedTime": "17:22"
+    },
+    {
+      "id": 48,
+      "user": {
+        "userId": "u38",
+        "name": "Jacob Turner",
+        "email": "jacob.t@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/38.jpg",
+        "userName": "jacobWrites"
+      },
+      "post": "The political conversations in GOT are sometimes more intense than the battles. Watching characters manipulate, negotiate, and betray each other in a room can be just as gripping as any fight scene.",
+      "tags": [
+        {
+          "tagId": 140,
+          "type": "event",
+          "label": "Small Council Meetings"
+        },
+        {
+          "tagId": 141,
+          "type": "place",
+          "label": "King's Landing"
+        },
+        {
+          "tagId": 142,
+          "type": "person",
+          "label": "Tyrion Lannister"
+        }
+      ],
+      "comments": null,
+      "universe": "GOT",
+      "likeCount": 297,
+      "commentCount": 0,
+      "offsetDays": 7,
+      "fixedTime": "19:10"
+    },
+    {
+      "id": 49,
+      "user": {
+        "userId": "u39",
+        "name": "Pooja Desai",
+        "email": "pooja.d@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/39.jpg",
+        "userName": "poojaTalks"
+      },
+      "post": "McGonagall is one of the most underrated characters. Strict, disciplined, but deeply caring. Her standing up against Umbridge and later fighting in the final battle shows how strong she really is.",
+      "tags": [
+        {
+          "tagId": 143,
+          "type": "person",
+          "label": "Minerva McGonagall"
+        },
+        {
+          "tagId": 144,
+          "type": "event",
+          "label": "Battle of Hogwarts"
+        },
+        {
+          "tagId": 145,
+          "type": "place",
+          "label": "Hogwarts"
+        }
+      ],
+      "comments": [
+        {
+          "id": 4901,
+          "comment": "She balances authority and compassion perfectly.",
+          "user": {
+            "userId": "u37",
+            "name": "Nisha Arora",
+            "email": "nisha.a@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/37.jpg",
+            "userName": "nishaReads"
+          },
+          "replies": null,
+          "likeCount": 196,
+          "replyCount": 0,
+          "offsetDays": 9,
+          "fixedTime": "20:47"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 386,
+      "commentCount": 1,
+      "offsetDays": 9,
+      "fixedTime": "20:03"
+    },
+    {
+      "id": 50,
+      "user": {
+        "userId": "u40",
+        "name": "Ethan Ross",
+        "email": "ethan.r@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/40.jpg",
+        "userName": "ethanAnalyzes"
+      },
+      "post": "The ending of Game of Thrones is still debated, but one thing it did highlight was how difficult it is to conclude a story with so many moving parts. Expectations were sky-high, and not every arc landed. Still, the journey had some of the best storytelling moments in television.",
+      "tags": [
+        {
+          "tagId": 146,
+          "type": "event",
+          "label": "End of Game of Thrones"
+        },
+        {
+          "tagId": 147,
+          "type": "place",
+          "label": "Westeros"
+        },
+        {
+          "tagId": 148,
+          "type": "person",
+          "label": "Bran Stark"
+        }
+      ],
+      "comments": [
+        {
+          "id": 5001,
+          "comment": "The journey vs destination debate will never end.",
+          "user": {
+            "userId": "u38",
+            "name": "Jacob Turner",
+            "email": "jacob.t@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/38.jpg",
+            "userName": "jacobWrites"
+          },
+          "replies": [
+            {
+              "id": 5002,
+              "comment": "True. Some arcs deserved more time, but the peak moments still stand strong.",
+              "user": {
+                "userId": "u32",
+                "name": "Dylan Scott",
+                "email": "dylan.s@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/32.jpg",
+                "userName": "dylanDeepDive"
+              },
+              "replies": null,
+              "likeCount": 65,
+              "replyCount": 0,
+              "offsetDays": 6,
+              "fixedTime": "22:41"
+            }
+          ],
+          "likeCount": 138,
+          "replyCount": 1,
+          "offsetDays": 6,
+          "fixedTime": "22:08"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 231,
+      "commentCount": 1,
+      "offsetDays": 7,
+      "fixedTime": "21:15"
+    },
+    {
+      "id": 51,
+      "user": {
+        "userId": "u41",
+        "name": "Ritika Banerjee",
+        "email": "ritika.b@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/41.jpg",
+        "userName": "ritikaReads"
+      },
+      "post": "The Mirror of Erised is such a quietly devastating concept. It doesn\u2019t show you reality, it shows you what you want the most. And for Harry, that\u2019s his parents. That scene hits harder every time because it\u2019s not magical in a fun way \u2014 it\u2019s emotional exposure. It\u2019s basically forcing a child to confront loss in the most direct way possible.",
+      "tags": [
+        {
+          "tagId": 149,
+          "type": "artifact",
+          "label": "Mirror of Erised"
+        },
+        {
+          "tagId": 150,
+          "type": "person",
+          "label": "Harry Potter"
+        },
+        {
+          "tagId": 151,
+          "type": "event",
+          "label": "First Year Discovery"
+        }
+      ],
+      "comments": [
+        {
+          "id": 5101,
+          "comment": "That scene is beautiful but also uncomfortable in a very real way.",
+          "user": {
+            "userId": "u33",
+            "name": "Simran Kaur",
+            "email": "simran.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/33.jpg",
+            "userName": "simranSays"
+          },
+          "replies": null,
+          "likeCount": 87,
+          "replyCount": 0,
+          "offsetDays": 6,
+          "fixedTime": "09:05"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 274,
+      "commentCount": 1,
+      "offsetDays": 6,
+      "fixedTime": "08:14"
+    },
+    {
+      "id": 52,
+      "user": {
+        "userId": "u42",
+        "name": "Ben Carter",
+        "email": "ben.c@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/42.jpg",
+        "userName": "benExplains"
+      },
+      "post": "Oberyn Martell\u2019s fight against the Mountain is one of the most shocking turns in the series. You think it\u2019s going one way, and then it flips instantly. It perfectly captures how overconfidence can undo even the most skilled fighters.",
+      "tags": [
+        {
+          "tagId": 152,
+          "type": "person",
+          "label": "Oberyn Martell"
+        },
+        {
+          "tagId": 153,
+          "type": "event",
+          "label": "Trial by Combat"
+        },
+        {
+          "tagId": 154,
+          "type": "person",
+          "label": "The Mountain"
+        }
+      ],
+      "comments": [
+        {
+          "id": 5201,
+          "comment": "That moment still catches people off guard.",
+          "user": {
+            "userId": "u34",
+            "name": "Ahmed Hassan",
+            "email": "ahmed.h@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/34.jpg",
+            "userName": "ahmedReflects"
+          },
+          "replies": [
+            {
+              "id": 5202,
+              "comment": "It\u2019s the definition of a 'don\u2019t celebrate too early' moment.",
+              "user": {
+                "userId": "u22",
+                "name": "Liam O'Connor",
+                "email": "liam.o@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/22.jpg",
+                "userName": "liamObserves"
+              },
+              "replies": null,
+              "likeCount": 54,
+              "replyCount": 0,
+              "offsetDays": 6,
+              "fixedTime": "11:03"
+            }
+          ],
+          "likeCount": 161,
+          "replyCount": 1,
+          "offsetDays": 6,
+          "fixedTime": "10:22"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 521,
+      "commentCount": 1,
+      "offsetDays": 6,
+      "fixedTime": "09:48"
+    },
+    {
+      "id": 53,
+      "user": {
+        "userId": "u43",
+        "name": "Sneha Pillai",
+        "email": "sneha.p@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/43.jpg",
+        "userName": "snehaViews"
+      },
+      "post": "The concept of house points in Hogwarts is honestly hilarious. Imagine your entire house losing because one guy broke a rule. The peer pressure alone must be insane.",
+      "tags": [
+        {
+          "tagId": 155,
+          "type": "house",
+          "label": "Gryffindor"
+        },
+        {
+          "tagId": 156,
+          "type": "place",
+          "label": "Hogwarts"
+        },
+        {
+          "tagId": 157,
+          "type": "event",
+          "label": "House Cup"
+        }
+      ],
+      "comments": [
+        {
+          "id": 5301,
+          "comment": "House politics must be wild in that school.",
+          "user": {
+            "userId": "u41",
+            "name": "Ritika Banerjee",
+            "email": "ritika.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/41.jpg",
+            "userName": "ritikaReads"
+          },
+          "replies": null,
+          "likeCount": 40,
+          "replyCount": 0,
+          "offsetDays": 13,
+          "fixedTime": "12:15"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 667,
+      "commentCount": 1,
+      "offsetDays": 14,
+      "fixedTime": "11:47"
+    },
+    {
+      "id": 54,
+      "user": {
+        "userId": "u44",
+        "name": "Marcus Johnson",
+        "email": "marcus.j@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/44.jpg",
+        "userName": "marcusBreakdown"
+      },
+      "post": "The Red Keep as a setting is fascinating because it looks grand, but it\u2019s full of secrets, betrayals, and hidden tensions. It\u2019s basically a symbol of power built on instability.",
+      "tags": [
+        {
+          "tagId": 158,
+          "type": "place",
+          "label": "Red Keep"
+        },
+        {
+          "tagId": 159,
+          "type": "event",
+          "label": "Court Politics"
+        },
+        {
+          "tagId": 160,
+          "type": "person",
+          "label": "Cersei Lannister"
+        }
+      ],
+      "comments": null,
+      "universe": "GOT",
+      "likeCount": 597,
+      "commentCount": 0,
+      "offsetDays": 9,
+      "fixedTime": "13:02"
+    },
+    {
+      "id": 55,
+      "user": {
+        "userId": "u45",
+        "name": "Ankit Verma",
+        "email": "ankit.v@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/45.jpg",
+        "userName": "ankitSpeaks"
+      },
+      "post": "Fred and George bring so much energy to the series. Their humor balances out the darker moments perfectly. And their inventions are genuinely creative, not just comic relief.",
+      "tags": [
+        {
+          "tagId": 161,
+          "type": "person",
+          "label": "Fred Weasley"
+        },
+        {
+          "tagId": 162,
+          "type": "person",
+          "label": "George Weasley"
+        },
+        {
+          "tagId": 163,
+          "type": "place",
+          "label": "Weasleys' Wizard Wheezes"
+        }
+      ],
+      "comments": [
+        {
+          "id": 5501,
+          "comment": "They\u2019re the reason the tone never gets too heavy.",
+          "user": {
+            "userId": "u43",
+            "name": "Sneha Pillai",
+            "email": "sneha.p@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/43.jpg",
+            "userName": "snehaViews"
+          },
+          "replies": null,
+          "likeCount": 38,
+          "replyCount": 0,
+          "offsetDays": 15,
+          "fixedTime": "14:18"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 191,
+      "commentCount": 1,
+      "offsetDays": 15,
+      "fixedTime": "13:40"
+    },
+    {
+      "id": 56,
+      "user": {
+        "userId": "u46",
+        "name": "Diego Alvarez",
+        "email": "diego.a@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/46.jpg",
+        "userName": "diegoNotes"
+      },
+      "post": "The Dothraki culture adds such a different dimension to the world of GOT. It\u2019s raw, direct, and completely different from Westerosi politics. Watching Daenerys adapt to it was one of her most interesting phases.",
+      "tags": [
+        {
+          "tagId": 164,
+          "type": "place",
+          "label": "Dothraki Sea"
+        },
+        {
+          "tagId": 165,
+          "type": "person",
+          "label": "Daenerys Targaryen"
+        },
+        {
+          "tagId": 166,
+          "type": "event",
+          "label": "Dothraki Leadership"
+        }
+      ],
+      "comments": [
+        {
+          "id": 5601,
+          "comment": "That arc felt like a completely different show in a good way.",
+          "user": {
+            "userId": "u44",
+            "name": "Marcus Johnson",
+            "email": "marcus.j@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/44.jpg",
+            "userName": "marcusBreakdown"
+          },
+          "replies": null,
+          "likeCount": 58,
+          "replyCount": 0,
+          "offsetDays": 8,
+          "fixedTime": "15:30"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 911,
+      "commentCount": 1,
+      "offsetDays": 8,
+      "fixedTime": "14:55"
+    },
+    {
+      "id": 57,
+      "user": {
+        "userId": "u47",
+        "name": "Ishita Ghosh",
+        "email": "ishita.g@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/47.jpg",
+        "userName": "ishitaWrites"
+      },
+      "post": "The invisibility cloak being passed down as a family heirloom adds such a nice layer to the story. It\u2019s not just a magical object, it\u2019s part of Harry\u2019s legacy.",
+      "tags": [
+        {
+          "tagId": 167,
+          "type": "artifact",
+          "label": "Invisibility Cloak"
+        },
+        {
+          "tagId": 168,
+          "type": "person",
+          "label": "James Potter"
+        },
+        {
+          "tagId": 169,
+          "type": "event",
+          "label": "Deathly Hallows Reveal"
+        }
+      ],
+      "comments": null,
+      "universe": "HP",
+      "likeCount": 262,
+      "commentCount": 0,
+      "offsetDays": 11,
+      "fixedTime": "16:08"
+    },
+    {
+      "id": 58,
+      "user": {
+        "userId": "u48",
+        "name": "Noah Green",
+        "email": "noah.g@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/48.jpg",
+        "userName": "noahDiscusses"
+      },
+      "post": "The relationship between Tyrion and Jaime is one of the most genuine in the series. In a world full of betrayal, their bond feels real and consistent.",
+      "tags": [
+        {
+          "tagId": 170,
+          "type": "person",
+          "label": "Tyrion Lannister"
+        },
+        {
+          "tagId": 171,
+          "type": "person",
+          "label": "Jaime Lannister"
+        },
+        {
+          "tagId": 172,
+          "type": "event",
+          "label": "Jaime Frees Tyrion"
+        }
+      ],
+      "comments": [
+        {
+          "id": 5801,
+          "comment": "Their bond is one of the few constants in the show.",
+          "user": {
+            "userId": "u46",
+            "name": "Diego Alvarez",
+            "email": "diego.a@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/46.jpg",
+            "userName": "diegoNotes"
+          },
+          "replies": null,
+          "likeCount": 194,
+          "replyCount": 0,
+          "offsetDays": 5,
+          "fixedTime": "17:22"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 546,
+      "commentCount": 1,
+      "offsetDays": 6,
+      "fixedTime": "16:44"
+    },
+    {
+      "id": 59,
+      "user": {
+        "userId": "u49",
+        "name": "Pankaj Tiwari",
+        "email": "pankaj.t@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/49.jpg",
+        "userName": "pankajSpeaks"
+      },
+      "post": "Quidditch is such a chaotic sport if you think about it. One player basically decides the entire match by catching the Snitch. The rest of the game almost feels secondary.",
+      "tags": [
+        {
+          "tagId": 173,
+          "type": "event",
+          "label": "Quidditch Matches"
+        },
+        {
+          "tagId": 174,
+          "type": "place",
+          "label": "Hogwarts Pitch"
+        },
+        {
+          "tagId": 175,
+          "type": "person",
+          "label": "Harry Potter"
+        }
+      ],
+      "comments": [
+        {
+          "id": 5901,
+          "comment": "The scoring system makes zero sense but it\u2019s fun.",
+          "user": {
+            "userId": "u47",
+            "name": "Ishita Ghosh",
+            "email": "ishita.g@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/47.jpg",
+            "userName": "ishitaWrites"
+          },
+          "replies": null,
+          "likeCount": 170,
+          "replyCount": 0,
+          "offsetDays": 19,
+          "fixedTime": "19:10"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 301,
+      "commentCount": 1,
+      "offsetDays": 19,
+      "fixedTime": "18:05"
+    },
+    {
+      "id": 60,
+      "user": {
+        "userId": "u50",
+        "name": "Oliver White",
+        "email": "oliver.w@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/50.jpg",
+        "userName": "oliverThinks"
+      },
+      "post": "The North in GOT always feels different from the rest of the world. It\u2019s colder, harsher, but also more honest. The people there value loyalty and survival over politics, which makes their stories feel grounded.",
+      "tags": [
+        {
+          "tagId": 176,
+          "type": "place",
+          "label": "The North"
+        },
+        {
+          "tagId": 177,
+          "type": "person",
+          "label": "Ned Stark"
+        },
+        {
+          "tagId": 178,
+          "type": "event",
+          "label": "War of the Five Kings"
+        }
+      ],
+      "comments": [
+        {
+          "id": 6001,
+          "comment": "The North remembers \u2014 and it always feels earned.",
+          "user": {
+            "userId": "u48",
+            "name": "Noah Green",
+            "email": "noah.g@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/48.jpg",
+            "userName": "noahDiscusses"
+          },
+          "replies": null,
+          "likeCount": 263,
+          "replyCount": 0,
+          "offsetDays": 17,
+          "fixedTime": "20:47"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 502,
+      "commentCount": 1,
+      "offsetDays": 17,
+      "fixedTime": "20:03"
+    },
+    {
+      "id": 61,
+      "user": {
+        "userId": "u51",
+        "name": "Harsh Agarwal",
+        "email": "harsh.a@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/51.jpg",
+        "userName": "harshUnfiltered"
+      },
+      "post": "Unpopular opinion: The Goblet of Fire movie skipped too much nuance from the book. The Barty Crouch Jr. reveal felt rushed, and the whole mystery element didn\u2019t land as strongly. Still love the tournament visuals though.",
+      "tags": [
+        {
+          "tagId": 179,
+          "type": "event",
+          "label": "Triwizard Tournament"
+        },
+        {
+          "tagId": 180,
+          "type": "person",
+          "label": "Barty Crouch Jr."
+        },
+        {
+          "tagId": 181,
+          "type": "artifact",
+          "label": "Goblet of Fire"
+        }
+      ],
+      "comments": [
+        {
+          "id": 6101,
+          "comment": "Books definitely handled the mystery better.",
+          "user": {
+            "userId": "u41",
+            "name": "Ritika Banerjee",
+            "email": "ritika.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/41.jpg",
+            "userName": "ritikaReads"
+          },
+          "replies": [
+            {
+              "id": 6102,
+              "comment": "Movie prioritized pacing over depth for sure.",
+              "user": {
+                "userId": "u23",
+                "name": "Arjun Nair",
+                "email": "arjun.n@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/23.jpg",
+                "userName": "arjunLogs"
+              },
+              "replies": null,
+              "likeCount": 64,
+              "replyCount": 0,
+              "offsetDays": 14,
+              "fixedTime": "22:41"
+            }
+          ],
+          "likeCount": 44,
+          "replyCount": 1,
+          "offsetDays": 14,
+          "fixedTime": "22:08"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 317,
+      "commentCount": 1,
+      "offsetDays": 15,
+      "fixedTime": "21:15"
+    },
+    {
+      "id": 62,
+      "user": {
+        "userId": "u52",
+        "name": "Evan Thomas",
+        "email": "evan.t@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/52.jpg",
+        "userName": "evanWrites"
+      },
+      "post": "The way Ned Stark dies so early completely resets your expectations. You think he\u2019s the main character, and suddenly the story tells you no one is safe. That moment defines the tone of GOT.",
+      "tags": [
+        {
+          "tagId": 182,
+          "type": "person",
+          "label": "Ned Stark"
+        },
+        {
+          "tagId": 183,
+          "type": "event",
+          "label": "Execution of Ned Stark"
+        },
+        {
+          "tagId": 184,
+          "type": "place",
+          "label": "King's Landing"
+        }
+      ],
+      "comments": [
+        {
+          "id": 6201,
+          "comment": "That was the moment I realized this show plays differently.",
+          "user": {
+            "userId": "u42",
+            "name": "Ben Carter",
+            "email": "ben.c@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/42.jpg",
+            "userName": "benExplains"
+          },
+          "replies": null,
+          "likeCount": 187,
+          "replyCount": 0,
+          "offsetDays": 3,
+          "fixedTime": "09:05"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 643,
+      "commentCount": 1,
+      "offsetDays": 4,
+      "fixedTime": "08:14"
+    },
+    {
+      "id": 63,
+      "user": {
+        "userId": "u53",
+        "name": "Neeraj Yadav",
+        "email": "neeraj.y@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/53.jpg",
+        "userName": "neerajSpeaks"
+      },
+      "post": "The concept of house elves is honestly kind of disturbing if you think about it. They\u2019re treated as servants and conditioned to like it. Hermione\u2019s activism around this was actually ahead of its time.",
+      "tags": [
+        {
+          "tagId": 185,
+          "type": "person",
+          "label": "Hermione Granger"
+        },
+        {
+          "tagId": 186,
+          "type": "event",
+          "label": "SPEW Movement"
+        },
+        {
+          "tagId": 187,
+          "type": "person",
+          "label": "Dobby"
+        }
+      ],
+      "comments": [
+        {
+          "id": 6301,
+          "comment": "Yeah, it\u2019s one of the more uncomfortable parts of the worldbuilding.",
+          "user": {
+            "userId": "u33",
+            "name": "Simran Kaur",
+            "email": "simran.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/33.jpg",
+            "userName": "simranSays"
+          },
+          "replies": null,
+          "likeCount": 194,
+          "replyCount": 0,
+          "offsetDays": 11,
+          "fixedTime": "10:22"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 835,
+      "commentCount": 1,
+      "offsetDays": 12,
+      "fixedTime": "09:48"
+    },
+    {
+      "id": 64,
+      "user": {
+        "userId": "u54",
+        "name": "Chris Evans",
+        "email": "chris.e@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/54.jpg",
+        "userName": "chrisRecaps"
+      },
+      "post": "The Lannisters are one of the most complex families in GOT. They\u2019re powerful, dysfunctional, and deeply interconnected. Their internal dynamics drive a huge part of the story.",
+      "tags": [
+        {
+          "tagId": 188,
+          "type": "person",
+          "label": "Tywin Lannister"
+        },
+        {
+          "tagId": 189,
+          "type": "person",
+          "label": "Cersei Lannister"
+        },
+        {
+          "tagId": 190,
+          "type": "place",
+          "label": "Casterly Rock"
+        }
+      ],
+      "comments": null,
+      "universe": "GOT",
+      "likeCount": 304,
+      "commentCount": 0,
+      "offsetDays": 5,
+      "fixedTime": "11:03"
+    },
+    {
+      "id": 65,
+      "user": {
+        "userId": "u55",
+        "name": "Anushka Sharma",
+        "email": "anushka.s@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/55.jpg",
+        "userName": "anushkaNotes"
+      },
+      "post": "Bellatrix Lestrange is one of the most terrifying villains because she genuinely enjoys chaos. There\u2019s no moral conflict, just pure devotion and madness.",
+      "tags": [
+        {
+          "tagId": 191,
+          "type": "person",
+          "label": "Bellatrix Lestrange"
+        },
+        {
+          "tagId": 192,
+          "type": "event",
+          "label": "Battle of Hogwarts"
+        },
+        {
+          "tagId": 193,
+          "type": "spell",
+          "label": "Avada Kedavra"
+        }
+      ],
+      "comments": [
+        {
+          "id": 6501,
+          "comment": "Helena Bonham Carter played that role perfectly.",
+          "user": {
+            "userId": "u51",
+            "name": "Harsh Agarwal",
+            "email": "harsh.a@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/51.jpg",
+            "userName": "harshUnfiltered"
+          },
+          "replies": null,
+          "likeCount": 40,
+          "replyCount": 0,
+          "offsetDays": 5,
+          "fixedTime": "12:15"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 426,
+      "commentCount": 1,
+      "offsetDays": 6,
+      "fixedTime": "11:47"
+    },
+    {
+      "id": 66,
+      "user": {
+        "userId": "u56",
+        "name": "George Miller",
+        "email": "george.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/56.jpg",
+        "userName": "georgeTalks"
+      },
+      "post": "The concept of the Night\u2019s Watch is fascinating. A group dedicated to protecting the realm, yet largely forgotten and underappreciated. It shows how societies neglect long-term threats.",
+      "tags": [
+        {
+          "tagId": 194,
+          "type": "event",
+          "label": "Night's Watch Oath"
+        },
+        {
+          "tagId": 195,
+          "type": "place",
+          "label": "The Wall"
+        },
+        {
+          "tagId": 196,
+          "type": "person",
+          "label": "Jon Snow"
+        }
+      ],
+      "comments": [
+        {
+          "id": 6601,
+          "comment": "They\u2019re basically guarding against something most people don\u2019t believe in.",
+          "user": {
+            "userId": "u54",
+            "name": "Chris Evans",
+            "email": "chris.e@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/54.jpg",
+            "userName": "chrisRecaps"
+          },
+          "replies": null,
+          "likeCount": 100,
+          "replyCount": 0,
+          "offsetDays": 14,
+          "fixedTime": "13:40"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 501,
+      "commentCount": 1,
+      "offsetDays": 14,
+      "fixedTime": "13:02"
+    },
+    {
+      "id": 67,
+      "user": {
+        "userId": "u57",
+        "name": "Tanvi Joshi",
+        "email": "tanvi.j@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/57.jpg",
+        "userName": "tanviReads"
+      },
+      "post": "The Forbidden Forest is one of those places that feels mysterious and dangerous at the same time. It\u2019s not just a setting, it\u2019s almost a character in itself.",
+      "tags": [
+        {
+          "tagId": 197,
+          "type": "place",
+          "label": "Forbidden Forest"
+        },
+        {
+          "tagId": 198,
+          "type": "event",
+          "label": "Detention in Forest"
+        },
+        {
+          "tagId": 199,
+          "type": "person",
+          "label": "Hagrid"
+        }
+      ],
+      "comments": null,
+      "universe": "HP",
+      "likeCount": 274,
+      "commentCount": 0,
+      "offsetDays": 16,
+      "fixedTime": "14:18"
+    },
+    {
+      "id": 68,
+      "user": {
+        "userId": "u58",
+        "name": "Lily Brooks",
+        "email": "lily.b@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/58.jpg",
+        "userName": "lilyAnalyzes"
+      },
+      "post": "Sansa learning from Littlefinger is one of the most interesting mentorship dynamics. It\u2019s dangerous, but it shapes her into a much stronger player.",
+      "tags": [
+        {
+          "tagId": 200,
+          "type": "person",
+          "label": "Sansa Stark"
+        },
+        {
+          "tagId": 201,
+          "type": "person",
+          "label": "Petyr Baelish"
+        },
+        {
+          "tagId": 202,
+          "type": "event",
+          "label": "Vale Politics"
+        }
+      ],
+      "comments": [
+        {
+          "id": 6801,
+          "comment": "She learned the game from one of the best.",
+          "user": {
+            "userId": "u56",
+            "name": "George Miller",
+            "email": "george.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/56.jpg",
+            "userName": "georgeTalks"
+          },
+          "replies": null,
+          "likeCount": 31,
+          "replyCount": 0,
+          "offsetDays": 4,
+          "fixedTime": "15:30"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 284,
+      "commentCount": 1,
+      "offsetDays": 4,
+      "fixedTime": "14:55"
+    },
+    {
+      "id": 69,
+      "user": {
+        "userId": "u59",
+        "name": "Ramesh Iyer",
+        "email": "ramesh.i@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/59.jpg",
+        "userName": "rameshExplains"
+      },
+      "post": "The concept of wands choosing the wizard adds such a unique dimension to magic. It\u2019s not just a tool, it\u2019s a relationship.",
+      "tags": [
+        {
+          "tagId": 203,
+          "type": "artifact",
+          "label": "Wand"
+        },
+        {
+          "tagId": 204,
+          "type": "person",
+          "label": "Ollivander"
+        },
+        {
+          "tagId": 205,
+          "type": "event",
+          "label": "Wand Selection"
+        }
+      ],
+      "comments": [
+        {
+          "id": 6901,
+          "comment": "That idea makes magic feel more personal.",
+          "user": {
+            "userId": "u57",
+            "name": "Tanvi Joshi",
+            "email": "tanvi.j@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/57.jpg",
+            "userName": "tanviReads"
+          },
+          "replies": null,
+          "likeCount": 117,
+          "replyCount": 0,
+          "offsetDays": 8,
+          "fixedTime": "16:44"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 393,
+      "commentCount": 1,
+      "offsetDays": 9,
+      "fixedTime": "16:08"
+    },
+    {
+      "id": 70,
+      "user": {
+        "userId": "u60",
+        "name": "Jake Turner",
+        "email": "jake.t@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/60.jpg",
+        "userName": "jakeWrites"
+      },
+      "post": "The White Walkers are terrifying because they represent an unstoppable force. No politics, no negotiation \u2014 just inevitable destruction. That\u2019s what makes them different from every other threat in the show.",
+      "tags": [
+        {
+          "tagId": 206,
+          "type": "event",
+          "label": "White Walker Invasion"
+        },
+        {
+          "tagId": 207,
+          "type": "place",
+          "label": "Beyond the Wall"
+        },
+        {
+          "tagId": 208,
+          "type": "person",
+          "label": "Night King"
+        }
+      ],
+      "comments": [
+        {
+          "id": 7001,
+          "comment": "They\u2019re basically the endgame threat.",
+          "user": {
+            "userId": "u58",
+            "name": "Lily Brooks",
+            "email": "lily.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/58.jpg",
+            "userName": "lilyAnalyzes"
+          },
+          "replies": null,
+          "likeCount": 131,
+          "replyCount": 0,
+          "offsetDays": 6,
+          "fixedTime": "18:05"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 368,
+      "commentCount": 1,
+      "offsetDays": 7,
+      "fixedTime": "17:22"
+    },
+    {
+      "id": 71,
+      "user": {
+        "userId": "u61",
+        "name": "Aman Khanna",
+        "email": "aman.k@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/61.jpg",
+        "userName": "amanObserves"
+      },
+      "post": "Honestly, the Pensieve is one of the most underrated magical objects. The idea that memories can be revisited objectively is fascinating, but also kind of dangerous. It raises questions about truth \u2014 are memories reliable, or are they still biased even when viewed this way?",
+      "tags": [
+        {
+          "tagId": 209,
+          "type": "artifact",
+          "label": "Pensieve"
+        },
+        {
+          "tagId": 210,
+          "type": "person",
+          "label": "Albus Dumbledore"
+        },
+        {
+          "tagId": 211,
+          "type": "event",
+          "label": "Snape Memories"
+        }
+      ],
+      "comments": [
+        {
+          "id": 7101,
+          "comment": "That\u2019s such an interesting point \u2014 memory isn\u2019t always truth.",
+          "user": {
+            "userId": "u53",
+            "name": "Neeraj Yadav",
+            "email": "neeraj.y@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/53.jpg",
+            "userName": "neerajSpeaks"
+          },
+          "replies": [
+            {
+              "id": 7102,
+              "comment": "Exactly. It\u2019s like perspective frozen in time, not reality itself.",
+              "user": {
+                "userId": "u41",
+                "name": "Ritika Banerjee",
+                "email": "ritika.b@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/41.jpg",
+                "userName": "ritikaReads"
+              },
+              "replies": null,
+              "likeCount": 45,
+              "replyCount": 0,
+              "offsetDays": 8,
+              "fixedTime": "20:47"
+            }
+          ],
+          "likeCount": 375,
+          "replyCount": 1,
+          "offsetDays": 8,
+          "fixedTime": "20:03"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 408,
+      "commentCount": 1,
+      "offsetDays": 9,
+      "fixedTime": "19:10"
+    },
+    {
+      "id": 72,
+      "user": {
+        "userId": "u62",
+        "name": "Trevor Mills",
+        "email": "trevor.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/62.jpg",
+        "userName": "trevorTalks"
+      },
+      "post": "The sheer unpredictability of GOT is what made it so addictive. You could never be sure who would survive. That constant tension kept you hooked episode after episode.",
+      "tags": [
+        {
+          "tagId": 212,
+          "type": "event",
+          "label": "Major Character Deaths"
+        },
+        {
+          "tagId": 213,
+          "type": "place",
+          "label": "Westeros"
+        },
+        {
+          "tagId": 214,
+          "type": "person",
+          "label": "Robb Stark"
+        }
+      ],
+      "comments": [
+        {
+          "id": 7201,
+          "comment": "That unpredictability is what set it apart from other shows.",
+          "user": {
+            "userId": "u52",
+            "name": "Evan Thomas",
+            "email": "evan.t@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/52.jpg",
+            "userName": "evanWrites"
+          },
+          "replies": null,
+          "likeCount": 186,
+          "replyCount": 0,
+          "offsetDays": 1,
+          "fixedTime": "22:08"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 368,
+      "commentCount": 1,
+      "offsetDays": 2,
+      "fixedTime": "21:15"
+    },
+    {
+      "id": 73,
+      "user": {
+        "userId": "u63",
+        "name": "Ruchi Mehta",
+        "email": "ruchi.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/63.jpg",
+        "userName": "ruchiReads"
+      },
+      "post": "Professor Snape being both a villain and a hero is what makes him so compelling. He exists in that gray area where you\u2019re never fully sure how to feel about him.",
+      "tags": [
+        {
+          "tagId": 215,
+          "type": "person",
+          "label": "Severus Snape"
+        },
+        {
+          "tagId": 216,
+          "type": "event",
+          "label": "Snape's Loyalty Reveal"
+        },
+        {
+          "tagId": 217,
+          "type": "place",
+          "label": "Hogwarts"
+        }
+      ],
+      "comments": [
+        {
+          "id": 7301,
+          "comment": "That complexity is what makes him unforgettable.",
+          "user": {
+            "userId": "u55",
+            "name": "Anushka Sharma",
+            "email": "anushka.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/55.jpg",
+            "userName": "anushkaNotes"
+          },
+          "replies": null,
+          "likeCount": 104,
+          "replyCount": 0,
+          "offsetDays": 13,
+          "fixedTime": "08:14"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 541,
+      "commentCount": 1,
+      "offsetDays": 14,
+      "fixedTime": "22:41"
+    },
+    {
+      "id": 74,
+      "user": {
+        "userId": "u64",
+        "name": "Mason Reed",
+        "email": "mason.r@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/64.jpg",
+        "userName": "masonViews"
+      },
+      "post": "The Iron Bank is one of the most underrated forces in GOT. It operates behind the scenes, but its influence is massive. It shows how financial power can shape political outcomes.",
+      "tags": [
+        {
+          "tagId": 218,
+          "type": "place",
+          "label": "Braavos"
+        },
+        {
+          "tagId": 219,
+          "type": "event",
+          "label": "Iron Bank Dealings"
+        },
+        {
+          "tagId": 220,
+          "type": "person",
+          "label": "Stannis Baratheon"
+        }
+      ],
+      "comments": null,
+      "universe": "GOT",
+      "likeCount": 582,
+      "commentCount": 0,
+      "offsetDays": 9,
+      "fixedTime": "09:05"
+    },
+    {
+      "id": 75,
+      "user": {
+        "userId": "u65",
+        "name": "Kriti Kapoor",
+        "email": "kriti.k@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/65.jpg",
+        "userName": "kritiWrites"
+      },
+      "post": "The way Hogwarts changes over the series reflects the tone shift of the story. It starts magical and safe, but gradually becomes darker and more dangerous.",
+      "tags": [
+        {
+          "tagId": 221,
+          "type": "place",
+          "label": "Hogwarts"
+        },
+        {
+          "tagId": 222,
+          "type": "event",
+          "label": "Battle of Hogwarts"
+        },
+        {
+          "tagId": 223,
+          "type": "person",
+          "label": "Harry Potter"
+        }
+      ],
+      "comments": [
+        {
+          "id": 7501,
+          "comment": "It mirrors Harry\u2019s journey perfectly.",
+          "user": {
+            "userId": "u61",
+            "name": "Aman Khanna",
+            "email": "aman.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/61.jpg",
+            "userName": "amanObserves"
+          },
+          "replies": null,
+          "likeCount": 111,
+          "replyCount": 0,
+          "offsetDays": 5,
+          "fixedTime": "10:22"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 424,
+      "commentCount": 1,
+      "offsetDays": 5,
+      "fixedTime": "09:48"
+    },
+    {
+      "id": 76,
+      "user": {
+        "userId": "u66",
+        "name": "Ethan Moore",
+        "email": "ethan.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/66.jpg",
+        "userName": "ethanExplains"
+      },
+      "post": "The political alliances in GOT are constantly shifting. Today\u2019s ally can be tomorrow\u2019s enemy. That fluidity makes the story unpredictable and engaging.",
+      "tags": [
+        {
+          "tagId": 224,
+          "type": "event",
+          "label": "Political Alliances"
+        },
+        {
+          "tagId": 225,
+          "type": "place",
+          "label": "Westeros"
+        },
+        {
+          "tagId": 226,
+          "type": "person",
+          "label": "Littlefinger"
+        }
+      ],
+      "comments": [
+        {
+          "id": 7601,
+          "comment": "Trust is a rare commodity in that world.",
+          "user": {
+            "userId": "u62",
+            "name": "Trevor Mills",
+            "email": "trevor.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/62.jpg",
+            "userName": "trevorTalks"
+          },
+          "replies": null,
+          "likeCount": 139,
+          "replyCount": 0,
+          "offsetDays": 4,
+          "fixedTime": "11:47"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 364,
+      "commentCount": 1,
+      "offsetDays": 5,
+      "fixedTime": "11:03"
+    },
+    {
+      "id": 77,
+      "user": {
+        "userId": "u67",
+        "name": "Divya Shah",
+        "email": "divya.s@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/67.jpg",
+        "userName": "divyaSpeaks"
+      },
+      "post": "The Sorting Hat deciding your house based on traits is such an interesting concept. It\u2019s like being categorized at a young age, which can influence your identity.",
+      "tags": [
+        {
+          "tagId": 227,
+          "type": "artifact",
+          "label": "Sorting Hat"
+        },
+        {
+          "tagId": 228,
+          "type": "event",
+          "label": "Sorting Ceremony"
+        },
+        {
+          "tagId": 229,
+          "type": "place",
+          "label": "Hogwarts"
+        }
+      ],
+      "comments": [
+        {
+          "id": 7701,
+          "comment": "It\u2019s basically early personality branding.",
+          "user": {
+            "userId": "u65",
+            "name": "Kriti Kapoor",
+            "email": "kriti.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/65.jpg",
+            "userName": "kritiWrites"
+          },
+          "replies": null,
+          "likeCount": 67,
+          "replyCount": 0,
+          "offsetDays": 5,
+          "fixedTime": "13:02"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 460,
+      "commentCount": 1,
+      "offsetDays": 5,
+      "fixedTime": "12:15"
+    },
+    {
+      "id": 78,
+      "user": {
+        "userId": "u68",
+        "name": "Oliver Grant",
+        "email": "oliver.g@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/68.jpg",
+        "userName": "oliverDiscusses"
+      },
+      "post": "The dragons\u2019 presence shifts the balance of power completely. It\u2019s not just about who has the biggest army anymore, it\u2019s about who controls the most destructive force.",
+      "tags": [
+        {
+          "tagId": 230,
+          "type": "person",
+          "label": "Daenerys Targaryen"
+        },
+        {
+          "tagId": 231,
+          "type": "event",
+          "label": "Dragon Battles"
+        },
+        {
+          "tagId": 232,
+          "type": "place",
+          "label": "Westeros"
+        }
+      ],
+      "comments": null,
+      "universe": "GOT",
+      "likeCount": 304,
+      "commentCount": 0,
+      "offsetDays": 9,
+      "fixedTime": "13:40"
+    },
+    {
+      "id": 79,
+      "user": {
+        "userId": "u69",
+        "name": "Alok Verma",
+        "email": "alok.v@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/69.jpg",
+        "userName": "alokNotes"
+      },
+      "post": "The concept of Patronus being tied to happy memories is such a beautiful idea. It turns emotion into a form of defense.",
+      "tags": [
+        {
+          "tagId": 233,
+          "type": "spell",
+          "label": "Expecto Patronum"
+        },
+        {
+          "tagId": 234,
+          "type": "person",
+          "label": "Harry Potter"
+        },
+        {
+          "tagId": 235,
+          "type": "event",
+          "label": "Dementor Encounters"
+        }
+      ],
+      "comments": [
+        {
+          "id": 7901,
+          "comment": "It\u2019s one of the most poetic aspects of magic.",
+          "user": {
+            "userId": "u67",
+            "name": "Divya Shah",
+            "email": "divya.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/67.jpg",
+            "userName": "divyaSpeaks"
+          },
+          "replies": null,
+          "likeCount": 58,
+          "replyCount": 0,
+          "offsetDays": 4,
+          "fixedTime": "14:55"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 331,
+      "commentCount": 1,
+      "offsetDays": 5,
+      "fixedTime": "14:18"
+    },
+    {
+      "id": 80,
+      "user": {
+        "userId": "u70",
+        "name": "Nathan Scott",
+        "email": "nathan.s@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/70.jpg",
+        "userName": "nathanWrites"
+      },
+      "post": "The final seasons of GOT may have been controversial, but they still delivered some visually stunning moments. The scale of battles and production quality remained top-notch.",
+      "tags": [
+        {
+          "tagId": 236,
+          "type": "event",
+          "label": "Final Seasons"
+        },
+        {
+          "tagId": 237,
+          "type": "place",
+          "label": "Westeros"
+        },
+        {
+          "tagId": 238,
+          "type": "person",
+          "label": "Daenerys Targaryen"
+        }
+      ],
+      "comments": [
+        {
+          "id": 8001,
+          "comment": "Visually amazing, narratively debatable.",
+          "user": {
+            "userId": "u68",
+            "name": "Oliver Grant",
+            "email": "oliver.g@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/68.jpg",
+            "userName": "oliverDiscusses"
+          },
+          "replies": null,
+          "likeCount": 34,
+          "replyCount": 0,
+          "offsetDays": 8,
+          "fixedTime": "16:08"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 560,
+      "commentCount": 1,
+      "offsetDays": 8,
+      "fixedTime": "15:30"
+    },
+    {
+      "id": 81,
+      "user": {
+        "userId": "u71",
+        "name": "Yash Malhotra",
+        "email": "yash.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/71.jpg",
+        "userName": "yashDebates"
+      },
+      "post": "Hot take: Dumbledore might be one of the most morally complex characters in HP. He clearly cares about Harry, but also knowingly raises him for sacrifice. That duality makes him feel more like a strategist than a traditional mentor.",
+      "tags": [
+        {
+          "tagId": 239,
+          "type": "person",
+          "label": "Albus Dumbledore"
+        },
+        {
+          "tagId": 240,
+          "type": "person",
+          "label": "Harry Potter"
+        },
+        {
+          "tagId": 241,
+          "type": "event",
+          "label": "Final Sacrifice Plan"
+        }
+      ],
+      "comments": [
+        {
+          "id": 8101,
+          "comment": "He\u2019s basically playing the long game the entire time.",
+          "user": {
+            "userId": "u61",
+            "name": "Aman Khanna",
+            "email": "aman.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/61.jpg",
+            "userName": "amanObserves"
+          },
+          "replies": [
+            {
+              "id": 8102,
+              "comment": "And Harry is the piece he values the most but still sacrifices.",
+              "user": {
+                "userId": "u69",
+                "name": "Alok Verma",
+                "email": "alok.v@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/69.jpg",
+                "userName": "alokNotes"
+              },
+              "replies": null,
+              "likeCount": 85,
+              "replyCount": 0,
+              "offsetDays": 10,
+              "fixedTime": "18:05"
+            }
+          ],
+          "likeCount": 60,
+          "replyCount": 1,
+          "offsetDays": 10,
+          "fixedTime": "17:22"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 754,
+      "commentCount": 1,
+      "offsetDays": 10,
+      "fixedTime": "16:44"
+    },
+    {
+      "id": 82,
+      "user": {
+        "userId": "u72",
+        "name": "Sophia Reed",
+        "email": "sophia.r@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/72.jpg",
+        "userName": "sophiaWrites"
+      },
+      "post": "Jon Snow being resurrected changes the narrative stakes completely. It\u2019s one of the few times GOT steps into clear fantasy territory, but it still feels grounded because of how it affects his character.",
+      "tags": [
+        {
+          "tagId": 242,
+          "type": "person",
+          "label": "Jon Snow"
+        },
+        {
+          "tagId": 243,
+          "type": "event",
+          "label": "Jon Snow Resurrection"
+        },
+        {
+          "tagId": 244,
+          "type": "place",
+          "label": "Castle Black"
+        }
+      ],
+      "comments": [
+        {
+          "id": 8201,
+          "comment": "He definitely feels different after coming back.",
+          "user": {
+            "userId": "u66",
+            "name": "Ethan Moore",
+            "email": "ethan.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/66.jpg",
+            "userName": "ethanExplains"
+          },
+          "replies": null,
+          "likeCount": 85,
+          "replyCount": 0,
+          "offsetDays": 12,
+          "fixedTime": "20:03"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 663,
+      "commentCount": 1,
+      "offsetDays": 13,
+      "fixedTime": "19:10"
+    },
+    {
+      "id": 83,
+      "user": {
+        "userId": "u73",
+        "name": "Kavya Nair",
+        "email": "kavya.n@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/73.jpg",
+        "userName": "kavyaNotes"
+      },
+      "post": "The Room of Requirement being able to transform based on need is such a smart concept. It\u2019s like magic adapting to human intent rather than being static.",
+      "tags": [
+        {
+          "tagId": 245,
+          "type": "place",
+          "label": "Room of Requirement"
+        },
+        {
+          "tagId": 246,
+          "type": "event",
+          "label": "DA Hideout"
+        },
+        {
+          "tagId": 247,
+          "type": "person",
+          "label": "Hermione Granger"
+        }
+      ],
+      "comments": null,
+      "universe": "HP",
+      "likeCount": 303,
+      "commentCount": 0,
+      "offsetDays": 3,
+      "fixedTime": "20:47"
+    },
+    {
+      "id": 84,
+      "user": {
+        "userId": "u74",
+        "name": "Logan Price",
+        "email": "logan.p@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/74.jpg",
+        "userName": "loganAnalyzes"
+      },
+      "post": "The political structure of Westeros is what makes GOT so compelling. It\u2019s not just about battles, it\u2019s about alliances, betrayals, and power shifts.",
+      "tags": [
+        {
+          "tagId": 248,
+          "type": "event",
+          "label": "Political Power Struggles"
+        },
+        {
+          "tagId": 249,
+          "type": "place",
+          "label": "Westeros"
+        },
+        {
+          "tagId": 250,
+          "type": "person",
+          "label": "Tywin Lannister"
+        }
+      ],
+      "comments": [
+        {
+          "id": 8401,
+          "comment": "The politics are often more intense than the battles.",
+          "user": {
+            "userId": "u72",
+            "name": "Sophia Reed",
+            "email": "sophia.r@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/72.jpg",
+            "userName": "sophiaWrites"
+          },
+          "replies": null,
+          "likeCount": 144,
+          "replyCount": 0,
+          "offsetDays": 9,
+          "fixedTime": "22:08"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 638,
+      "commentCount": 1,
+      "offsetDays": 9,
+      "fixedTime": "21:15"
+    },
+    {
+      "id": 85,
+      "user": {
+        "userId": "u75",
+        "name": "Rohini Deshpande",
+        "email": "rohini.d@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/75.jpg",
+        "userName": "rohiniReads"
+      },
+      "post": "The idea of love being a protective magic (Lily\u2019s sacrifice) is one of the most beautiful themes in HP. It gives emotional depth to the entire story.",
+      "tags": [
+        {
+          "tagId": 251,
+          "type": "person",
+          "label": "Lily Potter"
+        },
+        {
+          "tagId": 252,
+          "type": "event",
+          "label": "Lily's Sacrifice"
+        },
+        {
+          "tagId": 253,
+          "type": "spell",
+          "label": "Protective Charm"
+        }
+      ],
+      "comments": [
+        {
+          "id": 8501,
+          "comment": "That theme runs through the entire series.",
+          "user": {
+            "userId": "u73",
+            "name": "Kavya Nair",
+            "email": "kavya.n@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/73.jpg",
+            "userName": "kavyaNotes"
+          },
+          "replies": null,
+          "likeCount": 31,
+          "replyCount": 0,
+          "offsetDays": 2,
+          "fixedTime": "08:14"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 480,
+      "commentCount": 1,
+      "offsetDays": 3,
+      "fixedTime": "22:41"
+    },
+    {
+      "id": 86,
+      "user": {
+        "userId": "u76",
+        "name": "Michael Stone",
+        "email": "michael.s@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/76.jpg",
+        "userName": "michaelTalks"
+      },
+      "post": "The battle sequences in GOT are impressive not just for their scale, but for how they impact character arcs. They\u2019re not just action scenes, they\u2019re storytelling tools.",
+      "tags": [
+        {
+          "tagId": 254,
+          "type": "event",
+          "label": "Major Battles"
+        },
+        {
+          "tagId": 255,
+          "type": "place",
+          "label": "Westeros"
+        },
+        {
+          "tagId": 256,
+          "type": "person",
+          "label": "Jon Snow"
+        }
+      ],
+      "comments": null,
+      "universe": "GOT",
+      "likeCount": 318,
+      "commentCount": 0,
+      "offsetDays": 12,
+      "fixedTime": "09:05"
+    },
+    {
+      "id": 87,
+      "user": {
+        "userId": "u77",
+        "name": "Isha Kapoor",
+        "email": "isha.k@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/77.jpg",
+        "userName": "ishaWrites"
+      },
+      "post": "The concept of horcruxes adds a layer of mystery and darkness to the story. It turns the narrative into a quest with emotional stakes.",
+      "tags": [
+        {
+          "tagId": 257,
+          "type": "artifact",
+          "label": "Horcrux"
+        },
+        {
+          "tagId": 258,
+          "type": "event",
+          "label": "Horcrux Hunt"
+        },
+        {
+          "tagId": 259,
+          "type": "person",
+          "label": "Harry Potter"
+        }
+      ],
+      "comments": [
+        {
+          "id": 8701,
+          "comment": "Each horcrux has its own story and significance.",
+          "user": {
+            "userId": "u75",
+            "name": "Rohini Deshpande",
+            "email": "rohini.d@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/75.jpg",
+            "userName": "rohiniReads"
+          },
+          "replies": null,
+          "likeCount": 180,
+          "replyCount": 0,
+          "offsetDays": 13,
+          "fixedTime": "10:22"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 507,
+      "commentCount": 1,
+      "offsetDays": 13,
+      "fixedTime": "09:48"
+    },
+    {
+      "id": 88,
+      "user": {
+        "userId": "u78",
+        "name": "Daniel White",
+        "email": "daniel.w@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/78.jpg",
+        "userName": "danielBreaks"
+      },
+      "post": "The relationship between Arya and Sansa evolves so much over the series. They start off distant but eventually understand each other better.",
+      "tags": [
+        {
+          "tagId": 260,
+          "type": "person",
+          "label": "Arya Stark"
+        },
+        {
+          "tagId": 261,
+          "type": "person",
+          "label": "Sansa Stark"
+        },
+        {
+          "tagId": 262,
+          "type": "event",
+          "label": "Reunion at Winterfell"
+        }
+      ],
+      "comments": [
+        {
+          "id": 8801,
+          "comment": "Their dynamic becomes much stronger later.",
+          "user": {
+            "userId": "u76",
+            "name": "Michael Stone",
+            "email": "michael.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/76.jpg",
+            "userName": "michaelTalks"
+          },
+          "replies": null,
+          "likeCount": 184,
+          "replyCount": 0,
+          "offsetDays": 3,
+          "fixedTime": "11:47"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 835,
+      "commentCount": 1,
+      "offsetDays": 3,
+      "fixedTime": "11:03"
+    },
+    {
+      "id": 89,
+      "user": {
+        "userId": "u79",
+        "name": "Manish Gupta",
+        "email": "manish.g@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/79.jpg",
+        "userName": "manishSpeaks"
+      },
+      "post": "The magical creatures in HP add so much depth to the world. From Hippogriffs to house elves, each one feels unique and well thought out.",
+      "tags": [
+        {
+          "tagId": 263,
+          "type": "place",
+          "label": "Hogwarts"
+        },
+        {
+          "tagId": 264,
+          "type": "event",
+          "label": "Care of Magical Creatures"
+        },
+        {
+          "tagId": 265,
+          "type": "person",
+          "label": "Hagrid"
+        }
+      ],
+      "comments": null,
+      "universe": "HP",
+      "likeCount": 322,
+      "commentCount": 0,
+      "offsetDays": 11,
+      "fixedTime": "12:15"
+    },
+    {
+      "id": 90,
+      "user": {
+        "userId": "u80",
+        "name": "Ethan Cole",
+        "email": "ethan.c@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/80.jpg",
+        "userName": "ethanNotes"
+      },
+      "post": "The final conflict in GOT between humans and White Walkers represents a larger theme of survival vs power struggles. It shows how internal conflicts can distract from bigger threats.",
+      "tags": [
+        {
+          "tagId": 266,
+          "type": "event",
+          "label": "Battle of Winterfell"
+        },
+        {
+          "tagId": 267,
+          "type": "place",
+          "label": "Winterfell"
+        },
+        {
+          "tagId": 268,
+          "type": "person",
+          "label": "Night King"
+        }
+      ],
+      "comments": [
+        {
+          "id": 9001,
+          "comment": "A very relevant theme even outside fiction.",
+          "user": {
+            "userId": "u78",
+            "name": "Daniel White",
+            "email": "daniel.w@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/78.jpg",
+            "userName": "danielBreaks"
+          },
+          "replies": null,
+          "likeCount": 87,
+          "replyCount": 0,
+          "offsetDays": 14,
+          "fixedTime": "13:40"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 646,
+      "commentCount": 1,
+      "offsetDays": 15,
+      "fixedTime": "13:02"
+    },
+    {
+      "id": 91,
+      "user": {
+        "userId": "u81",
+        "name": "Raghav Chatterjee",
+        "email": "raghav.c@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/81.jpg",
+        "userName": "raghavThreads"
+      },
+      "post": "The concept of Deathly Hallows is actually deeper than it looks. The wand represents power, the stone represents attachment, and the cloak represents acceptance. Harry choosing the cloak tells you everything about his character.",
+      "tags": [
+        {
+          "tagId": 269,
+          "type": "artifact",
+          "label": "Deathly Hallows"
+        },
+        {
+          "tagId": 270,
+          "type": "artifact",
+          "label": "Invisibility Cloak"
+        },
+        {
+          "tagId": 271,
+          "type": "person",
+          "label": "Harry Potter"
+        }
+      ],
+      "comments": [
+        {
+          "id": 9101,
+          "comment": "That symbolism is what makes the ending so satisfying.",
+          "user": {
+            "userId": "u79",
+            "name": "Manish Gupta",
+            "email": "manish.g@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/79.jpg",
+            "userName": "manishSpeaks"
+          },
+          "replies": [
+            {
+              "id": 9102,
+              "comment": "It\u2019s less about magic and more about philosophy at that point.",
+              "user": {
+                "userId": "u71",
+                "name": "Yash Malhotra",
+                "email": "yash.m@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/71.jpg",
+                "userName": "yashDebates"
+              },
+              "replies": null,
+              "likeCount": 15,
+              "replyCount": 0,
+              "offsetDays": 14,
+              "fixedTime": "15:30"
+            }
+          ],
+          "likeCount": 87,
+          "replyCount": 1,
+          "offsetDays": 14,
+          "fixedTime": "14:55"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 548,
+      "commentCount": 1,
+      "offsetDays": 14,
+      "fixedTime": "14:18"
+    },
+    {
+      "id": 92,
+      "user": {
+        "userId": "u82",
+        "name": "Sophie Turner",
+        "email": "sophie.t@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/82.jpg",
+        "userName": "sophieTalks"
+      },
+      "post": "The dragons burning the Lannister army was one of the most visually stunning moments in GOT. It completely changed how warfare looked in the series.",
+      "tags": [
+        {
+          "tagId": 272,
+          "type": "event",
+          "label": "Loot Train Attack"
+        },
+        {
+          "tagId": 273,
+          "type": "person",
+          "label": "Daenerys Targaryen"
+        },
+        {
+          "tagId": 274,
+          "type": "place",
+          "label": "Westeros"
+        }
+      ],
+      "comments": [
+        {
+          "id": 9201,
+          "comment": "That scene was pure cinematic spectacle.",
+          "user": {
+            "userId": "u72",
+            "name": "Sophia Reed",
+            "email": "sophia.r@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/72.jpg",
+            "userName": "sophiaWrites"
+          },
+          "replies": null,
+          "likeCount": 35,
+          "replyCount": 0,
+          "offsetDays": 12,
+          "fixedTime": "16:44"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 540,
+      "commentCount": 1,
+      "offsetDays": 13,
+      "fixedTime": "16:08"
+    },
+    {
+      "id": 93,
+      "user": {
+        "userId": "u83",
+        "name": "Kunal Arora",
+        "email": "kunal.a@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/83.jpg",
+        "userName": "kunalNotes"
+      },
+      "post": "The way Harry\u2019s scar connects him to Voldemort is such an interesting narrative device. It\u2019s both a weakness and a strength at the same time.",
+      "tags": [
+        {
+          "tagId": 275,
+          "type": "person",
+          "label": "Harry Potter"
+        },
+        {
+          "tagId": 276,
+          "type": "person",
+          "label": "Voldemort"
+        },
+        {
+          "tagId": 277,
+          "type": "event",
+          "label": "Mental Connection"
+        }
+      ],
+      "comments": [
+        {
+          "id": 9301,
+          "comment": "It adds a psychological layer to their conflict.",
+          "user": {
+            "userId": "u77",
+            "name": "Isha Kapoor",
+            "email": "isha.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/77.jpg",
+            "userName": "ishaWrites"
+          },
+          "replies": null,
+          "likeCount": 35,
+          "replyCount": 0,
+          "offsetDays": 11,
+          "fixedTime": "18:05"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 509,
+      "commentCount": 1,
+      "offsetDays": 11,
+      "fixedTime": "17:22"
+    },
+    {
+      "id": 94,
+      "user": {
+        "userId": "u84",
+        "name": "Luke Harrison",
+        "email": "luke.h@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/84.jpg",
+        "userName": "lukeAnalyzes"
+      },
+      "post": "Tywin Lannister\u2019s presence dominates every scene he\u2019s in. He doesn\u2019t need to shout \u2014 his authority is felt through his calm and calculated demeanor.",
+      "tags": [
+        {
+          "tagId": 278,
+          "type": "person",
+          "label": "Tywin Lannister"
+        },
+        {
+          "tagId": 279,
+          "type": "place",
+          "label": "King's Landing"
+        },
+        {
+          "tagId": 280,
+          "type": "event",
+          "label": "Small Council Meetings"
+        }
+      ],
+      "comments": [
+        {
+          "id": 9401,
+          "comment": "Charles Dance absolutely nailed that role.",
+          "user": {
+            "userId": "u82",
+            "name": "Sophie Turner",
+            "email": "sophie.t@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/82.jpg",
+            "userName": "sophieTalks"
+          },
+          "replies": null,
+          "likeCount": 142,
+          "replyCount": 0,
+          "offsetDays": 6,
+          "fixedTime": "20:03"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 159,
+      "commentCount": 1,
+      "offsetDays": 6,
+      "fixedTime": "19:10"
+    },
+    {
+      "id": 95,
+      "user": {
+        "userId": "u85",
+        "name": "Shreya Gupta",
+        "email": "shreya.g@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/85.jpg",
+        "userName": "shreyaWrites"
+      },
+      "post": "The Hogwarts Express journey is such a comforting recurring moment. It marks the beginning of a new chapter every time.",
+      "tags": [
+        {
+          "tagId": 281,
+          "type": "place",
+          "label": "Hogwarts Express"
+        },
+        {
+          "tagId": 282,
+          "type": "event",
+          "label": "Journey to Hogwarts"
+        },
+        {
+          "tagId": 283,
+          "type": "person",
+          "label": "Harry Potter"
+        }
+      ],
+      "comments": null,
+      "universe": "HP",
+      "likeCount": 550,
+      "commentCount": 0,
+      "offsetDays": 1,
+      "fixedTime": "20:47"
+    },
+    {
+      "id": 96,
+      "user": {
+        "userId": "u86",
+        "name": "Connor Blake",
+        "email": "connor.b@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/86.jpg",
+        "userName": "connorTalks"
+      },
+      "post": "The rise of Daenerys is one of the most compelling arcs in GOT. Watching her go from powerless to powerful is incredibly satisfying.",
+      "tags": [
+        {
+          "tagId": 284,
+          "type": "person",
+          "label": "Daenerys Targaryen"
+        },
+        {
+          "tagId": 285,
+          "type": "event",
+          "label": "Rise to Power"
+        },
+        {
+          "tagId": 286,
+          "type": "place",
+          "label": "Essos"
+        }
+      ],
+      "comments": [
+        {
+          "id": 9601,
+          "comment": "Her journey is what hooked me into the show.",
+          "user": {
+            "userId": "u84",
+            "name": "Luke Harrison",
+            "email": "luke.h@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/84.jpg",
+            "userName": "lukeAnalyzes"
+          },
+          "replies": null,
+          "likeCount": 163,
+          "replyCount": 0,
+          "offsetDays": 12,
+          "fixedTime": "22:08"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 712,
+      "commentCount": 1,
+      "offsetDays": 12,
+      "fixedTime": "21:15"
+    },
+    {
+      "id": 97,
+      "user": {
+        "userId": "u87",
+        "name": "Anjali Mehta",
+        "email": "anjali.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/87.jpg",
+        "userName": "anjaliNotes"
+      },
+      "post": "The invisibility cloak being one of the Deathly Hallows adds so much significance to something that initially seemed simple.",
+      "tags": [
+        {
+          "tagId": 287,
+          "type": "artifact",
+          "label": "Invisibility Cloak"
+        },
+        {
+          "tagId": 288,
+          "type": "event",
+          "label": "Deathly Hallows Reveal"
+        },
+        {
+          "tagId": 289,
+          "type": "person",
+          "label": "Harry Potter"
+        }
+      ],
+      "comments": [
+        {
+          "id": 9701,
+          "comment": "It was always special, we just didn\u2019t know how much.",
+          "user": {
+            "userId": "u85",
+            "name": "Shreya Gupta",
+            "email": "shreya.g@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/85.jpg",
+            "userName": "shreyaWrites"
+          },
+          "replies": null,
+          "likeCount": 249,
+          "replyCount": 0,
+          "offsetDays": 9,
+          "fixedTime": "08:14"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 681,
+      "commentCount": 1,
+      "offsetDays": 10,
+      "fixedTime": "22:41"
+    },
+    {
+      "id": 98,
+      "user": {
+        "userId": "u88",
+        "name": "Ethan Ford",
+        "email": "ethan.f@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/88.jpg",
+        "userName": "ethanDiscusses"
+      },
+      "post": "The rivalry between houses in GOT adds a lot of depth to the story. It\u2019s not just about individuals, but about entire families and their histories.",
+      "tags": [
+        {
+          "tagId": 290,
+          "type": "event",
+          "label": "House Rivalries"
+        },
+        {
+          "tagId": 291,
+          "type": "place",
+          "label": "Westeros"
+        },
+        {
+          "tagId": 292,
+          "type": "person",
+          "label": "Stark vs Lannister"
+        }
+      ],
+      "comments": null,
+      "universe": "GOT",
+      "likeCount": 253,
+      "commentCount": 0,
+      "offsetDays": 7,
+      "fixedTime": "09:05"
+    },
+    {
+      "id": 99,
+      "user": {
+        "userId": "u89",
+        "name": "Varun Khurana",
+        "email": "varun.k@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg",
+        "userName": "varunExplains"
+      },
+      "post": "The concept of spells requiring intent and focus makes magic feel more like a skill than just a power. It adds a layer of discipline to the system.",
+      "tags": [
+        {
+          "tagId": 293,
+          "type": "spell",
+          "label": "Spell Casting"
+        },
+        {
+          "tagId": 294,
+          "type": "person",
+          "label": "Hermione Granger"
+        },
+        {
+          "tagId": 295,
+          "type": "event",
+          "label": "Defense Against Dark Arts"
+        }
+      ],
+      "comments": [
+        {
+          "id": 9901,
+          "comment": "That\u2019s why Hermione excels \u2014 she understands the theory.",
+          "user": {
+            "userId": "u87",
+            "name": "Anjali Mehta",
+            "email": "anjali.m@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/87.jpg",
+            "userName": "anjaliNotes"
+          },
+          "replies": null,
+          "likeCount": 294,
+          "replyCount": 0,
+          "offsetDays": 10,
+          "fixedTime": "10:22"
+        }
+      ],
+      "universe": "HP",
+      "likeCount": 593,
+      "commentCount": 1,
+      "offsetDays": 11,
+      "fixedTime": "09:48"
+    },
+    {
+      "id": 100,
+      "user": {
+        "userId": "u90",
+        "name": "Ryan Cole",
+        "email": "ryan.c@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/90.jpg",
+        "userName": "ryanFinal"
+      },
+      "post": "At the end of the day, GOT shows that power comes at a cost. No one truly wins without losing something important. That\u2019s what makes it such a compelling story.",
+      "tags": [
+        {
+          "tagId": 296,
+          "type": "event",
+          "label": "End of Game of Thrones"
+        },
+        {
+          "tagId": 297,
+          "type": "place",
+          "label": "Westeros"
+        },
+        {
+          "tagId": 298,
+          "type": "person",
+          "label": "Multiple Characters"
+        }
+      ],
+      "comments": [
+        {
+          "id": 10001,
+          "comment": "That bittersweet ending is what sticks with you.",
+          "user": {
+            "userId": "u88",
+            "name": "Ethan Ford",
+            "email": "ethan.f@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/88.jpg",
+            "userName": "ethanDiscusses"
+          },
+          "replies": null,
+          "likeCount": 172,
+          "replyCount": 0,
+          "offsetDays": 2,
+          "fixedTime": "11:47"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 190,
+      "commentCount": 1,
+      "offsetDays": 3,
+      "fixedTime": "11:03"
+    },
+    {
+      "id": 201,
+      "user": {
+        "userId": "u101",
+        "name": "Marcus Hill",
+        "email": "marcus.h@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/91.jpg",
+        "userName": "marcusDebates"
+      },
+      "post": "Hot take: Tyrion was at his best before he gained power. Once he became Hand repeatedly, his sharpness felt diluted. Early Tyrion survives using wit. Later Tyrion feels like he\u2019s reacting more than controlling the board.",
+      "tags": [
+        {
+          "tagId": 401,
+          "type": "person",
+          "label": "Tyrion Lannister"
+        },
+        {
+          "tagId": 402,
+          "type": "event",
+          "label": "Hand of the King Tenure"
+        }
+      ],
+      "comments": [
+        {
+          "id": 20101,
+          "comment": "Early Tyrion was survival mode. Later Tyrion had responsibility weighing him down.",
+          "user": {
+            "userId": "u102",
+            "name": "Aman Verma",
+            "email": "aman.v@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/92.jpg",
+            "userName": "amanSpeaks"
+          },
+          "replies": [
+            {
+              "id": 20102,
+              "comment": "Exactly. Stakes changed his decision-making.",
+              "user": {
+                "userId": "u103",
+                "name": "Sophie Miller",
+                "email": "sophie.m@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/93.jpg",
+                "userName": "sophieWrites"
+              },
+              "replies": null,
+              "likeCount": 87,
+              "replyCount": 0,
+              "offsetDays": 9,
+              "fixedTime": "13:40"
+            }
+          ],
+          "likeCount": 242,
+          "replyCount": 1,
+          "offsetDays": 9,
+          "fixedTime": "13:02"
+        },
+        {
+          "id": 20103,
+          "comment": "Also writing quality dipped later seasons tbh.",
+          "user": {
+            "userId": "u104",
+            "name": "Rohit Singh",
+            "email": "rohit.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/94.jpg",
+            "userName": "rohitHotTakes"
+          },
+          "replies": null,
+          "likeCount": 107,
+          "replyCount": 0,
+          "offsetDays": 8,
+          "fixedTime": "14:18"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 551,
+      "commentCount": 2,
+      "offsetDays": 9,
+      "fixedTime": "12:15"
+    },
+    {
+      "id": 202,
+      "user": {
+        "userId": "u105",
+        "name": "Fatima Sheikh",
+        "email": "fatima.s@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/95.jpg",
+        "userName": "fatimaAnalyzes"
+      },
+      "post": "Cersei didn\u2019t become evil \u2014 she always was, but power removed her constraints. That\u2019s what makes her terrifying. She doesn\u2019t evolve, she reveals.",
+      "tags": [
+        {
+          "tagId": 403,
+          "type": "person",
+          "label": "Cersei Lannister"
+        },
+        {
+          "tagId": 404,
+          "type": "event",
+          "label": "Rise to Power"
+        }
+      ],
+      "comments": [
+        {
+          "id": 20201,
+          "comment": "She was always protecting her children though.",
+          "user": {
+            "userId": "u106",
+            "name": "Daniel Brooks",
+            "email": "daniel.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/96.jpg",
+            "userName": "danielDebates"
+          },
+          "replies": [
+            {
+              "id": 20202,
+              "comment": "True, but her methods were always extreme.",
+              "user": {
+                "userId": "u107",
+                "name": "Neha Kapoor",
+                "email": "neha.k@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/97.jpg",
+                "userName": "nehaThoughts"
+              },
+              "replies": null,
+              "likeCount": 313,
+              "replyCount": 0,
+              "offsetDays": 11,
+              "fixedTime": "16:08"
+            }
+          ],
+          "likeCount": 396,
+          "replyCount": 1,
+          "offsetDays": 11,
+          "fixedTime": "15:30"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 536,
+      "commentCount": 1,
+      "offsetDays": 12,
+      "fixedTime": "14:55"
+    },
+    {
+      "id": 203,
+      "user": {
+        "userId": "u108",
+        "name": "Karan Mehta",
+        "email": "karan.m@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/98.jpg",
+        "userName": "karanThreads"
+      },
+      "post": "The Red Wedding is not just shocking \u2014 it\u2019s narratively brutal because it punishes hope. Just when you think justice will happen, the story pulls it away.",
+      "tags": [
+        {
+          "tagId": 405,
+          "type": "event",
+          "label": "Red Wedding"
+        },
+        {
+          "tagId": 406,
+          "type": "person",
+          "label": "Robb Stark"
+        }
+      ],
+      "comments": [
+        {
+          "id": 20301,
+          "comment": "That episode changed TV storytelling standards.",
+          "user": {
+            "userId": "u101",
+            "name": "Marcus Hill",
+            "email": "marcus.h@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/91.jpg",
+            "userName": "marcusDebates"
+          },
+          "replies": [
+            {
+              "id": 20302,
+              "comment": "After that, no character felt safe.",
+              "user": {
+                "userId": "u102",
+                "name": "Aman Verma",
+                "email": "aman.v@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/92.jpg",
+                "userName": "amanSpeaks"
+              },
+              "replies": null,
+              "likeCount": 49,
+              "replyCount": 0,
+              "offsetDays": 9,
+              "fixedTime": "18:05"
+            }
+          ],
+          "likeCount": 185,
+          "replyCount": 1,
+          "offsetDays": 9,
+          "fixedTime": "17:22"
+        },
+        {
+          "id": 20303,
+          "comment": "Still hurts on rewatch.",
+          "user": {
+            "userId": "u105",
+            "name": "Fatima Sheikh",
+            "email": "fatima.s@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/95.jpg",
+            "userName": "fatimaAnalyzes"
+          },
+          "replies": null,
+          "likeCount": 155,
+          "replyCount": 0,
+          "offsetDays": 10,
+          "fixedTime": "19:10"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 763,
+      "commentCount": 2,
+      "offsetDays": 10,
+      "fixedTime": "16:44"
+    },
+    {
+      "id": 204,
+      "user": {
+        "userId": "u109",
+        "name": "Ethan Clarke",
+        "email": "ethan.c@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/99.jpg",
+        "userName": "ethanExplains"
+      },
+      "post": "Littlefinger proves that chaos is the ultimate weapon. He doesn\u2019t fight wars, he creates them.",
+      "tags": [
+        {
+          "tagId": 407,
+          "type": "person",
+          "label": "Petyr Baelish"
+        },
+        {
+          "tagId": 408,
+          "type": "event",
+          "label": "Political Manipulation"
+        }
+      ],
+      "comments": [
+        {
+          "id": 20401,
+          "comment": "He played the game better than almost everyone.",
+          "user": {
+            "userId": "u106",
+            "name": "Daniel Brooks",
+            "email": "daniel.b@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/96.jpg",
+            "userName": "danielDebates"
+          },
+          "replies": [
+            {
+              "id": 20402,
+              "comment": "Until he overplayed it.",
+              "user": {
+                "userId": "u108",
+                "name": "Karan Mehta",
+                "email": "karan.m@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/98.jpg",
+                "userName": "karanThreads"
+              },
+              "replies": null,
+              "likeCount": 75,
+              "replyCount": 0,
+              "offsetDays": 11,
+              "fixedTime": "21:15"
+            }
+          ],
+          "likeCount": 134,
+          "replyCount": 1,
+          "offsetDays": 11,
+          "fixedTime": "20:47"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 417,
+      "commentCount": 1,
+      "offsetDays": 12,
+      "fixedTime": "20:03"
+    },
+    {
+      "id": 205,
+      "user": {
+        "userId": "u110",
+        "name": "Zoya Khan",
+        "email": "zoya.k@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/women/100.jpg",
+        "userName": "zoyaWrites"
+      },
+      "post": "Arya\u2019s kill list is one of the most satisfying revenge arcs, but also one of the darkest. It shows how trauma reshapes identity.",
+      "tags": [
+        {
+          "tagId": 409,
+          "type": "person",
+          "label": "Arya Stark"
+        },
+        {
+          "tagId": 410,
+          "type": "event",
+          "label": "Arya Kill List"
+        }
+      ],
+      "comments": [
+        {
+          "id": 20501,
+          "comment": "She lost her childhood completely.",
+          "user": {
+            "userId": "u107",
+            "name": "Neha Kapoor",
+            "email": "neha.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/97.jpg",
+            "userName": "nehaThoughts"
+          },
+          "replies": [
+            {
+              "id": 20502,
+              "comment": "But gained control over her fate.",
+              "user": {
+                "userId": "u109",
+                "name": "Ethan Clarke",
+                "email": "ethan.c@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/99.jpg",
+                "userName": "ethanExplains"
+              },
+              "replies": null,
+              "likeCount": 75,
+              "replyCount": 0,
+              "offsetDays": 2,
+              "fixedTime": "08:14"
+            }
+          ],
+          "likeCount": 47,
+          "replyCount": 1,
+          "offsetDays": 3,
+          "fixedTime": "22:41"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 646,
+      "commentCount": 1,
+      "offsetDays": 4,
+      "fixedTime": "22:08"
+    },
+    {
+      "id": 206,
+      "user": {
+        "userId": "u111",
+        "name": "Vikash Sharma",
+        "email": "vikash.s@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/101.jpg",
+        "userName": "vikashSpeaks"
+      },
+      "post": "The Iron Throne being melted at the end is symbolic. It shows that the pursuit of power destroys the very thing people fight for.",
+      "tags": [
+        {
+          "tagId": 411,
+          "type": "artifact",
+          "label": "Iron Throne"
+        },
+        {
+          "tagId": 412,
+          "type": "event",
+          "label": "Throne Destruction"
+        }
+      ],
+      "comments": [
+        {
+          "id": 20601,
+          "comment": "That moment was poetic.",
+          "user": {
+            "userId": "u110",
+            "name": "Zoya Khan",
+            "email": "zoya.k@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/women/100.jpg",
+            "userName": "zoyaWrites"
+          },
+          "replies": null,
+          "likeCount": 35,
+          "replyCount": 0,
+          "offsetDays": 12,
+          "fixedTime": "09:48"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 477,
+      "commentCount": 1,
+      "offsetDays": 13,
+      "fixedTime": "09:05"
+    },
+    {
+      "id": 207,
+      "user": {
+        "userId": "u112",
+        "name": "Kevin Adams",
+        "email": "kevin.a@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/102.jpg",
+        "userName": "kevinAnalyzes"
+      },
+      "post": "The Hound is one of the most honest characters in the show. He doesn\u2019t pretend to be good, but he still does good things.",
+      "tags": [
+        {
+          "tagId": 413,
+          "type": "person",
+          "label": "Sandor Clegane"
+        },
+        {
+          "tagId": 414,
+          "type": "event",
+          "label": "Hound Redemption Arc"
+        }
+      ],
+      "comments": [
+        {
+          "id": 20701,
+          "comment": "His actions speak louder than his words.",
+          "user": {
+            "userId": "u101",
+            "name": "Marcus Hill",
+            "email": "marcus.h@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/91.jpg",
+            "userName": "marcusDebates"
+          },
+          "replies": [
+            {
+              "id": 20702,
+              "comment": "Exactly. He\u2019s morally consistent in his own way.",
+              "user": {
+                "userId": "u105",
+                "name": "Fatima Sheikh",
+                "email": "fatima.s@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/women/95.jpg",
+                "userName": "fatimaAnalyzes"
+              },
+              "replies": null,
+              "likeCount": 10,
+              "replyCount": 0,
+              "offsetDays": 9,
+              "fixedTime": "11:47"
+            }
+          ],
+          "likeCount": 159,
+          "replyCount": 1,
+          "offsetDays": 9,
+          "fixedTime": "11:03"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 278,
+      "commentCount": 1,
+      "offsetDays": 10,
+      "fixedTime": "10:22"
+    },
+    {
+      "id": 208,
+      "user": {
+        "userId": "u113",
+        "name": "Rahul Chopra",
+        "email": "rahul.c@gmail.com",
+        "photo": "https://randomuser.me/api/portraits/men/103.jpg",
+        "userName": "rahulHotTakes"
+      },
+      "post": "GOT\u2019s biggest strength was that actions had consequences. Characters didn\u2019t survive just because they were important.",
+      "tags": [
+        {
+          "tagId": 415,
+          "type": "event",
+          "label": "Character Deaths"
+        },
+        {
+          "tagId": 416,
+          "type": "place",
+          "label": "Westeros"
+        }
+      ],
+      "comments": [
+        {
+          "id": 20801,
+          "comment": "That realism is what made it stand out.",
+          "user": {
+            "userId": "u112",
+            "name": "Kevin Adams",
+            "email": "kevin.a@gmail.com",
+            "photo": "https://randomuser.me/api/portraits/men/102.jpg",
+            "userName": "kevinAnalyzes"
+          },
+          "replies": [
+            {
+              "id": 20802,
+              "comment": "And also what made it painful to watch sometimes.",
+              "user": {
+                "userId": "u104",
+                "name": "Rohit Singh",
+                "email": "rohit.s@gmail.com",
+                "photo": "https://randomuser.me/api/portraits/men/94.jpg",
+                "userName": "rohitHotTakes"
+              },
+              "replies": null,
+              "likeCount": 36,
+              "replyCount": 0,
+              "offsetDays": 10,
+              "fixedTime": "13:40"
+            }
+          ],
+          "likeCount": 138,
+          "replyCount": 1,
+          "offsetDays": 10,
+          "fixedTime": "13:02"
+        }
+      ],
+      "universe": "GOT",
+      "likeCount": 572,
+      "commentCount": 1,
+      "offsetDays": 11,
+      "fixedTime": "12:15"
+    }
+  ]
+}
