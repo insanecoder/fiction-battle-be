@@ -10,9 +10,7 @@ type CreateCommentInput = {
   parentCommentId?: string | null;
   likeCount?:       number;
   replyCount?:      number;
-  fixedTime?:       string;
-  offsetDays?:      number;
-  createdAt?:       Date;
+  createdAt:        Date;
 };
 
 export class CommentRepository {
@@ -31,9 +29,7 @@ export class CommentRepository {
         parentCommentId: input.parentCommentId ? new Types.ObjectId(input.parentCommentId) : null,
         likeCount:  input.likeCount  ?? 0,
         replyCount: input.replyCount ?? 0,
-        fixedTime:  input.fixedTime  ?? null,
-        offsetDays: input.offsetDays ?? null,
-        createdAt:  input.createdAt  ?? null,
+        createdAt:  input.createdAt,
       })
     );
   }

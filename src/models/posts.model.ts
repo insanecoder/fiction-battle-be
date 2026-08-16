@@ -41,26 +41,17 @@ export const postSchema = new Schema(
       default: 0,
       min: 0,
     },
+    // Optional — a post with no universe doesn't count toward either side's
+    // analytics and won't match a universe filter, but is otherwise a normal post.
     universe: {
       type: String,
       enum: ["HP", "GOT"],
-      required: true,
+      required: false,
       index: true,
     },
-    // Seeded posts only — compute display date dynamically via resolveCreatedAt()
-    fixedTime: {
-      type: String,
-      default: null,
-    },
-    offsetDays: {
-      type: Number,
-      default: null,
-      min: 0,
-    },
-    // Real user posts only
     createdAt: {
       type: Date,
-      default: null,
+      required: true,
     },
   },
   {

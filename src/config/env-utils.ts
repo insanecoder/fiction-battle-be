@@ -6,6 +6,11 @@ export function required(name: string): string {
   return value;
 }
 
+export function optional(name: string, fallback: string): string {
+  const value = process.env[name];
+  return value && value.length > 0 ? value : fallback;
+}
+
 export function numberEnv(name: string, defaultValue: number): number {
   const value = process.env[name];
   if (!value) return defaultValue;

@@ -1,17 +1,20 @@
 import { CommentRepository } from "./comment.repository";
 import { PostsRepository } from "../posts/posts.repository";
 import { UserRepository } from "../user/user.repository";
-import { resolveCreatedAt } from "../posts/posts.service";
+import { AnalyticsService } from "../analytics/analytics.service";
+import { ActivityRepository } from "../analytics/activity.repository";
 
 export class CommentService {
   constructor(
-    private readonly commentRepo: CommentRepository,
-    private readonly postRepo:    PostsRepository,
-    private readonly userRepo:    UserRepository,
+    private readonly commentRepo:      CommentRepository,
+    private readonly postRepo:         PostsRepository,
+    private readonly userRepo:         UserRepository,
+    private readonly analyticsService: AnalyticsService,
+    private readonly activityRepo:     ActivityRepository,
   ) {}
 
   private async enrichWithUsers(docs: any[]) {
-    const resolved = docs.map(c => ({ ...c, createDateTime: resolveCreatedAt(c) }));
+    const resolved = docs.map(c => ({ ...c, createDateTime: new Date(c.createdAt) }));
     const authorIds = [...new Set(resolved.map(c => c.authorId as string))];
     const users = await this.userRepo.findByIds(authorIds);
     const userMap = new Map(users.map(u => [String(u._id), u]));
@@ -42,6 +45,19 @@ export class CommentService {
     });
 
     await this.postRepo.incrementCommentCount(input.postId);
+
+    const universe = post.universe as "HP" | "GOT" | undefined;
+    const activityContent = universe ? `New comment on a post in ${universe}` : "New comment on a post";
+    await this.activityRepo.create({
+      type:     "COMMENT",
+      content:  activityContent,
+      universe,
+      postId:   input.postId,
+    });
+    if (universe) {
+      await this.analyticsService.recordCommentAdded(universe);
+    }
+
     const [enriched] = await this.enrichWithUsers([comment.toObject()]);
     return enriched;
   }

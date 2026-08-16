@@ -7,12 +7,28 @@ import { PostsRepository } from "./features/posts/posts.repository";
 import { PostLikeRepository } from "./features/posts/post-like.repository";
 import { TagRepository } from "./features/tags/tag.repository";
 import { TagService } from "./features/tags/tag.service";
+import { AnalyticsRepository } from "./features/analytics/analytics.repository";
+import { ActivityRepository } from "./features/analytics/activity.repository";
+import { AnalyticsService } from "./features/analytics/analytics.service";
 
 const userCache = new Map<string, string>(); // email -> _id
+
+// data-seed.json expresses dates as offsetDays (days before this seed run) + fixedTime
+// ("HH:mm") for readable, spread-out fixtures. Resolved to an absolute Date once here,
+// at seed time, and stored directly as createdAt — posts/comments no longer carry the
+// offset fields, so this resolution only happens during seeding, never at read time.
+function resolveSeedDate(offsetDays: number, fixedTime: string): Date {
+  const [h, m] = fixedTime.split(":").map(Number);
+  const d = new Date();
+  d.setDate(d.getDate() - offsetDays);
+  d.setHours(h, m, 0, 0);
+  return d;
+}
 
 async function main() {
   const mObj = new MongooseAdapter();
   const dbConn = await mObj.connect("primary");
+  const analyticsDbConn = await mObj.connect("analytics");
 
   const filePath = path.join("src", "data-seed.json");
   const data = JSON.parse(await fs.readFile(filePath, "utf-8"));
@@ -24,6 +40,24 @@ async function main() {
   const postLikeRepo = new PostLikeRepository(dbConn);
   const tagRepo      = new TagRepository(dbConn);
   const tagService   = new TagService(tagRepo);
+
+  const activityRepo   = new ActivityRepository(analyticsDbConn);
+  const analyticsRepo  = new AnalyticsRepository(analyticsDbConn);
+  const analyticsService = new AnalyticsService(analyticsRepo, activityRepo);
+
+  // Seeded post/comment dates are relative (offsetDays) to whenever this script runs,
+  // so every run wipes and rebuilds seed content from scratch — otherwise reseeding
+  // would double up posts and the analytics counters would drift from actual counts.
+  // Users are kept (real accounts may already have likes/comments on seed posts).
+  console.log("🧹 Clearing previous seed data...");
+  await dbConn.native.collection("posts").deleteMany({});
+  await dbConn.native.collection("comments").deleteMany({});
+  await dbConn.native.collection("tags").deleteMany({});
+  await dbConn.native.collection("postlikes").deleteMany({});
+  await analyticsDbConn.native.collection("universestats").deleteMany({});
+  await analyticsDbConn.native.collection("characterstats").deleteMany({});
+  await analyticsDbConn.native.collection("dailystats").deleteMany({});
+  await analyticsDbConn.native.collection("activities").deleteMany({});
 
   // Seed top-level users first and collect their IDs for distributing likes
   const allUserIds: string[] = [];
@@ -43,18 +77,32 @@ async function main() {
       ? await tagService.upsertTagsAndGetGroupedIds(rawTags)
       : { person: [], place: [], artifact: [], event: [] };
 
+    const postUniverse = post.universe as "HP" | "GOT";
+    const postCreatedAt = resolveSeedDate(post.offsetDays, post.fixedTime);
+
     const createdPost = await postRepo.create({
       authorId,
       content:      post.post,
       tags:         [groupedIds],
-      universe:     post.universe as "HP" | "GOT",
+      universe:     postUniverse,
       likeCount:    post.likeCount,
       commentCount: post.commentCount,
-      fixedTime:    post.fixedTime,
-      offsetDays:   post.offsetDays,
+      createdAt:    postCreatedAt,
     });
 
     console.log(`📝 Created post #${post.id}`);
+
+    const personLabels = rawTags.filter((t: any) => t.type === "person").map((t: any) => t.label);
+
+    await analyticsService.recordPostCreated(postUniverse, personLabels, postCreatedAt);
+    await analyticsService.recordBulkTotals(postUniverse, post.likeCount ?? 0, post.commentCount ?? 0);
+    await activityRepo.create({
+      type:      "POST",
+      content:   `New post by ${post.user.name} in ${postUniverse}`,
+      universe:  postUniverse,
+      postId:    String(createdPost._id),
+      createdAt: postCreatedAt,
+    });
 
     // Distribute likes across seeded users (up to available users, capped at seeded likeCount)
     const likeCount = post.likeCount ?? 0;
@@ -63,6 +111,13 @@ async function main() {
       await postLikeRepo.seedLikes(
         likesToSeed.map((userId) => ({ postId: String(createdPost._id), userId }))
       );
+      await activityRepo.create({
+        type:      "LIKE",
+        content:   `Post by ${post.user.name} in ${postUniverse} received ${likeCount} new likes`,
+        universe:  postUniverse,
+        postId:    String(createdPost._id),
+        createdAt: postCreatedAt,
+      });
     }
 
     if (!post.comments?.length) continue;
@@ -78,14 +133,22 @@ async function main() {
       }
 
       const offSetDayComment = comment.offsetDays;
+      const commentCreatedAt = resolveSeedDate(comment.offsetDays, comment.fixedTime);
       const createdComment = await commentModel.create({
         postId:     createdPost._id,
         authorId:   commentAuthorId,
         content:    comment.comment,
         likeCount:  comment.likeCount,
         replyCount: comment.replyCount,
-        fixedTime:  comment.fixedTime,
-        offsetDays: offSetDayComment,
+        createdAt:  commentCreatedAt,
+      });
+
+      await activityRepo.create({
+        type:      "COMMENT",
+        content:   `New comment on ${post.user.name}'s post in ${postUniverse}`,
+        universe:  postUniverse,
+        postId:    String(createdPost._id),
+        createdAt: commentCreatedAt,
       });
 
       if (!comment.replies?.length) continue;
@@ -107,8 +170,7 @@ async function main() {
           parentCommentId: createdComment._id,
           likeCount:       reply.likeCount,
           replyCount:      reply.replyCount ?? 0,
-          fixedTime:       reply.fixedTime,
-          offsetDays:      reply.offsetDays,
+          createdAt:       resolveSeedDate(reply.offsetDays, reply.fixedTime),
         });
       }
     }

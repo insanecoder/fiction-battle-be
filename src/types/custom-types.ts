@@ -3,9 +3,11 @@ import { PostController } from "../features/posts/posts.controller";
 import { UserController } from "../features/user/user.controller";
 import { CommentController } from "../features/comments/comment.controller";
 import { TagController } from "../features/tags/tag.controller";
+import { AnalyticsController } from "../features/analytics/analytics.controller";
 
 export type DatabaseConnPools<T> = {
   "primary" : DbConnection<T>;
+  "analytics" : DbConnection<T>;
 }
 
 export type PostModule = {
@@ -17,9 +19,14 @@ export type UserModule = {
   "userController" : UserController
 }
 
+export type AnalyticsModule = {
+  "analyticsController": AnalyticsController
+}
+
 export type AppDependencies = {
   "post" : PostModule,
-  "user" : UserModule
+  "user" : UserModule,
+  "analytics" : AnalyticsModule
 }
 
 export const TAG_TYPES = [

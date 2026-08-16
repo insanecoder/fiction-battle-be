@@ -39,7 +39,7 @@ export const createPostSchema = z.object({
     .refine((v) => wordCount(v) <= MAX_WORDS, {
       message: `Content must be ${MAX_WORDS} words or fewer`,
     }),
-  universe:        UniverseEnum,
+  universe:        UniverseEnum.optional(),
   tags:            z.array(rawTagSchema).max(10).optional(),
   clientRequestId: z.uuid().optional(),
 });

@@ -28,18 +28,9 @@ const commentSchema = new Schema(
       default: 0,
       min: 0,
     },
-    fixedTime: {
-      type: String,
-      default: null,
-    },
-    offsetDays: {
-      type: Number,
-      default: null,
-      min: 0,
-    },
     createdAt: {
       type: Date,
-      default: null,
+      required: true,
     },
   },
   { versionKey: false }

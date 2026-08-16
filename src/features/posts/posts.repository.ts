@@ -12,12 +12,10 @@ type CreatePostInput = {
   authorId:      string;
   content:       string;
   tags?:         TagGroup[];
-  createdAt?:    Date;
+  createdAt:     Date;
   universe?:     string;
   likeCount?:    number;
   commentCount?: number;
-  fixedTime?:    string;
-  offsetDays?:   number;
 };
 
 export class PostsRepository {
@@ -39,8 +37,6 @@ export class PostsRepository {
           universe:     input.universe,
           likeCount:    input.likeCount,
           commentCount: input.commentCount,
-          fixedTime:    input.fixedTime,
-          offsetDays:   input.offsetDays,
         });
         return doc;
       }
@@ -72,6 +68,13 @@ export class PostsRepository {
 
   async findById(postId: string): Promise<PostDocument | null> {
     return this.postModel.findById(postId).lean();
+  }
+
+  async findAll(): Promise<PostDocument[]> {
+    return observeDbOperation(
+      { operation: "find", entity: "posts_all" },
+      () => this.postModel.find({}).lean()
+    );
   }
 
   async incrementCommentCount(postId: string): Promise<void> {

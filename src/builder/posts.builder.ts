@@ -11,8 +11,14 @@ import { TagRepository } from "../features/tags/tag.repository";
 import { TagService } from "../features/tags/tag.service";
 import { TagController } from "../features/tags/tag.controller";
 import { Connection } from "mongoose";
+import { AnalyticsService } from "../features/analytics/analytics.service";
+import { ActivityRepository } from "../features/analytics/activity.repository";
 
-export function buildPostModule(dbConnPool: DatabaseConnPools<Connection>) {
+export function buildPostModule(
+  dbConnPool: DatabaseConnPools<Connection>,
+  analyticsService: AnalyticsService,
+  activityRepo: ActivityRepository,
+) {
   const conn = dbConnPool["primary"];
 
   const postRepo     = new PostsRepository(conn);
@@ -22,8 +28,8 @@ export function buildPostModule(dbConnPool: DatabaseConnPools<Connection>) {
   const tagRepo      = new TagRepository(conn);
 
   const tagService     = new TagService(tagRepo);
-  const postService    = new PostService(postRepo, postLikeRepo, userRepo, tagService);
-  const commentService = new CommentService(commentRepo, postRepo, userRepo);
+  const postService    = new PostService(postRepo, postLikeRepo, userRepo, tagService, analyticsService, activityRepo);
+  const commentService = new CommentService(commentRepo, postRepo, userRepo, analyticsService, activityRepo);
 
   const postController    = new PostController(postService);
   const commentController = new CommentController(commentService);

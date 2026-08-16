@@ -3,46 +3,78 @@ import { PostLikeRepository } from "./post-like.repository";
 import { UserRepository } from "../user/user.repository";
 import { TagService } from "../tags/tag.service";
 import { CreatePostBody, PostsFilterBody } from "../../validations/posts.schema";
-import { PostDocument } from "../../models/posts.model";
-
-export function resolveCreatedAt(
-  doc: Pick<PostDocument, "offsetDays" | "fixedTime" | "createdAt">
-): Date {
-  if (doc.offsetDays != null && doc.fixedTime) {
-    const [h, m] = doc.fixedTime.split(":").map(Number);
-    const d = new Date();
-    d.setDate(d.getDate() - doc.offsetDays);
-    d.setHours(h, m, 0, 0);
-    return d;
-  }
-  return doc.createdAt ? new Date(doc.createdAt as unknown as string) : new Date();
-}
+import { AnalyticsService } from "../analytics/analytics.service";
+import { ActivityRepository } from "../analytics/activity.repository";
 
 export class PostService {
   constructor(
-    private readonly postRepo:     PostsRepository,
-    private readonly postLikeRepo: PostLikeRepository,
-    private readonly userRepo:     UserRepository,
-    private readonly tagService:   TagService,
+    private readonly postRepo:        PostsRepository,
+    private readonly postLikeRepo:    PostLikeRepository,
+    private readonly userRepo:        UserRepository,
+    private readonly tagService:      TagService,
+    private readonly analyticsService: AnalyticsService,
+    private readonly activityRepo:     ActivityRepository,
   ) {}
 
   async createPost(input: { authorId: string; body: CreatePostBody }) {
-    const rawTags = (input.body.tags ?? []).map((t) => ({ ...t, universe: input.body.universe }));
+    const universe = input.body.universe;
+
+    // Tags belong to a universe (tag.model.ts requires it), so a universe-less
+    // post can't carry tags — anything submitted without a universe is dropped.
+    const rawTags = universe
+      ? (input.body.tags ?? []).map((t) => ({ ...t, universe }))
+      : [];
     const groupedIds = rawTags.length
       ? await this.tagService.upsertTagsAndGetGroupedIds(rawTags)
       : { person: [], place: [], artifact: [], event: [] };
 
-    return this.postRepo.create({
+    const post = await this.postRepo.create({
       authorId:  input.authorId,
       content:   input.body.content,
       tags:      [groupedIds],
-      universe:  input.body.universe,
+      universe,
       createdAt: new Date(),
     });
+
+    const activityContent = universe
+      ? `New post by ${input.authorId} in ${universe}`
+      : `New post by ${input.authorId}`;
+    await this.activityRepo.create({
+      type:     "POST",
+      content:  activityContent,
+      universe,
+      postId:   String(post._id),
+    });
+
+    // A universe-less post doesn't count toward either side's analytics
+    if (universe) {
+      const personLabels = rawTags.filter((t) => t.type === "person").map((t) => t.label);
+      await this.analyticsService.recordPostCreated(universe, personLabels);
+    }
+
+    return post;
   }
 
   async toggleLike(postId: string, userId: string): Promise<{ liked: boolean; likeCount: number }> {
-    return this.postLikeRepo.toggleLike(postId, userId);
+    const post = await this.postRepo.findById(postId);
+    if (!post) throw new Error("Post not found");
+
+    const result = await this.postLikeRepo.toggleLike(postId, userId);
+    const universe = post.universe as "HP" | "GOT" | undefined;
+
+    if (universe) {
+      await this.analyticsService.recordLikeDelta(universe, result.liked ? 1 : -1);
+      if (result.liked) {
+        await this.activityRepo.create({
+          type:     "LIKE",
+          content:  `Post in ${universe} received a new like`,
+          universe,
+          postId,
+        });
+      }
+    }
+
+    return result;
   }
 
   async filterPosts(filter: PostsFilterBody, requestingUserId?: string) {
@@ -86,7 +118,7 @@ export class PostService {
         commentCount:         post.commentCount,
         isLikedByCurrentUser: likedPostIds.has(postId),
         user:                 userMap.get(post.authorId),
-        createDateTime:       resolveCreatedAt(post),
+        createDateTime:       new Date(post.createdAt),
         resolvedTags,
       };
     });

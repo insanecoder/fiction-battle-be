@@ -14,10 +14,11 @@ export class MongooseAdapter implements DbAdapter<Connection> {
     if (existing) return existing;
 
     const config = dbConfig.mongo[name];
-    const { uri, pool } = dbConfig.mongo.primary;
+    const { uri, dbName, pool } = config;
     if (!uri) throw new Error(`No URI for ${name}`);
     const native = await mongoose
     .createConnection(uri, {
+        dbName,
         maxPoolSize: pool.maxPoolSize,
         minPoolSize: pool.minPoolSize,
         serverSelectionTimeoutMS: pool.serverSelectionTimeoutMS,
