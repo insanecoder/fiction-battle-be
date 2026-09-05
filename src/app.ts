@@ -8,6 +8,7 @@ import { registerRoutes } from "./routes/routes";
 import { requestLoggingMiddleware } from "./observability/loggingMiddleware";
 import { httpMetricsMiddleware } from "./observability/httpMiddleware";
 import { register } from "./observability/metrics";
+import { metricsAuthMiddleware } from "./observability/metricsAuth";
 import { buildDependencies, generateDBObjs } from "./app-dependencies";
 import { AppDependencies } from "./types/custom-types";
 import { authMiddleware } from "./middlewares/auth";
@@ -40,7 +41,7 @@ export async function buildApp() {
   app.get("/healthz", (req, res) => res.json({ ok: true }));
   app.get("/readyz", (req, res) => res.json({ ok: true }));
 
-  app.get("/metrics", async (_req, res) => {
+  app.get("/metrics", metricsAuthMiddleware, async (_req, res) => {
     res.set("Content-Type", register.contentType);
     res.send(await register.metrics());
   });
