@@ -3,6 +3,8 @@ import { createTagModel, TagDocument, TagModelType } from "../../models/tag.mode
 import { DbConnection } from "../../db/database-client";
 import { observeDbOperation } from "../../observability/dbObservability";
 
+type TagInput = { type: "person" | "place" | "artifact" | "event"; label: string; universe: "HP" | "GOT" };
+
 export class TagRepository {
   private readonly tagModel: TagModelType;
 
@@ -10,17 +12,13 @@ export class TagRepository {
     this.tagModel = createTagModel(conn);
   }
 
-  async findAll(type : "person" | "place" | "artifact" | "event", universe : "HP"|"GOT"[]) {
-    console.log(type, universe)
+  async findAll(type?: string, universe?: string): Promise<TagDocument[]> {
     return observeDbOperation({ operation: "find", entity: "tagsAll" }, () => {
-      let query:Record<string, unknown> = {"type":type}
-      if (universe) {
-        query.universe = universe
-      }
-      console.log(query)
-      return this.tagModel.find(query).lean()
-    }
-    );
+      const query: Record<string, unknown> = {};
+      if (type)     query.type     = type;
+      if (universe) query.universe = universe;
+      return this.tagModel.find(query).lean() as Promise<TagDocument[]>;
+    });
   }
 
   async searchByLabel(search: string, type?: string, universe?: string): Promise<TagDocument[]> {

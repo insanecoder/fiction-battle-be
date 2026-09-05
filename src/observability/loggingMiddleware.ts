@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import { logger } from "../lib/logger/logger";
+import { getRouteLabel } from "./httpMiddleware";
 
 export function requestLoggingMiddleware(
   req: Request,
@@ -15,7 +16,7 @@ export function requestLoggingMiddleware(
       {
         requestId: req.requestId,
         method: req.method,
-        path: req.path,
+        path: getRouteLabel(req),
         status: res.statusCode,
         latencyMs,
       },

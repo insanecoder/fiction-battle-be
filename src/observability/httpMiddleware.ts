@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { httpRequestsTotal, httpRequestDurationSeconds } from "./metrics";
 
-function getRouteLabel(req: Request): string {
+export function getRouteLabel(req: Request): string {
   if (req.baseUrl && req.route?.path) {
     return `${req.baseUrl}${req.route.path}`;
   }
