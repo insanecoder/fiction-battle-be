@@ -35,7 +35,7 @@ export async function buildApp() {
   registerRoutes(app, appDependencies, auth, optionalAuth);
 
   app.get("/", (_req, res) => {
-    res.type("html").send("<h1>Hello world! I'm a Node/Express Js web server...</h1>");
+    res.type("html").send("Welcome to Fiction Battle !!!");
   });
 
   app.get("/healthz", (req, res) => res.json({ ok: true }));
