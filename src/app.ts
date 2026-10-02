@@ -61,7 +61,7 @@ export async function buildApp() {
       await new Promise((r) => setTimeout(r, 2000));
       return res.status(200).json({ ok: true });
     }
-    if (mode === "error") return res.status(503).json({ ok: false });
+    if (mode === "error")  throw new Error("Error occured in code");
     return res.status(400).json({ error: "mode must be slow or error" });
   });
 
