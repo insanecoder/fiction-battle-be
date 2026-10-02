@@ -8,7 +8,10 @@ export function requestLoggingMiddleware(
   next: NextFunction
 ) {
   const start = performance.now();
-
+  if (getRouteLabel(req) == "/metrics") {
+    next()
+    return
+  }
   res.on("finish", () => {
     const latencyMs = Math.round(performance.now() - start);
 
