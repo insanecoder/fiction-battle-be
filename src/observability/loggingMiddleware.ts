@@ -7,10 +7,10 @@ export function requestLoggingMiddleware(
   res: Response,
   next: NextFunction
 ) {
-  const start = Date.now();
+  const start = performance.now();
 
   res.on("finish", () => {
-    const latencyMs = Date.now() - start;
+    const latencyMs = Math.round(performance.now() - start);
 
     logger.info(
       {

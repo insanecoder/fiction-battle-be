@@ -18,11 +18,10 @@ export function httpMetricsMiddleware(
   res: Response,
   next: NextFunction
 ) {
-  const startNs = process.hrtime.bigint();
+  const start = performance.now();
 
   res.on("finish", () => {
-    const durationSeconds =
-      Number(process.hrtime.bigint() - startNs) / 1e9;
+    const durationSeconds = (performance.now() - start) / 1000;
 
     const labels = {
       method: req.method,
