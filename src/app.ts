@@ -45,6 +45,15 @@ export async function buildApp() {
     res.set("Content-Type", register.contentType);
     res.send(await register.metrics());
   });
+    app.get("/v1/alert-test", async (req, res) => {
+    const mode = String(req.query.mode ?? "");
+    if (mode === "slow") {
+      await new Promise((r) => setTimeout(r, 2000));
+      return res.status(200).json({ ok: true });
+    }
+    if (mode === "error")  throw new Error("Error occured in code");
+    return res.status(400).json({ error: "mode must be slow or error" });
+  });
 
   app.use((req, res) => {
   res.status(404).json({
@@ -53,16 +62,6 @@ export async function buildApp() {
       message: `Route not found: ${req.method} ${req.originalUrl}`,
       requestId: req.requestId,
     },
-  });
-
-  app.get("/v1/alert-test", async (req, res) => {
-    const mode = String(req.query.mode ?? "");
-    if (mode === "slow") {
-      await new Promise((r) => setTimeout(r, 2000));
-      return res.status(200).json({ ok: true });
-    }
-    if (mode === "error")  throw new Error("Error occured in code");
-    return res.status(400).json({ error: "mode must be slow or error" });
   });
 
 });
