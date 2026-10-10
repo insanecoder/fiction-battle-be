@@ -5,12 +5,15 @@
 //   npm run eval -- --seed 7                        # default seed is 42; same seed → comparable runs
 //   npm run eval -- --split holdout --note "final check before release"
 //
+// LLM outputs are cached in results/cache.jsonl (not committed), keyed by model + thinking + seed +
+// prompt hash + schema hash + case qId. A cached case is reused; otherwise the model is called and
+// the output is saved immediately, so a stopped run loses nothing — rerun to fill in the rest.
+//
 // Results:
 //   src/ai/eval/results/runs/<runId>.json   full run: hash, config, metrics, every case's output
 //     runId = <split>_<model>_prompt<version>-<promptHash>_<thinking>_seed<seed>_<timestamp>
 //   src/ai/eval/results/summary.jsonl       one line per run, for comparing models/prompts
 
-import { createHash } from "crypto";
 import fs from "fs";
 import path from "path";
 import { parseArgs } from "util";
@@ -18,6 +21,9 @@ import { createLLMModel, DEFAULT_MODEL } from "../llm/model.factory";
 import { getTaggingPrompt } from "../post-tagging/prompts";
 import { tagPost, TaggingRun } from "../post-tagging/tagger";
 import { aggregate, aggregateByCategory, EvalCase, scoreCase, ScoredCase } from "./scoring";
+import { OutputCache, shortHash } from "./cache";
+import { PostTaggingSchema } from "../post-tagging/tagging.schema";
+import { z } from "zod";
 
 const EVAL_SET_PATH = path.join("src", "ai", "eval", "evalSet.json");
 const RESULTS_DIR = path.join("src", "ai", "eval", "results");
@@ -60,17 +66,30 @@ async function main() {
     `Running ${cases.length} cases | model=${model} thinking=${thinkingLevel} seed=${seed} prompt=${prompt.version} (${prompt.hash}) split=${split}`
   );
 
-  const outputs: Record<string, { run?: TaggingRun; error?: string }> = {};
+  const cache = new OutputCache();
+  const schemaHash = shortHash(JSON.stringify(z.toJSONSchema(PostTaggingSchema)));
+
+  const outputs: Record<string, { run?: TaggingRun; error?: string; cached?: boolean }> = {};
   let done = 0;
   await runPool(cases, Number(args.concurrency), async (c) => {
-    try {
-      outputs[c.id] = { run: await tagPost(llm, prompt, c.text, seed) };
-    } catch (err) {
-      outputs[c.id] = { error: err instanceof Error ? err.message : String(err) };
+    const key = { model, thinkingLevel, seed, promptHash: prompt.hash, schemaHash, caseId: c.id };
+    const cached = cache.get(key);
+    if (cached) {
+      outputs[c.id] = { run: cached, cached: true };
+    } else {
+      try {
+        const run = await tagPost(llm, prompt, c.text, seed);
+        outputs[c.id] = { run };
+        cache.set(key, run); // saved immediately
+      } catch (err) {
+        outputs[c.id] = { error: err instanceof Error ? err.message : String(err) };
+      }
     }
     process.stdout.write(`\r${++done}/${cases.length}`);
   });
   process.stdout.write("\n");
+  const cachedCount = cases.filter((c) => outputs[c.id].cached).length;
+  console.log(`Outputs: ${cachedCount} from cache, ${cases.length - cachedCount} API calls`);
 
   const scored: ScoredCase[] = cases.map((c) => {
     const run = outputs[c.id].run;
@@ -123,6 +142,7 @@ async function main() {
           expected: { universe: c.universe, tags: c.tags },
           actual: outputs[c.id].run?.result ?? null,
           servedBy: outputs[c.id].run?.servedBy ?? null,
+          cached: outputs[c.id].cached ?? false,
           error: outputs[c.id].error ?? null,
           score: scored[i].score,
         })),
@@ -135,10 +155,6 @@ async function main() {
 
   printReport(overall, byCategory, scored, outputs);
   console.log(`\nSaved: ${path.join(RUNS_DIR, `${runId}.json`)}`);
-}
-
-function shortHash(text: string): string {
-  return createHash("sha256").update(text).digest("hex").slice(0, 8);
 }
 
 function parseSeed(value: string): number {

@@ -1,0 +1,814 @@
+{
+  "hash": "38b780c3",
+  "runId": "dev_gemini-3.8-flash_prompt1-c1850e8d_medium_seed42_2026-10-09T22-06-34-432Z",
+  "startedAt": "2026-10-09T22:06:34.432Z",
+  "note": "first real baseline, 20 cases",
+  "config": {
+    "split": "dev",
+    "model": "gemini-3.8-flash",
+    "thinkingLevel": "medium",
+    "seed": 42,
+    "promptVersion": "1",
+    "promptHash": "c1850e8d",
+    "evalSetHash": "a92f8caf",
+    "offset": 0,
+    "limit": 20
+  },
+  "overall": {
+    "testCount": 16,
+    "errors": 2,
+    "refusals": 0,
+    "universeAccuracy": 0.813,
+    "tagPrecision": 0.842,
+    "tagRecall": 0.889,
+    "tagF1": 0.865,
+    "exactMatch": 0.625,
+    "avgLatencyMs": 23190,
+    "inputTokens": 9777,
+    "outputTokens": 4884
+  },
+  "byCategory": {
+    "ambiguous": {
+      "testCount": 4,
+      "errors": 1,
+      "refusals": 0,
+      "universeAccuracy": 0.5,
+      "tagPrecision": 1,
+      "tagRecall": 1,
+      "tagF1": 1,
+      "exactMatch": 0.5,
+      "avgLatencyMs": 34862,
+      "inputTokens": 2072,
+      "outputTokens": 888
+    },
+    "crossover": {
+      "testCount": 3,
+      "errors": 0,
+      "refusals": 0,
+      "universeAccuracy": 1,
+      "tagPrecision": 0.8,
+      "tagRecall": 1,
+      "tagF1": 0.889,
+      "exactMatch": 0.667,
+      "avgLatencyMs": 32156,
+      "inputTokens": 2104,
+      "outputTokens": 1817
+    },
+    "not_in_vocab": {
+      "testCount": 3,
+      "errors": 0,
+      "refusals": 0,
+      "universeAccuracy": 1,
+      "tagPrecision": 0.8,
+      "tagRecall": 0.8,
+      "tagF1": 0.8,
+      "exactMatch": 0.667,
+      "avgLatencyMs": 11891,
+      "inputTokens": 2092,
+      "outputTokens": 1227
+    },
+    "other_universe": {
+      "testCount": 2,
+      "errors": 1,
+      "refusals": 0,
+      "universeAccuracy": 0.5,
+      "tagPrecision": 1,
+      "tagRecall": 1,
+      "tagF1": 1,
+      "exactMatch": 0.5,
+      "avgLatencyMs": 3581,
+      "inputTokens": 704,
+      "outputTokens": 182
+    },
+    "plain_got": {
+      "testCount": 2,
+      "errors": 0,
+      "refusals": 0,
+      "universeAccuracy": 1,
+      "tagPrecision": 0.8,
+      "tagRecall": 0.8,
+      "tagF1": 0.8,
+      "exactMatch": 0.5,
+      "avgLatencyMs": 28865,
+      "inputTokens": 1402,
+      "outputTokens": 362
+    },
+    "plain_hp": {
+      "testCount": 2,
+      "errors": 0,
+      "refusals": 0,
+      "universeAccuracy": 1,
+      "tagPrecision": 1,
+      "tagRecall": 1,
+      "tagF1": 1,
+      "exactMatch": 1,
+      "avgLatencyMs": 13312,
+      "inputTokens": 1403,
+      "outputTokens": 408
+    }
+  },
+  "counts": {
+    "cached": 4,
+    "called": 12,
+    "skipped": 4
+  },
+  "stopReason": "gemini gemini-3.8-flash: quota exhausted",
+  "cases": [
+    {
+      "id": "E01",
+      "category": "plain_hp",
+      "post": "Snape protecting Harry for years while pretending to hate him is the best twist in the whole series.",
+      "status": "cached",
+      "expected": {
+        "universe": [
+          "HP"
+        ],
+        "tags": [
+          {
+            "type": "people",
+            "tag": "Severus Snape"
+          },
+          {
+            "type": "people",
+            "tag": "Harry Potter"
+          }
+        ]
+      },
+      "actual": {
+        "universe": [
+          "HP"
+        ],
+        "confidence_in_universe": 1,
+        "tags": [
+          {
+            "type": "person",
+            "tag": "Severus Snape",
+            "universe": "HP"
+          },
+          {
+            "type": "person",
+            "tag": "Harry Potter",
+            "universe": "HP"
+          }
+        ]
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": true,
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "E02",
+      "category": "plain_hp",
+      "post": "Hermione using the Time-Turner to take extra classes says everything about her.",
+      "status": "cached",
+      "expected": {
+        "universe": [
+          "HP"
+        ],
+        "tags": [
+          {
+            "type": "people",
+            "tag": "Hermione Granger"
+          },
+          {
+            "type": "artifact",
+            "tag": "Time-Turner"
+          }
+        ]
+      },
+      "actual": {
+        "universe": [
+          "HP"
+        ],
+        "confidence_in_universe": 1,
+        "tags": [
+          {
+            "type": "person",
+            "tag": "Hermione Granger",
+            "universe": "HP"
+          },
+          {
+            "type": "artifact",
+            "tag": "Time-Turner",
+            "universe": "HP"
+          }
+        ]
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": true,
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "E04",
+      "category": "plain_got",
+      "post": "Tyrion's trial was the moment the show stopped pretending Westeros has any justice.",
+      "status": "cached",
+      "expected": {
+        "universe": [
+          "GOT"
+        ],
+        "tags": [
+          {
+            "type": "people",
+            "tag": "Tyrion Lannister"
+          },
+          {
+            "type": "event",
+            "tag": "Trial of Tyrion"
+          },
+          {
+            "type": "place",
+            "tag": "Westeros"
+          }
+        ]
+      },
+      "actual": {
+        "universe": [
+          "GOT"
+        ],
+        "confidence_in_universe": 1,
+        "tags": [
+          {
+            "type": "person",
+            "tag": "Tyrion Lannister",
+            "universe": "GOT"
+          },
+          {
+            "type": "event",
+            "tag": "Trial of Tyrion Lannister",
+            "universe": "GOT"
+          },
+          {
+            "type": "place",
+            "tag": "Westeros",
+            "universe": "GOT"
+          }
+        ]
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": false,
+        "tp": 2,
+        "fp": 1,
+        "fn": 1,
+        "missing": [
+          "event|trial of tyrion"
+        ],
+        "extra": [
+          "event|trial of tyrion lannister"
+        ]
+      }
+    },
+    {
+      "id": "E05",
+      "category": "plain_got",
+      "post": "Jon Snow at the Battle of the Bastards, surrounded and still standing. Peak television.",
+      "status": "cached",
+      "expected": {
+        "universe": [
+          "GOT"
+        ],
+        "tags": [
+          {
+            "type": "people",
+            "tag": "Jon Snow"
+          },
+          {
+            "type": "event",
+            "tag": "Battle of the Bastards"
+          }
+        ]
+      },
+      "actual": {
+        "universe": [
+          "GOT"
+        ],
+        "confidence_in_universe": 1,
+        "tags": [
+          {
+            "type": "person",
+            "tag": "Jon Snow",
+            "universe": "GOT"
+          },
+          {
+            "type": "event",
+            "tag": "Battle of the Bastards",
+            "universe": "GOT"
+          }
+        ]
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": true,
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "E07",
+      "category": "crossover",
+      "post": "Dumbledore vs Daenerys with all three dragons. Who wins?",
+      "status": "called",
+      "expected": {
+        "universe": [
+          "HP",
+          "GOT"
+        ],
+        "tags": [
+          {
+            "type": "people",
+            "tag": "Albus Dumbledore"
+          },
+          {
+            "type": "people",
+            "tag": "Daenerys Targaryen"
+          }
+        ]
+      },
+      "actual": {
+        "universe": [
+          "HP",
+          "GOT"
+        ],
+        "confidence_in_universe": 1,
+        "tags": [
+          {
+            "type": "person",
+            "tag": "Albus Dumbledore",
+            "universe": "HP"
+          },
+          {
+            "type": "person",
+            "tag": "Daenerys Targaryen",
+            "universe": "GOT"
+          }
+        ]
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": true,
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "E08",
+      "category": "crossover",
+      "post": "Snape and Tyrion are basically the same character: everyone underestimates them and they end up saving everyone.",
+      "status": "called",
+      "expected": {
+        "universe": [
+          "HP",
+          "GOT"
+        ],
+        "tags": [
+          {
+            "type": "people",
+            "tag": "Severus Snape"
+          },
+          {
+            "type": "people",
+            "tag": "Tyrion Lannister"
+          }
+        ]
+      },
+      "actual": {
+        "universe": [
+          "HP",
+          "GOT"
+        ],
+        "confidence_in_universe": 1,
+        "tags": [
+          {
+            "type": "person",
+            "tag": "Severus Snape",
+            "universe": "HP"
+          },
+          {
+            "type": "person",
+            "tag": "Tyrion Lannister",
+            "universe": "GOT"
+          }
+        ]
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": true,
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "E09",
+      "category": "crossover",
+      "post": "A part of Harry Potter is similar to the Starks: neither has a dad around.",
+      "status": "called",
+      "expected": {
+        "universe": [
+          "HP",
+          "GOT"
+        ],
+        "tags": []
+      },
+      "actual": {
+        "universe": [
+          "HP",
+          "GOT"
+        ],
+        "confidence_in_universe": 0.95,
+        "tags": [
+          {
+            "type": "person",
+            "tag": "Harry Potter",
+            "universe": "HP"
+          }
+        ]
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": false,
+        "tp": 0,
+        "fp": 1,
+        "fn": 0,
+        "missing": [],
+        "extra": [
+          "person|harry potter"
+        ]
+      }
+    },
+    {
+      "id": "E11",
+      "category": "not_in_vocab",
+      "post": "Ron was braver than Harry ever was, and nobody talks about it.",
+      "status": "called",
+      "expected": {
+        "universe": [
+          "HP"
+        ],
+        "tags": [
+          {
+            "type": "people",
+            "tag": "Harry Potter"
+          },
+          {
+            "type": "people",
+            "tag": "Ron Weasley"
+          }
+        ]
+      },
+      "actual": {
+        "universe": [
+          "HP"
+        ],
+        "confidence_in_universe": 0.98,
+        "tags": [
+          {
+            "type": "person",
+            "tag": "Ron Weasley",
+            "universe": "HP"
+          },
+          {
+            "type": "person",
+            "tag": "Harry Potter",
+            "universe": "HP"
+          }
+        ]
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": true,
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "E12",
+      "category": "not_in_vocab",
+      "post": "Arya's list is the most satisfying storyline in the whole show.",
+      "status": "called",
+      "expected": {
+        "universe": [
+          "GOT"
+        ],
+        "tags": [
+          {
+            "type": "people",
+            "tag": "Arya Stark"
+          }
+        ]
+      },
+      "actual": {
+        "universe": [
+          "GOT"
+        ],
+        "confidence_in_universe": 0.98,
+        "tags": [
+          {
+            "type": "person",
+            "tag": "Arya Stark",
+            "universe": "GOT"
+          }
+        ]
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": true,
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "E14",
+      "category": "not_in_vocab",
+      "post": "Hodor holding the door is the saddest scene ever written.",
+      "status": "called",
+      "expected": {
+        "universe": [
+          "GOT"
+        ],
+        "tags": [
+          {
+            "type": "people",
+            "tag": "Hodor"
+          },
+          {
+            "type": "event",
+            "tag": "Hodor's death"
+          }
+        ]
+      },
+      "actual": {
+        "universe": [
+          "GOT"
+        ],
+        "confidence_in_universe": 1,
+        "tags": [
+          {
+            "type": "person",
+            "tag": "Hodor",
+            "universe": "GOT"
+          },
+          {
+            "type": "event",
+            "tag": "Death of Hodor",
+            "universe": "GOT"
+          }
+        ]
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": false,
+        "tp": 1,
+        "fp": 1,
+        "fn": 1,
+        "missing": [
+          "event|hodor's death"
+        ],
+        "extra": [
+          "event|death of hodor"
+        ]
+      }
+    },
+    {
+      "id": "E16",
+      "category": "ambiguous",
+      "post": "Harry is a good boy.",
+      "status": "called",
+      "expected": {
+        "universe": [],
+        "tags": []
+      },
+      "actual": {
+        "universe": [],
+        "confidence_in_universe": 0.9,
+        "tags": []
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": true,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "E17",
+      "category": "ambiguous",
+      "post": "Jon and Robb are coming over for dinner tonight.",
+      "status": "error",
+      "expected": {
+        "universe": [],
+        "tags": []
+      },
+      "actual": null,
+      "servedBy": null,
+      "error": "gemini gemini-3.8-flash failed (server): {\"error\":{\"code\":503,\"message\":\"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\"status\":\"UNAVAILABLE\"}}",
+      "score": null
+    },
+    {
+      "id": "E19",
+      "category": "ambiguous",
+      "post": "Starks are better at war.",
+      "status": "called",
+      "expected": {
+        "universe": [],
+        "tags": []
+      },
+      "actual": {
+        "universe": [],
+        "confidence_in_universe": 0.4,
+        "tags": []
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": true,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "E20",
+      "category": "ambiguous",
+      "post": "Season 8 ruined the entire show for me.",
+      "status": "called",
+      "expected": {
+        "universe": [],
+        "tags": []
+      },
+      "actual": {
+        "universe": [
+          "GOT"
+        ],
+        "confidence_in_universe": 0.95,
+        "tags": []
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": false,
+        "tagsExact": true,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "E21",
+      "category": "other_universe",
+      "post": "Lord of the Rings has a lot in common with Game of Thrones. I love this medieval fantasy world.",
+      "status": "called",
+      "expected": {
+        "universe": [
+          "GOT"
+        ],
+        "tags": []
+      },
+      "actual": {
+        "universe": [
+          "GOT"
+        ],
+        "confidence_in_universe": 0.95,
+        "tags": []
+      },
+      "servedBy": "gemini-3.8-flash",
+      "error": null,
+      "score": {
+        "universeMatch": true,
+        "tagsExact": true,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "id": "E22",
+      "category": "other_universe",
+      "post": "Frodo vs Gandalf, who would win in a fight?",
+      "status": "error",
+      "expected": {
+        "universe": [],
+        "tags": []
+      },
+      "actual": null,
+      "servedBy": null,
+      "error": "gemini gemini-3.8-flash failed (quota_exhausted): {\"error\":{\"code\":429,\"message\":\"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.8-flash\\nPlease retry in 1h53m25.26988904s.\",\"status\":\"RESOURCE_EXHAUSTED\",\"details\":[{\"@type\":\"type.googleapis.com/google.rpc.Help\",\"links\":[{\"description\":\"Learn more about Gemini API quotas\",\"url\":\"https://ai.google.dev/gemini-api/docs/rate-limits\"}]},{\"@type\":\"type.googleapis.com/google.rpc.QuotaFailure\",\"violations\":[{\"quotaMetric\":\"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\"quotaId\":\"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\"quotaDimensions\":{\"location\":\"global\",\"model\":\"gemini-3.8-flash\"},\"quotaValue\":\"20\"}]},{\"@type\":\"type.googleapis.com/google.rpc.RetryInfo\",\"retryDelay\":\"6805s\"}]}}",
+      "score": null
+    },
+    {
+      "id": "E24",
+      "category": "off_topic",
+      "post": "Trump is bent on imposing tariffs everywhere. China is a global manufacturer that is difficult to beat now.",
+      "status": "skipped",
+      "expected": {
+        "universe": [],
+        "tags": []
+      },
+      "actual": null,
+      "servedBy": null,
+      "error": null,
+      "score": null
+    },
+    {
+      "id": "E25",
+      "category": "off_topic",
+      "post": "Best biryani place near the office? Need suggestions.",
+      "status": "skipped",
+      "expected": {
+        "universe": [],
+        "tags": []
+      },
+      "actual": null,
+      "servedBy": null,
+      "error": null,
+      "score": null
+    },
+    {
+      "id": "E26",
+      "category": "real_person_only",
+      "post": "Emma Watson was also a beauty along with the Beast.",
+      "status": "skipped",
+      "expected": {
+        "universe": [],
+        "tags": []
+      },
+      "actual": null,
+      "servedBy": null,
+      "error": null,
+      "score": null
+    },
+    {
+      "id": "E27",
+      "category": "real_person_only",
+      "post": "Emma Watson wakes up at 6 am.",
+      "status": "skipped",
+      "expected": {
+        "universe": [],
+        "tags": []
+      },
+      "actual": null,
+      "servedBy": null,
+      "error": null,
+      "score": null
+    }
+  ]
+}
