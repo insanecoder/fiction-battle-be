@@ -1,7 +1,8 @@
 import { TagRepository } from "./tag.repository";
 import { TagDocument } from "../../models/tag.model";
+import type { TagType, Universe } from "../../types/custom-types";
 
-type TagInput = { type: "person" | "place" | "artifact" | "event"; label: string; universe: "HP" | "GOT" };
+type TagInput = { type: TagType; label: string; universe: Universe };
 type GroupedTagIds = { person: string[]; place: string[]; artifact: string[]; event: string[] };
 
 export class TagService {

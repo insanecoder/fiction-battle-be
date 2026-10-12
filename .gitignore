@@ -5,3 +5,6 @@ node_modules/
 .env
 .env.*
 
+
+# Eval LLM output cache (local only; regenerate by running the eval)
+src/ai/eval/results/cache.jsonl

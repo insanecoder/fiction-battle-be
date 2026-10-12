@@ -2,8 +2,9 @@ import { Connection } from "mongoose";
 import { createTagModel, TagDocument, TagModelType } from "../../models/tag.model";
 import { DbConnection } from "../../db/database-client";
 import { observeDbOperation } from "../../observability/dbObservability";
+import type { TagType, Universe } from "../../types/custom-types";
 
-type TagInput = { type: "person" | "place" | "artifact" | "event"; label: string; universe: "HP" | "GOT" };
+type TagInput = { type: TagType; label: string; universe: Universe };
 
 export class TagRepository {
   private readonly tagModel: TagModelType;

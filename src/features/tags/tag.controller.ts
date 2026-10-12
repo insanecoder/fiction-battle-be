@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
 import { TagService } from "./tag.service";
-import { TagType } from "../../types/custom-types";
+import type { TagType } from "../../types/custom-types";
 
 export class TagController {
   constructor(private readonly tagService: TagService) {}

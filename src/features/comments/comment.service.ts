@@ -3,6 +3,7 @@ import { PostsRepository } from "../posts/posts.repository";
 import { UserRepository } from "../user/user.repository";
 import { AnalyticsService } from "../analytics/analytics.service";
 import { ActivityRepository } from "../analytics/activity.repository";
+import type { Universe } from "../../types/custom-types";
 
 export class CommentService {
   constructor(
@@ -46,7 +47,7 @@ export class CommentService {
 
     await this.postRepo.incrementCommentCount(input.postId);
 
-    const universe = post.universe as "HP" | "GOT" | undefined;
+    const universe = post.universe as Universe | undefined;
     const activityContent = universe ? `New comment on a post in ${universe}` : "New comment on a post";
     await this.activityRepo.create({
       type:     "COMMENT",

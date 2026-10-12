@@ -15,6 +15,7 @@ export class PostController {
     const post = await this.postService.createPost({
         authorId : req?.authUser?.userId,
         body,
+        requestId: req.requestId,
     });
 
     return res.status(201).json({

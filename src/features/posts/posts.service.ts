@@ -5,6 +5,8 @@ import { TagService } from "../tags/tag.service";
 import { CreatePostBody, PostsFilterBody } from "../../validations/posts.schema";
 import { AnalyticsService } from "../analytics/analytics.service";
 import { ActivityRepository } from "../analytics/activity.repository";
+import { PostTaggingService } from "../../ai/post-tagging/post-tagging.service";
+import { TAG_TYPES, type Universe } from "../../types/custom-types";
 
 export class PostService {
   constructor(
@@ -14,9 +16,10 @@ export class PostService {
     private readonly tagService:      TagService,
     private readonly analyticsService: AnalyticsService,
     private readonly activityRepo:     ActivityRepository,
+    private readonly postTaggingService?: PostTaggingService,
   ) {}
 
-  async createPost(input: { authorId: string; body: CreatePostBody }) {
+  async createPost(input: { authorId: string; body: CreatePostBody; requestId?: string }) {
     const universe = input.body.universe;
 
     // Tags belong to a universe (tag.model.ts requires it), so a universe-less
@@ -52,6 +55,13 @@ export class PostService {
       await this.analyticsService.recordPostCreated(universe, personLabels);
     }
 
+    // LLM tagging runs after the response is sent; tags appear on the post when it finishes.
+    this.postTaggingService?.tagInBackground({
+      postId:    String(post._id),
+      content:   post.content,
+      requestId: input.requestId,
+    });
+
     return post;
   }
 
@@ -60,7 +70,7 @@ export class PostService {
     if (!post) throw new Error("Post not found");
 
     const result = await this.postLikeRepo.toggleLike(postId, userId);
-    const universe = post.universe as "HP" | "GOT" | undefined;
+    const universe = post.universe as Universe | undefined;
 
     if (universe) {
       await this.analyticsService.recordLikeDelta(universe, result.liked ? 1 : -1);
@@ -97,8 +107,6 @@ export class PostService {
     const likedPostIds = requestingUserId
       ? await this.postLikeRepo.findLikedPostIds(postIds, requestingUserId)
       : new Set<string>();
-
-    const TAG_TYPES = ["person", "place", "artifact", "event"] as const;
 
     const enrichedPosts = posts.map((post) => {
       const postTags = post.tags?.[0] as any;

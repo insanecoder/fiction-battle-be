@@ -4,8 +4,7 @@ import { createCharacterStatsModel, CharacterStatsDocument, CharacterStatsModelT
 import { createDailyStatsModel, DailyStatsDocument, DailyStatsModelType } from "../../models/daily-stats.model";
 import { DbConnection } from "../../db/database-client";
 import { observeDbOperation } from "../../observability/dbObservability";
-
-type Universe = "HP" | "GOT";
+import type { Universe } from "../../types/custom-types";
 
 export class AnalyticsRepository {
   private readonly universeStatsModel:  UniverseStatsModelType;

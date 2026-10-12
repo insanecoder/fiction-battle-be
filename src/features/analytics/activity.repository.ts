@@ -2,11 +2,12 @@ import type { Connection } from "mongoose";
 import { createActivityModel, ActivityDocument, ActivityModelType } from "../../models/activity_model";
 import { DbConnection } from "../../db/database-client";
 import { observeDbOperation } from "../../observability/dbObservability";
+import type { Universe } from "../../types/custom-types";
 
 type CreateActivityInput = {
   type:      "POST" | "COMMENT" | "LIKE" | "TAG";
   content:   string;
-  universe?: "HP" | "GOT";
+  universe?: Universe;
   postId?:   string;
   createdAt?: Date;
 };

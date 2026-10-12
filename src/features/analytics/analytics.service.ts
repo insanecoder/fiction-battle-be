@@ -1,5 +1,6 @@
 import { AnalyticsRepository } from "./analytics.repository";
 import { ActivityRepository } from "./activity.repository";
+import type { Universe } from "../../types/custom-types";
 
 const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -17,20 +18,20 @@ export class AnalyticsService {
 
   // Post/comment/like handlers call these so the stats collections stay current —
   // getSummary() only ever reads the precomputed collections, it never rescans posts.
-  async recordPostCreated(universe: "HP" | "GOT", personTagLabels: string[], createdAt: Date = new Date()): Promise<void> {
+  async recordPostCreated(universe: Universe, personTagLabels: string[], createdAt: Date = new Date()): Promise<void> {
     await this.analyticsRepo.incrementPostCreated(universe, personTagLabels, dateKeyUTC(createdAt));
   }
 
-  async recordLikeDelta(universe: "HP" | "GOT", delta: 1 | -1): Promise<void> {
+  async recordLikeDelta(universe: Universe, delta: 1 | -1): Promise<void> {
     await this.analyticsRepo.incrementLikeDelta(universe, delta);
   }
 
-  async recordCommentAdded(universe: "HP" | "GOT"): Promise<void> {
+  async recordCommentAdded(universe: Universe): Promise<void> {
     await this.analyticsRepo.incrementCommentAdded(universe);
   }
 
   // Used only by the seed script — applies historical like/comment counts in one shot
-  async recordBulkTotals(universe: "HP" | "GOT", likes: number, comments: number): Promise<void> {
+  async recordBulkTotals(universe: Universe, likes: number, comments: number): Promise<void> {
     await this.analyticsRepo.incrementBulkTotals(universe, likes, comments);
   }
 

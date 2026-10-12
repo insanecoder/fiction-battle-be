@@ -81,4 +81,21 @@ export class PostsRepository {
     await this.postModel.findByIdAndUpdate(postId, { $inc: { commentCount: 1 } });
   }
 
+  // Adds LLM-generated tag ids next to any the author chose ($addToSet: no duplicates, nothing removed),
+  // and sets the universe only if the post doesn't have one yet.
+  async applyAutoTags(postId: string, tagIds: TagGroup, universe?: string): Promise<void> {
+    await observeDbOperation({ operation: "update", entity: "posts_auto_tags" }, async () => {
+      const addToSet: Record<string, { $each: string[] }> = {};
+      for (const type of ["person", "place", "artifact", "event"] as const) {
+        if (tagIds[type].length) addToSet[`tags.0.${type}`] = { $each: tagIds[type] };
+      }
+      if (Object.keys(addToSet).length) {
+        await this.postModel.updateOne({ _id: postId }, { $addToSet: addToSet });
+      }
+      if (universe) {
+        await this.postModel.updateOne({ _id: postId, universe: { $exists: false } }, { $set: { universe } });
+      }
+    });
+  }
+
 }
