@@ -1,9 +1,10 @@
 import { z } from "zod";
+import { TAG_TYPES, UNIVERSES } from "../../types/custom-types";
 
-export const UniverseSchema = z.enum(["HP", "GOT"]);
-
-// Same tag types as models/tag.model.ts so results can go straight into TagService.
-export const TagTypeSchema = z.enum(["person", "place", "artifact", "event"]);
+// Built from the DB enums, so a new universe or tag type flows into the LLM's output schema.
+// The prompt text also names them, so add a new prompt version when they change.
+export const UniverseSchema = z.enum(UNIVERSES);
+export const TagTypeSchema = z.enum(TAG_TYPES);
 
 export const PostTagSchema = z.object({
   type: TagTypeSchema,
@@ -21,6 +22,5 @@ export const PostTaggingSchema = z.object({
   tags: z.array(PostTagSchema),
 });
 
-export type Universe = z.infer<typeof UniverseSchema>;
 export type PostTag = z.infer<typeof PostTagSchema>;
 export type PostTagging = z.infer<typeof PostTaggingSchema>;

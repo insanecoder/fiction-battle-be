@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+dist/
 
 # Environment secrets
 .env
@@ -7,4 +8,4 @@ node_modules/
 
 
 # Eval LLM output cache (local only; regenerate by running the eval)
-src/ai/eval/results/cache.jsonl
+src/ai/eval/results/*

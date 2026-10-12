@@ -21,7 +21,8 @@ import { createLLMModel, DEFAULT_MODEL } from "../llm/model.factory";
 import { getTaggingPrompt } from "../post-tagging/prompts";
 import { tagPost, TaggingRun } from "../post-tagging/tagger";
 import { aggregate, aggregateByCategory, EvalCase, scoreCase, ScoredCase } from "./scoring";
-import { OutputCache, shortHash } from "./cache";
+import { OutputCache } from "./cache";
+import { shortHash } from "../../lib/commonutils";
 import { PostTaggingSchema } from "../post-tagging/tagging.schema";
 import { z } from "zod";
 
@@ -78,7 +79,7 @@ async function main() {
       outputs[c.id] = { run: cached, cached: true };
     } else {
       try {
-        const run = await tagPost(llm, prompt, c.text, seed);
+        const run = await tagPost(llm, prompt, c.text, { seed });
         outputs[c.id] = { run };
         cache.set(key, run); // saved immediately
       } catch (err) {

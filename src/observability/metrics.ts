@@ -51,6 +51,14 @@ export const llmRequestsTotal = new client.Counter({
   registers: [register],
 });
 
+// event: slow (succeeded but over the slow threshold) | timeout (aborted, took too long to respond)
+export const llmLatencyEventsTotal = new client.Counter({
+  name: "llm_latency_events_total",
+  help: "LLM calls that were slow or took too long to respond",
+  labelNames: ["provider", "model", "event"] as const,
+  registers: [register],
+});
+
 // kind: rate_limit | auth | invalid_request | server | timeout | invalid_output | unknown
 export const llmErrorsTotal = new client.Counter({
   name: "llm_errors_total",

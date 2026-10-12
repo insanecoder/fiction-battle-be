@@ -1,7 +1,7 @@
 import { ApiError, FinishReason, GoogleGenAI, ThinkingLevel as GeminiThinkingLevel } from "@google/genai";
 import { z } from "zod";
 import { required } from "../../../config/env-utils";
-import { LLMCallResult, LLMModel, LLMOptions, LLMOutputError } from "./llm-model";
+import { LLMCallLogger, LLMCallOptions, LLMCallResult, LLMModel, LLMOutputError } from "./llm-model";
 
 // Thinking levels a caller can pass for Gemini, and the API value each one maps to.
 export const GEMINI_THINKING_LEVELS = {
@@ -23,11 +23,12 @@ export class GeminiModel extends LLMModel {
   private readonly client: GoogleGenAI;
 
   // thinkingLevel: low | medium | high (default medium)
-  constructor(name: string, thinkingLevel?: string, apiKey: string = required("GEMINI_API_KEY")) {
+  constructor(name: string, thinkingLevel?: string, callLogger?: LLMCallLogger, apiKey: string = required("GEMINI_API_KEY")) {
     super(
       "gemini",
       name,
-      LLMModel.checkThinkingLevel(name, thinkingLevel, Object.keys(GEMINI_THINKING_LEVELS), GEMINI_DEFAULT_THINKING_LEVEL)
+      LLMModel.checkThinkingLevel(name, thinkingLevel, Object.keys(GEMINI_THINKING_LEVELS), GEMINI_DEFAULT_THINKING_LEVEL),
+      callLogger
     );
     this.client = new GoogleGenAI({
       apiKey,
@@ -37,7 +38,7 @@ export class GeminiModel extends LLMModel {
     });
   }
 
-  protected async callModel<T>(inputText: string, responseJSON: z.ZodType<T>, options: LLMOptions): Promise<LLMCallResult<T>> {
+  protected async callModel<T>(inputText: string, responseJSON: z.ZodType<T>, options: LLMCallOptions): Promise<LLMCallResult<T>> {
     // $schema is metadata Gemini doesn't need.
     const { $schema: _ignored, ...jsonSchema } = z.toJSONSchema(responseJSON);
 
@@ -51,6 +52,8 @@ export class GeminiModel extends LLMModel {
         responseJsonSchema: jsonSchema,
         maxOutputTokens: options.maxOutputTokens ?? 4096,
         ...(options.seed !== undefined ? { seed: options.seed } : {}),
+        // Lets the base class cancel the request when timeoutMs is reached.
+        ...(options.abortSignal ? { abortSignal: options.abortSignal } : {}),
       },
     });
 

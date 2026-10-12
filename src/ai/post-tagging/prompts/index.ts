@@ -1,4 +1,4 @@
-import { createHash } from "crypto";
+import { shortHash } from "../../../lib/commonutils";
 import { V1 } from "./v1";
 
 const PROMPTS: Record<string, string> = {
@@ -17,7 +17,7 @@ export function getTaggingPrompt(version: string): TaggingPrompt {
   if (!text) {
     throw new Error(`Unknown tagging prompt version "${version}". Known: ${listTaggingPromptVersions().join(", ")}`);
   }
-  return { version, hash: createHash("sha256").update(text).digest("hex").slice(0, 8), text };
+  return { version, hash: shortHash(text), text };
 }
 
 export function listTaggingPromptVersions(): string[] {

@@ -1,6 +1,5 @@
 // LLM output cache for the eval: if an output already exists for a key, it's reused instead of
 // calling the model again. Every new output is appended as soon as it arrives, so nothing is lost.
-import { createHash } from "crypto";
 import fs from "fs";
 import path from "path";
 import { TaggingRun } from "../post-tagging/tagger";
@@ -19,10 +18,6 @@ export type CacheKeyParts = {
 };
 
 type CacheEntry = { key: string; parts: CacheKeyParts; savedAt: string; run: TaggingRun };
-
-export function shortHash(text: string): string {
-  return createHash("sha256").update(text).digest("hex").slice(0, 8);
-}
 
 export function cacheKey(parts: CacheKeyParts): string {
   const { model, thinkingLevel, seed, promptHash, schemaHash, caseId } = parts;
