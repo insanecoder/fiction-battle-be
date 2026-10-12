@@ -13,6 +13,8 @@ import { TagController } from "../features/tags/tag.controller";
 import { Connection } from "mongoose";
 import { AnalyticsService } from "../features/analytics/analytics.service";
 import { ActivityRepository } from "../features/analytics/activity.repository";
+import { LLMLogRepository } from "../ai/logging/llm-log.repository";
+import { PostTaggingService } from "../ai/post-tagging/post-tagging.service";
 
 export function buildPostModule(
   dbConnPool: DatabaseConnPools<Connection>,
@@ -26,9 +28,11 @@ export function buildPostModule(
   const userRepo     = new UserRepository(conn);
   const commentRepo  = new CommentRepository(conn);
   const tagRepo      = new TagRepository(conn);
+  const llmLogRepo   = new LLMLogRepository(conn);
 
   const tagService     = new TagService(tagRepo);
-  const postService    = new PostService(postRepo, postLikeRepo, userRepo, tagService, analyticsService, activityRepo);
+  const postTaggingService = new PostTaggingService(llmLogRepo, postRepo, tagService);
+  const postService    = new PostService(postRepo, postLikeRepo, userRepo, tagService, analyticsService, activityRepo, postTaggingService);
   const commentService = new CommentService(commentRepo, postRepo, userRepo, analyticsService, activityRepo);
 
   const postController    = new PostController(postService);

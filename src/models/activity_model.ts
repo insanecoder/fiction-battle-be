@@ -1,9 +1,9 @@
 import { Schema } from "mongoose";
 import type { Connection, InferSchemaType, Model } from "mongoose";
 import { DbConnection } from "../db/database-client";
+import { UNIVERSES } from "../types/custom-types";
 
 const ACTIVITY_TYPES = ["POST", "COMMENT", "LIKE", "TAG"] as const;
-const UNIVERSES = ["HP", "GOT"] as const;
 
 export const activitySchema = new Schema(
   {

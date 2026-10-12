@@ -1,7 +1,8 @@
 import { z } from "zod";
+import { TAG_TYPES, UNIVERSES } from "../types/custom-types";
 
 const MAX_WORDS = 200;
-const UniverseEnum = z.enum(["GOT", "HP"]);
+const UniverseEnum = z.enum(UNIVERSES);
 
 const tagArray = z
   .array(z.string().trim().min(1).max(100))
@@ -27,7 +28,7 @@ function wordCount(s: string): number {
 }
 
 const rawTagSchema = z.object({
-  type:  z.enum(["person", "place", "artifact", "event"]),
+  type:  z.enum(TAG_TYPES),
   label: z.string().trim().min(1).max(100),
 });
 

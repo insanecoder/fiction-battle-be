@@ -10,6 +10,7 @@ import { TagService } from "./features/tags/tag.service";
 import { AnalyticsRepository } from "./features/analytics/analytics.repository";
 import { ActivityRepository } from "./features/analytics/activity.repository";
 import { AnalyticsService } from "./features/analytics/analytics.service";
+import type { Universe } from "./types/custom-types";
 
 const userCache = new Map<string, string>(); // email -> _id
 
@@ -71,13 +72,13 @@ async function main() {
 
     const rawTags = (post.tags ?? []).filter(
       (t: any) => ["person", "place", "artifact", "event"].includes(t.type)
-    ).map((t: any) => ({ type: t.type, label: t.label, universe: post.universe as "HP" | "GOT" }));
+    ).map((t: any) => ({ type: t.type, label: t.label, universe: post.universe as Universe }));
 
     const groupedIds = rawTags.length
       ? await tagService.upsertTagsAndGetGroupedIds(rawTags)
       : { person: [], place: [], artifact: [], event: [] };
 
-    const postUniverse = post.universe as "HP" | "GOT";
+    const postUniverse = post.universe as Universe;
     const postCreatedAt = resolveSeedDate(post.offsetDays, post.fixedTime);
 
     const createdPost = await postRepo.create({

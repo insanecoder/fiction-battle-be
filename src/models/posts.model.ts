@@ -1,6 +1,7 @@
 import { Schema, Types } from "mongoose";
 import type { Connection, InferSchemaType, Model } from "mongoose";
 import { DbConnection } from "../db/database-client";
+import { UNIVERSES } from "../types/custom-types";
 
 
 const tagSchema = new Schema(
@@ -45,7 +46,7 @@ export const postSchema = new Schema(
     // analytics and won't match a universe filter, but is otherwise a normal post.
     universe: {
       type: String,
-      enum: ["HP", "GOT"],
+      enum: UNIVERSES,
       required: false,
       index: true,
     },

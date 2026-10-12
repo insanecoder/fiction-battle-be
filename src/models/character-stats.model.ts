@@ -1,10 +1,11 @@
 import { Schema, Connection, Model } from "mongoose";
 import { DbConnection } from "../db/database-client";
+import { UNIVERSES, type Universe } from "../types/custom-types";
 
 const characterStatsSchema = new Schema(
   {
     name:     { type: String, required: true },
-    universe: { type: String, enum: ["HP", "GOT"], required: true },
+    universe: { type: String, enum: UNIVERSES, required: true },
     posts:    { type: Number, default: 0 },
   },
   { versionKey: false }
@@ -16,7 +17,7 @@ characterStatsSchema.index({ posts: -1 });
 export type CharacterStatsDocument = {
   _id:      string;
   name:     string;
-  universe: "HP" | "GOT";
+  universe: Universe;
   posts:    number;
 };
 

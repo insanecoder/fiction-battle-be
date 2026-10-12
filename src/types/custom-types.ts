@@ -1,9 +1,9 @@
-import { DbConnection } from "../db/database-client";
-import { PostController } from "../features/posts/posts.controller";
-import { UserController } from "../features/user/user.controller";
-import { CommentController } from "../features/comments/comment.controller";
-import { TagController } from "../features/tags/tag.controller";
-import { AnalyticsController } from "../features/analytics/analytics.controller";
+import type { DbConnection } from "../db/database-client";
+import type { PostController } from "../features/posts/posts.controller";
+import type { UserController } from "../features/user/user.controller";
+import type { CommentController } from "../features/comments/comment.controller";
+import type { TagController } from "../features/tags/tag.controller";
+import type { AnalyticsController } from "../features/analytics/analytics.controller";
 
 export type DatabaseConnPools<T> = {
   "primary" : DbConnection<T>;
@@ -29,16 +29,13 @@ export type AppDependencies = {
   "analytics" : AnalyticsModule
 }
 
-export const TAG_TYPES = [
-  "PERSON",
-  "PLACE",
-  "EVENTS",
-  "ARTIFACTS",
-] as const;
+// Single source of truth for universes and tag types. Models, validation and the LLM tagging
+// schema derive from these, so adding a universe or tag type starts here.
+export const UNIVERSES = ["HP", "GOT"] as const;
+export type Universe = (typeof UNIVERSES)[number];
 
-export type TagType = typeof TAG_TYPES[number];
-
-export type Universe = "GOT" | "HP";
+export const TAG_TYPES = ["person", "place", "artifact", "event"] as const;
+export type TagType = (typeof TAG_TYPES)[number];
 
 export type TAG_OBJ = {
   "type" : TagType,

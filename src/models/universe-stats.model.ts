@@ -1,9 +1,10 @@
 import { Schema, Connection, Model } from "mongoose";
 import { DbConnection } from "../db/database-client";
+import { UNIVERSES, type Universe } from "../types/custom-types";
 
 const universeStatsSchema = new Schema(
   {
-    _id:      { type: String, enum: ["HP", "GOT"] }, // universe
+    _id:      { type: String, enum: UNIVERSES }, // universe
     posts:    { type: Number, default: 0 },
     likes:    { type: Number, default: 0 },
     comments: { type: Number, default: 0 },
@@ -12,7 +13,7 @@ const universeStatsSchema = new Schema(
 );
 
 export type UniverseStatsDocument = {
-  _id: "HP" | "GOT";
+  _id: Universe;
   posts: number;
   likes: number;
   comments: number;
