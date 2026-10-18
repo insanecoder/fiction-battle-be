@@ -50,3 +50,10 @@ export type PostsFilter = {
   "events" : string[],
   "artifacts":string[]
 }
+// Background LLM tagging state stored on a post. A post nobody tagged with a universe (and that has
+// no tags) is hidden from everyone but its author, who sees the error code's message instead.
+export const TAGGING_STATUSES = ["pending", "done", "failed"] as const;
+export type TaggingStatus = (typeof TAGGING_STATUSES)[number];
+
+export const TAGGING_ERROR_CODES = ["TAGGING_FAILED", "CONTENT_BLOCKED", "LOW_CONFIDENCE", "NO_UNIVERSE"] as const;
+export type TaggingErrorCode = (typeof TAGGING_ERROR_CODES)[number];

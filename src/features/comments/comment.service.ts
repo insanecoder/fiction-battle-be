@@ -3,7 +3,7 @@ import { PostsRepository } from "../posts/posts.repository";
 import { UserRepository } from "../user/user.repository";
 import { AnalyticsService } from "../analytics/analytics.service";
 import { ActivityRepository } from "../analytics/activity.repository";
-import type { Universe } from "../../types/custom-types";
+import { postUniverses } from "../../models/posts.model";
 
 export class CommentService {
   constructor(
@@ -47,15 +47,16 @@ export class CommentService {
 
     await this.postRepo.incrementCommentCount(input.postId);
 
-    const universe = post.universe as Universe | undefined;
-    const activityContent = universe ? `New comment on a post in ${universe}` : "New comment on a post";
+    // A crossover post's comment counts toward both sides; the activity entry is written once.
+    const universes = postUniverses(post);
+    const activityContent = universes.length ? `New comment on a post in ${universes.join(" & ")}` : "New comment on a post";
     await this.activityRepo.create({
       type:     "COMMENT",
       content:  activityContent,
-      universe,
+      universe: universes.length === 1 ? universes[0] : undefined,
       postId:   input.postId,
     });
-    if (universe) {
+    for (const universe of universes) {
       await this.analyticsService.recordCommentAdded(universe);
     }
 

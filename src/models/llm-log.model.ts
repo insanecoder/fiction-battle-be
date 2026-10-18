@@ -55,7 +55,7 @@ export const llmLogSchema = new Schema(
     // What we did with it
     applied: {
       tagCount: { type: Number },
-      universe: { type: String },
+      universe: { type: [String], default: undefined },
       skippedReason: { type: String }, // e.g. low confidence
     },
 

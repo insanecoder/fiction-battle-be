@@ -6,7 +6,39 @@ import { CreatePostBody, PostsFilterBody } from "../../validations/posts.schema"
 import { AnalyticsService } from "../analytics/analytics.service";
 import { ActivityRepository } from "../analytics/activity.repository";
 import { PostTaggingService } from "../../ai/post-tagging/post-tagging.service";
-import { TAG_TYPES, type Universe } from "../../types/custom-types";
+import { TAG_TYPES, type TaggingErrorCode } from "../../types/custom-types";
+import { postUniverses, type PostDocument } from "../../models/posts.model";
+
+type PostTaggingError = { code: TaggingErrorCode | "TAGGING_PENDING"; message: string };
+
+const TAGGING_ERROR_MESSAGES: Record<PostTaggingError["code"], string> = {
+  TAGGING_PENDING: "We're still tagging this post. It will be visible to others once a universe is attached.",
+  TAGGING_FAILED:  "Automatic tagging failed, so no universe is attached and only you can see this post.",
+  CONTENT_BLOCKED: "This post couldn't be tagged because of its content, so only you can see it.",
+  LOW_CONFIDENCE:  "We couldn't tell which universe this post belongs to, so only you can see it.",
+  NO_UNIVERSE:     "No universe is attached to this post, so only you can see it.",
+};
+
+// Tagging normally finishes in seconds; a "pending" older than this was lost (e.g. a server restart).
+const STALE_PENDING_MS = 10 * 60 * 1000;
+
+function isTagged(post: PostDocument): boolean {
+  if (postUniverses(post).length) return true;
+  const postTags = post.tags?.[0] as any;
+  return TAG_TYPES.some((type) => (postTags?.[type]?.length ?? 0) > 0);
+}
+
+// Why an untagged post is hidden from everyone but its author; null once it's tagged.
+function taggingErrorFor(post: PostDocument): PostTaggingError | null {
+  if (isTagged(post)) return null;
+  const tagging = post.tagging;
+  let code: PostTaggingError["code"] = (tagging?.error as TaggingErrorCode | undefined) ?? "NO_UNIVERSE";
+  if (tagging?.status === "pending") {
+    const age = Date.now() - new Date(tagging.updatedAt ?? 0).getTime();
+    code = age < STALE_PENDING_MS ? "TAGGING_PENDING" : "TAGGING_FAILED";
+  }
+  return { code, message: TAGGING_ERROR_MESSAGES[code] };
+}
 
 export class PostService {
   constructor(
@@ -35,8 +67,9 @@ export class PostService {
       authorId:  input.authorId,
       content:   input.body.content,
       tags:      [groupedIds],
-      universe,
+      universe:  universe ? [universe] : [],
       createdAt: new Date(),
+      tagging:   this.postTaggingService?.enabled ? { status: "pending" } : undefined,
     });
 
     const activityContent = universe
@@ -70,30 +103,31 @@ export class PostService {
     if (!post) throw new Error("Post not found");
 
     const result = await this.postLikeRepo.toggleLike(postId, userId);
-    const universe = post.universe as Universe | undefined;
+    const universes = postUniverses(post);
 
-    if (universe) {
+    // A crossover post's like counts toward both sides; the activity entry is written once.
+    for (const universe of universes) {
       await this.analyticsService.recordLikeDelta(universe, result.liked ? 1 : -1);
-      if (result.liked) {
-        await this.activityRepo.create({
-          type:     "LIKE",
-          content:  `Post in ${universe} received a new like`,
-          universe,
-          postId,
-        });
-      }
+    }
+    if (universes.length && result.liked) {
+      await this.activityRepo.create({
+        type:     "LIKE",
+        content:  `Post in ${universes.join(" & ")} received a new like`,
+        universe: universes.length === 1 ? universes[0] : undefined,
+        postId,
+      });
     }
 
     return result;
   }
 
   async filterPosts(filter: PostsFilterBody, requestingUserId?: string) {
-    const posts = await this.postRepo.filterPosts(filter);
+    const posts = await this.postRepo.filterPosts(filter, requestingUserId);
 
     const allTagIds = new Set<string>();
     for (const post of posts) {
       const postTags = post.tags?.[0] as any;
-      [...(postTags.person ?? []), ...(postTags.place ?? []), ...(postTags.artifact ?? []), ...(postTags.event ?? [])]
+      [...(postTags?.person ?? []), ...(postTags?.place ?? []), ...(postTags?.artifact ?? []), ...(postTags?.event ?? [])]
         .forEach((id: any) => allTagIds.add(String(id)));
     }
     const tagDocs = allTagIds.size > 0 ? await this.tagService.findTagsByIds([...allTagIds]) : [];
@@ -117,17 +151,20 @@ export class PostService {
       }
 
       const postId = String(post._id);
+      const isOwn  = post.authorId === requestingUserId;
       return {
         postId,
         authorId:             post.authorId,
         content:              post.content,
-        universe:             post.universe,
+        universe:             postUniverses(post),
         likeCount:            post.likeCount,
         commentCount:         post.commentCount,
         isLikedByCurrentUser: likedPostIds.has(postId),
         user:                 userMap.get(post.authorId),
         createDateTime:       new Date(post.createdAt),
         resolvedTags,
+        // Only the author ever receives an untagged post, so only they see why it's hidden.
+        taggingError:         isOwn ? taggingErrorFor(post) : null,
       };
     });
 

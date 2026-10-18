@@ -70,22 +70,26 @@ async function main() {
   for (const post of data.posts) {
     const authorId = await upsertUser(userModel, post.user);
 
+    // "universe" is "HP", "GOT", or ["HP", "GOT"] for a crossover post, whose tags then name
+    // their own universe (defaulting to the post's first).
+    const postUniverses: Universe[] = [].concat(post.universe);
+    const postUniverseLabel = postUniverses.join(" & ");
+
     const rawTags = (post.tags ?? []).filter(
       (t: any) => ["person", "place", "artifact", "event"].includes(t.type)
-    ).map((t: any) => ({ type: t.type, label: t.label, universe: post.universe as Universe }));
+    ).map((t: any) => ({ type: t.type, label: t.label, universe: (t.universe ?? postUniverses[0]) as Universe }));
 
     const groupedIds = rawTags.length
       ? await tagService.upsertTagsAndGetGroupedIds(rawTags)
       : { person: [], place: [], artifact: [], event: [] };
 
-    const postUniverse = post.universe as Universe;
     const postCreatedAt = resolveSeedDate(post.offsetDays, post.fixedTime);
 
     const createdPost = await postRepo.create({
       authorId,
       content:      post.post,
       tags:         [groupedIds],
-      universe:     postUniverse,
+      universe:     postUniverses,
       likeCount:    post.likeCount,
       commentCount: post.commentCount,
       createdAt:    postCreatedAt,
@@ -93,14 +97,18 @@ async function main() {
 
     console.log(`📝 Created post #${post.id}`);
 
-    const personLabels = rawTags.filter((t: any) => t.type === "person").map((t: any) => t.label);
-
-    await analyticsService.recordPostCreated(postUniverse, personLabels, postCreatedAt);
-    await analyticsService.recordBulkTotals(postUniverse, post.likeCount ?? 0, post.commentCount ?? 0);
+    // A crossover post counts toward both sides; each side's character stats get only its own tags.
+    for (const universe of postUniverses) {
+      const personLabels = rawTags.filter((t: any) => t.type === "person" && t.universe === universe).map((t: any) => t.label);
+      await analyticsService.recordPostCreated(universe, personLabels, postCreatedAt);
+      await analyticsService.recordBulkTotals(universe, post.likeCount ?? 0, post.commentCount ?? 0);
+    }
+    // Activity entries hold a single universe, so a crossover post's are left without one.
+    const activityUniverse = postUniverses.length === 1 ? postUniverses[0] : undefined;
     await activityRepo.create({
       type:      "POST",
-      content:   `New post by ${post.user.name} in ${postUniverse}`,
-      universe:  postUniverse,
+      content:   `New post by ${post.user.name} in ${postUniverseLabel}`,
+      universe:  activityUniverse,
       postId:    String(createdPost._id),
       createdAt: postCreatedAt,
     });
@@ -114,8 +122,8 @@ async function main() {
       );
       await activityRepo.create({
         type:      "LIKE",
-        content:   `Post by ${post.user.name} in ${postUniverse} received ${likeCount} new likes`,
-        universe:  postUniverse,
+        content:   `Post by ${post.user.name} in ${postUniverseLabel} received ${likeCount} new likes`,
+        universe:  activityUniverse,
         postId:    String(createdPost._id),
         createdAt: postCreatedAt,
       });
@@ -146,8 +154,8 @@ async function main() {
 
       await activityRepo.create({
         type:      "COMMENT",
-        content:   `New comment on ${post.user.name}'s post in ${postUniverse}`,
-        universe:  postUniverse,
+        content:   `New comment on ${post.user.name}'s post in ${postUniverseLabel}`,
+        universe:  activityUniverse,
         postId:    String(createdPost._id),
         createdAt: commentCreatedAt,
       });
