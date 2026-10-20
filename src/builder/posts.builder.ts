@@ -17,6 +17,7 @@ import { LLMLogRepository } from "../ai/logging/llm-log.repository";
 import { PostTaggingService } from "../ai/post-tagging/post-tagging.service";
 import { TagMappingRepository } from "../features/tags/tag-mapping.repository";
 import { TagCandidateRepository } from "../features/tags/tag-candidate.repository";
+import { setReviewQueueStats } from "../observability/metrics";
 import { createEmbedder } from "../ai/embeddings/embedder";
 import { VectorSearchService } from "../ai/vector-search/vector-search.service";
 import { TagVerificationService } from "../ai/tag-verification/tag-verification.service";
@@ -35,11 +36,18 @@ export function buildPostModule(
   const tagRepo      = new TagRepository(conn);
   const llmLogRepo   = new LLMLogRepository(conn);
 
+  // The review-queue gauges on /metrics read the queue from the database at scrape time.
+  const candidateRepo  = new TagCandidateRepository(conn);
+  setReviewQueueStats({
+    pending:                 () => candidateRepo.countPending(),
+    oldestPendingAgeSeconds: () => candidateRepo.oldestPendingAgeSeconds(),
+  });
+
   // Tag resolution: vocabulary → map → vector search → verification LLM. Without LLM_API_KEY,
   // only the vocabulary and the map are checked; other names are left for review.
   const tagService     = new TagService(tagRepo, {
     mappingRepo:   new TagMappingRepository(conn),
-    candidateRepo: new TagCandidateRepository(conn),
+    candidateRepo,
     vectorSearch: new VectorSearchService(),
     embedder:     createEmbedder(),
     verification: process.env.LLM_API_KEY ? new TagVerificationService(llmLogRepo) : undefined,

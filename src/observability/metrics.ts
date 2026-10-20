@@ -82,3 +82,57 @@ export const llmTokensTotal = new client.Counter({
   labelNames: ["provider", "model", "direction"] as const,
   registers: [register],
 });
+// --- Tag resolution and the tag review queue ---
+
+// outcome: vocabulary | map | llm (resolved to a tag) | review (queued) | not_in_universe | rejected (dropped)
+export const tagResolutionsTotal = new client.Counter({
+  name: "tag_resolutions_total",
+  help: "Tag names from posts, by how they were resolved against the vocabulary",
+  labelNames: ["outcome"] as const,
+  registers: [register],
+});
+
+// +1 each time a name enters the review queue for the first time (repeat mentions don't count).
+// reason: no_candidates | no_match | several_matches | contradictory | llm_failed
+export const tagReviewQueueNewEntriesTotal = new client.Counter({
+  name: "tag_review_queue_new_entries_total",
+  help: "Names added to the tag review queue",
+  labelNames: ["type", "universe", "reason"] as const,
+  registers: [register],
+});
+
+// The queue gauges are read from the database at scrape time, so they're right whichever process
+// changed the queue (the API, or npm run review-tags). The builder registers how to read them,
+// which keeps database code out of this file.
+type ReviewQueueStats = { pending(): Promise<number>; oldestPendingAgeSeconds(): Promise<number> };
+let reviewQueueStats: ReviewQueueStats | undefined;
+export function setReviewQueueStats(stats: ReviewQueueStats): void {
+  reviewQueueStats = stats;
+}
+
+// A failed read keeps the last value, so /metrics still answers when the database is slow or down.
+async function readStat(gauge: client.Gauge, read: () => Promise<number>): Promise<void> {
+  try {
+    gauge.set(await read());
+  } catch {
+    // keep the previous value
+  }
+}
+
+export const tagReviewQueuePending = new client.Gauge({
+  name: "tag_review_queue_pending",
+  help: "Names waiting in the tag review queue (npm run review-tags)",
+  registers: [register],
+  async collect() {
+    if (reviewQueueStats) await readStat(this, reviewQueueStats.pending);
+  },
+});
+
+export const tagReviewQueueOldestPendingAgeSeconds = new client.Gauge({
+  name: "tag_review_queue_oldest_pending_age_seconds",
+  help: "How long the oldest name in the tag review queue has been waiting (0 when empty)",
+  registers: [register],
+  async collect() {
+    if (reviewQueueStats) await readStat(this, reviewQueueStats.oldestPendingAgeSeconds);
+  },
+});

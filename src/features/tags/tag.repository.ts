@@ -43,6 +43,21 @@ export class TagRepository {
     );
   }
 
+  // Adds a tag to the vocabulary with its vector (so vector search can find it). If a tag with this
+  // exact label already exists, it's kept and only its vector is updated.
+  async createWithEmbedding(tag: TagInput, embedding: number[], embeddingModel: string): Promise<TagDocument> {
+    return observeDbOperation({ operation: "update", entity: "tags" }, async () => {
+      const doc = await this.tagModel
+        .findOneAndUpdate(
+          { type: tag.type, label: tag.label, universe: tag.universe },
+          { $set: { embedding, embeddingModel }, $setOnInsert: { type: tag.type, label: tag.label, universe: tag.universe } },
+          { upsert: true, returnDocument: "after" }
+        )
+        .lean();
+      return doc as unknown as TagDocument;
+    });
+  }
+
   async findByIds(ids: string[]): Promise<TagDocument[]> {
     return observeDbOperation({ operation: "find", entity: "tagsById" }, () =>
       this.tagModel.find({ _id: { $in: ids } }).lean() as Promise<TagDocument[]>

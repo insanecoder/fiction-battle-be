@@ -5,6 +5,7 @@ import { TagDocument, TAG_VECTOR_INDEX } from "../../models/tag.model";
 import { tagNameKey } from "../../models/tag-mapping.model";
 import { numberEnv } from "../../config/env-utils";
 import { logger } from "../../lib/logger/logger";
+import { tagResolutionsTotal, tagReviewQueueNewEntriesTotal } from "../../observability/metrics";
 import type { Embedder } from "../../ai/embeddings/embedder";
 import { VectorSearchService } from "../../ai/vector-search/vector-search.service";
 import { TagVerificationService, type CandidateAnswer } from "../../ai/tag-verification/tag-verification.service";
@@ -60,6 +61,8 @@ export function groupTagIds(resolved: ResolvedTag[]): GroupedTagIds {
   return grouped;
 }
 
+type ResolveContext = { postText: string; postId?: string; requestId?: string };
+
 const nameKey = (n: { type: string; universe: string; label: string }) => `${n.type}|${n.universe}|${tagNameKey(n.label)}`;
 
 export class TagService {
@@ -95,7 +98,13 @@ export class TagService {
   //   3. vectors:    embed the name, find the nearest vocabulary tags (same type + universe)
   //   4. LLM:        verification picks exactly one → that tag, saved to the map for next time;
   //                  not an HP/GOT entity → notInUniverse; otherwise → toReview
-  async resolveTags(names: TagName[], context: { postText: string; postId?: string; requestId?: string }): Promise<ResolveTagsResult> {
+  async resolveTags(names: TagName[], context: ResolveContext): Promise<ResolveTagsResult> {
+    const result = await this.resolve(names, context);
+    this.countOutcomes(result);
+    return result;
+  }
+
+  private async resolve(names: TagName[], context: ResolveContext): Promise<ResolveTagsResult> {
     if (!this.resolution) throw new Error("TagService was created without tag resolution dependencies");
     const { mappingRepo, candidateRepo, verification } = this.resolution;
     const result: ResolveTagsResult = { resolved: [], toReview: [], notInUniverse: [], rejected: [] };
@@ -167,10 +176,25 @@ export class TagService {
     return result;
   }
 
+  private countOutcomes(result: ResolveTagsResult): void {
+    for (const r of result.resolved) tagResolutionsTotal.inc({ outcome: r.how });
+    tagResolutionsTotal.inc({ outcome: "review" }, result.toReview.length);
+    tagResolutionsTotal.inc({ outcome: "not_in_universe" }, result.notInUniverse.length);
+    tagResolutionsTotal.inc({ outcome: "rejected" }, result.rejected.length);
+  }
+
   // Puts names resolveTags() couldn't map into the review queue, linked to the post.
   async queueForReview(items: TagToReview[], post: { postId: string; text: string }): Promise<void> {
     if (!this.resolution) throw new Error("TagService was created without tag resolution dependencies");
-    for (const it of items) await this.resolution.candidateRepo.enqueue(it.name, it, post);
+    for (const it of items) {
+      const isNew = await this.resolution.candidateRepo.enqueue(it.name, it, post);
+      if (!isNew) continue;
+      tagReviewQueueNewEntriesTotal.inc({ type: it.name.type, universe: it.name.universe, reason: it.reason ?? "unknown" });
+      logger.info(
+        { task: "tag_review", label: it.name.label, type: it.name.type, universe: it.name.universe, reason: it.reason, postId: post.postId },
+        "New name in the tag review queue"
+      );
+    }
   }
 
   // Nearest vocabulary tags for each name (same type + universe, closest first). Empty lists when
