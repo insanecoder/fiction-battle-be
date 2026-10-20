@@ -67,7 +67,19 @@ export class LLMLogRepository implements LLMCallLogger {
   }
 
   // Task-level: what the caller did with the output (e.g. tags applied to the post).
-  async recordApplied(logId: string, applied: { tagCount: number; universe?: string[]; skippedReason?: string }): Promise<void> {
+  async recordApplied(
+    logId: string,
+    applied: {
+      tagCount: number;
+      universe?: string[];
+      skippedReason?: string;
+      // How each name was mapped onto the vocabulary, the names left for review, and the names dropped
+      mapped?: { label: string; tag: string; how: string }[];
+      review?: { label: string; reason: string }[];
+      notInUniverse?: string[];
+      rejected?: string[];
+    }
+  ): Promise<void> {
     await observeDbOperation({ operation: "update", entity: "llm_logging" }, () =>
       this.model.updateOne({ _id: logId }, { $set: { applied } })
     );

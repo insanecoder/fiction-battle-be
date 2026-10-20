@@ -7,7 +7,8 @@ import type { TagType, Universe } from "../../types/custom-types";
 type TagInput = { type: TagType; label: string; universe: Universe };
 
 export class TagRepository {
-  private readonly tagModel: TagModelType;
+  // Public so TagService can run vector search on the collection (VectorSearchService takes a model).
+  readonly tagModel: TagModelType;
 
   constructor(conn: DbConnection<Connection>) {
     this.tagModel = createTagModel(conn);
@@ -29,6 +30,17 @@ export class TagRepository {
       if (universe) query.universe = universe;
       return this.tagModel.find(query).lean() as Promise<TagDocument[]>;
     });
+  }
+
+  // Vocabulary tags with exactly these labels, ignoring case ("tyrion lannister" finds "Tyrion Lannister").
+  async findByLabels(names: TagInput[]): Promise<TagDocument[]> {
+    if (!names.length) return [];
+    return observeDbOperation({ operation: "find", entity: "tagsByLabel" }, () =>
+      this.tagModel
+        .find({ $or: names.map((n) => ({ type: n.type, universe: n.universe, label: n.label.trim() })) })
+        .collation({ locale: "en", strength: 2 })
+        .lean() as Promise<TagDocument[]>
+    );
   }
 
   async findByIds(ids: string[]): Promise<TagDocument[]> {

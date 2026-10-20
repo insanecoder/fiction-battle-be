@@ -23,7 +23,7 @@ export class GeminiModel extends LLMModel {
   private readonly client: GoogleGenAI;
 
   // thinkingLevel: low | medium | high (default medium)
-  constructor(name: string, thinkingLevel?: string, callLogger?: LLMCallLogger, apiKey: string = required("GEMINI_API_KEY")) {
+  constructor(name: string, thinkingLevel?: string, callLogger?: LLMCallLogger, apiKey: string = required("LLM_API_KEY")) {
     super(
       "gemini",
       name,

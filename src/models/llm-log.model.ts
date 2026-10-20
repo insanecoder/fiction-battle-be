@@ -57,6 +57,10 @@ export const llmLogSchema = new Schema(
       tagCount: { type: Number },
       universe: { type: [String], default: undefined },
       skippedReason: { type: String }, // e.g. low confidence
+      mapped: { type: [{ _id: false, label: String, tag: String, how: String }], default: undefined },
+      review: { type: [{ _id: false, label: String, reason: String }], default: undefined },
+      notInUniverse: { type: [String], default: undefined },
+      rejected: { type: [String], default: undefined }, // rejected by a reviewer earlier
     },
 
     startedAt: { type: Date, required: true },
