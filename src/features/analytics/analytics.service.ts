@@ -36,7 +36,22 @@ export class AnalyticsService {
   }
 
   async getSummary() {
-    const universeStats = await this.analyticsRepo.getUniverseTotals();
+    const now = new Date();
+    const last7Dates = Array.from({ length: 7 }, (_, i) => {
+      const d = new Date(now);
+      d.setUTCDate(d.getUTCDate() - (6 - i));
+      return dateKeyUTC(d);
+    });
+
+    // The four reads don't depend on each other, so they run in parallel: one round trip to the
+    // database instead of four in a row.
+    const [universeStats, topCharacterDocs, dailyDocs, recentActivity] = await Promise.all([
+      this.analyticsRepo.getUniverseTotals(),
+      this.analyticsRepo.getTopCharacters(5),
+      this.analyticsRepo.getDailyStats(last7Dates),
+      this.activityRepo.findRecent(10),
+    ]);
+
     const statsByUniverse = new Map(universeStats.map((s) => [s._id, s]));
     const hp  = statsByUniverse.get("HP")  ?? { posts: 0, likes: 0, comments: 0 };
     const got = statsByUniverse.get("GOT") ?? { posts: 0, likes: 0, comments: 0 };
@@ -60,17 +75,9 @@ export class AnalyticsService {
     const trailingTotal = leadingUniverse === "GOT" ? hpEngagement : gotEngagement;
     const weeklyEngagementPct = trailingTotal === 0 ? 0 : Math.round(((leadingTotal - trailingTotal) / trailingTotal) * 100);
 
-    const topCharacters = (await this.analyticsRepo.getTopCharacters(5))
-      .map((c) => ({ name: c.name, posts: c.posts, universe: c.universe }));
+    const topCharacters = topCharacterDocs.map((c) => ({ name: c.name, posts: c.posts, universe: c.universe }));
     const topTag = topCharacters[0]?.name ?? "—";
 
-    const now = new Date();
-    const last7Dates = Array.from({ length: 7 }, (_, i) => {
-      const d = new Date(now);
-      d.setUTCDate(d.getUTCDate() - (6 - i));
-      return dateKeyUTC(d);
-    });
-    const dailyDocs = await this.analyticsRepo.getDailyStats(last7Dates);
     const dailyMap = new Map(dailyDocs.map((d) => [d._id, d]));
 
     const today = dateKeyUTC(now);
@@ -82,7 +89,6 @@ export class AnalyticsService {
       return { day: DAY_LABELS[new Date(`${date}T00:00:00Z`).getUTCDay()], hp: entry?.hp ?? 0, got: entry?.got ?? 0 };
     });
 
-    const recentActivity = await this.activityRepo.findRecent(10);
     const liveActivity = recentActivity.map((a) => ({
       id:       String((a as any)._id),
       type:     a.type,
