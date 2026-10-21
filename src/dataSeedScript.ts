@@ -6,13 +6,89 @@ import { createCommenttModel } from "./models/comment.model";
 import { PostsRepository } from "./features/posts/posts.repository";
 import { PostLikeRepository } from "./features/posts/post-like.repository";
 import { TagRepository } from "./features/tags/tag.repository";
-import { TagService } from "./features/tags/tag.service";
+import { TagMappingRepository } from "./features/tags/tag-mapping.repository";
+import { TagCandidateRepository } from "./features/tags/tag-candidate.repository";
+import { TagService, tagEmbeddingText, type TagName } from "./features/tags/tag.service";
+import { createEmbedder, type Embedder } from "./ai/embeddings/embedder";
+import { VectorSearchService } from "./ai/vector-search/vector-search.service";
+import { TagVerificationService } from "./ai/tag-verification/tag-verification.service";
+import { LLMLogRepository } from "./ai/logging/llm-log.repository";
+import { TAG_VECTOR_INDEX } from "./models/tag.model";
 import { AnalyticsRepository } from "./features/analytics/analytics.repository";
 import { ActivityRepository } from "./features/analytics/activity.repository";
 import { AnalyticsService } from "./features/analytics/analytics.service";
-import type { Universe } from "./types/custom-types";
+import { TAG_TYPES, type TagType, type Universe } from "./types/custom-types";
 
 const userCache = new Map<string, string>(); // email -> _id
+
+type SeedTagDeps = { tagService: TagService; tagRepo: TagRepository; embedder: Embedder };
+
+// Creates the Atlas vector index on tags.embedding if it's missing, then waits until it can be queried.
+async function ensureTagVectorIndex(tagRepo: TagRepository, dimensions: number): Promise<void> {
+  const collection = tagRepo.tagModel.collection;
+  const [existing] = (await collection.listSearchIndexes(TAG_VECTOR_INDEX).toArray()) as any[];
+  if (!existing) {
+    await collection.createSearchIndex({
+      name: TAG_VECTOR_INDEX,
+      type: "vectorSearch",
+      definition: {
+        fields: [
+          { type: "vector", path: "embedding", numDimensions: dimensions, similarity: "cosine" },
+          { type: "filter", path: "type" },
+          { type: "filter", path: "universe" },
+        ],
+      },
+    });
+    console.log(`   created ${TAG_VECTOR_INDEX} (${dimensions} dimensions)`);
+  } else {
+    const indexed = existing.latestDefinition?.fields?.find((f: any) => f.type === "vector")?.numDimensions;
+    if (indexed && indexed !== dimensions) {
+      throw new Error(`${TAG_VECTOR_INDEX} has ${indexed} dimensions but EMBEDDING_DIMENSIONS is ${dimensions}; drop the index in Atlas first`);
+    }
+  }
+  for (let i = 0; i < 40; i++) {
+    const [index] = (await collection.listSearchIndexes(TAG_VECTOR_INDEX).toArray()) as any[];
+    if (index?.queryable && index.status === "READY") return;
+    await new Promise((r) => setTimeout(r, 3_000));
+  }
+  throw new Error(`${TAG_VECTOR_INDEX} not ready after 2 minutes; check it in Atlas`);
+}
+
+// Adds a seed tag to the vocabulary with its vector. Atlas indexes it a few seconds later, so a
+// similar name resolved right after it may not find it yet.
+async function createSeedTag({ tagRepo, embedder }: SeedTagDeps, name: TagName): Promise<{ id: string; label: string }> {
+  const [vector] = await embedder.embed([tagEmbeddingText(name)]);
+  const tag = await tagRepo.createWithEmbedding(name, vector, embedder.model);
+  return { id: String(tag._id), label: tag.label };
+}
+
+// Resolves one seed tag through the same pipeline as a post's LLM tags (vocabulary → map → vector
+// search → verification), except that a name nobody matches is created as a new tag instead of
+// going to the review queue. Returns undefined for a tag that is skipped.
+async function resolveSeedTag(deps: SeedTagDeps, name: TagName, postText: string): Promise<{ id: string; label: string } | undefined> {
+  const result = await deps.tagService.resolveTags([name], { postText });
+
+  const [resolved] = result.resolved;
+  if (resolved) {
+    if (resolved.how !== "vocabulary") console.log(`   🔗 "${name.label}" → "${resolved.tagLabel}" (${resolved.how})`);
+    return { id: resolved.tagId, label: resolved.tagLabel };
+  }
+
+  const [review] = result.toReview;
+  if (review?.reason === "llm_failed") {
+    // Creating it anyway could add a duplicate, so stop; the seed wipes and starts over when rerun.
+    throw new Error(`Verification failed for "${name.label}"; rerun the seed`);
+  }
+  if (review?.reason === "several_matches" || review?.reason === "contradictory") {
+    const ones = review.answers.filter((a) => a.same === 1).map((a) => a.label);
+    console.log(`   ⚠️  skipped "${name.label}" (${name.type}, ${name.universe}): looks like several tags (${ones.join(", ")})`);
+    return undefined;
+  }
+  // Seed tags are all HP/GOT, so a "not in universe" answer is overruled.
+  if (result.notInUniverse.length) console.log(`   ℹ️  "${name.label}" was judged not in universe; created anyway`);
+
+  return createSeedTag(deps, name);
+}
 
 // data-seed.json expresses dates as offsetDays (days before this seed run) + fixedTime
 // ("HH:mm") for readable, spread-out fixtures. Resolved to an absolute Date once here,
@@ -40,7 +116,19 @@ async function main() {
   const postRepo     = new PostsRepository(dbConn);
   const postLikeRepo = new PostLikeRepository(dbConn);
   const tagRepo      = new TagRepository(dbConn);
-  const tagService   = new TagService(tagRepo);
+
+  // Seed tags go through the real tag pipeline, so the vocabulary is built without near-duplicates.
+  const embedder = createEmbedder();
+  if (!embedder) throw new Error("LLM_API_KEY is required to seed: tags need embeddings");
+  const vectorSearch = new VectorSearchService();
+  const tagService = new TagService(tagRepo, {
+    mappingRepo:   new TagMappingRepository(dbConn),
+    candidateRepo: new TagCandidateRepository(dbConn),
+    vectorSearch,
+    embedder,
+    verification:  new TagVerificationService(new LLMLogRepository(dbConn)),
+  });
+  const seedTagDeps: SeedTagDeps = { tagService, tagRepo, embedder };
 
   const activityRepo   = new ActivityRepository(analyticsDbConn);
   const analyticsRepo  = new AnalyticsRepository(analyticsDbConn);
@@ -54,11 +142,16 @@ async function main() {
   await dbConn.native.collection("posts").deleteMany({});
   await dbConn.native.collection("comments").deleteMany({});
   await dbConn.native.collection("tags").deleteMany({});
+  await dbConn.native.collection("tag_mappings").deleteMany({});
+  await dbConn.native.collection("tag_candidates").deleteMany({});
   await dbConn.native.collection("postlikes").deleteMany({});
   await analyticsDbConn.native.collection("universestats").deleteMany({});
   await analyticsDbConn.native.collection("characterstats").deleteMany({});
   await analyticsDbConn.native.collection("dailystats").deleteMany({});
   await analyticsDbConn.native.collection("activities").deleteMany({});
+
+  console.log("🔎 Checking the Atlas vector index...");
+  await ensureTagVectorIndex(tagRepo, embedder.dimensions);
 
   // Seed top-level users first and collect their IDs for distributing likes
   const allUserIds: string[] = [];
@@ -75,13 +168,20 @@ async function main() {
     const postUniverses: Universe[] = [].concat(post.universe);
     const postUniverseLabel = postUniverses.join(" & ");
 
-    const rawTags = (post.tags ?? []).filter(
-      (t: any) => ["person", "place", "artifact", "event"].includes(t.type)
-    ).map((t: any) => ({ type: t.type, label: t.label, universe: (t.universe ?? postUniverses[0]) as Universe }));
-
-    const groupedIds = rawTags.length
-      ? await tagService.upsertTagsAndGetGroupedIds(rawTags)
-      : { person: [], place: [], artifact: [], event: [] };
+    // The file's tags are treated as the tagging LLM's output for this post. They're resolved one at
+    // a time, so a tag created for this post is already in the vocabulary for the next one.
+    const names: TagName[] = (post.tags ?? [])
+      .filter((t: any) => (TAG_TYPES as readonly string[]).includes(t.type) && t.label?.trim())
+      .map((t: any) => ({ type: t.type as TagType, label: t.label.trim(), universe: (t.universe ?? postUniverses[0]) as Universe }));
+    const resolvedTags: (TagName & { tag: { id: string; label: string } })[] = [];
+    for (const name of names) {
+      const tag = await resolveSeedTag(seedTagDeps, name, post.post);
+      if (tag) resolvedTags.push({ ...name, tag });
+    }
+    const groupedIds: Record<TagType, string[]> = { person: [], place: [], artifact: [], event: [] };
+    for (const t of resolvedTags) {
+      if (!groupedIds[t.type].includes(t.tag.id)) groupedIds[t.type].push(t.tag.id);
+    }
 
     const postCreatedAt = resolveSeedDate(post.offsetDays, post.fixedTime);
 
@@ -99,7 +199,9 @@ async function main() {
 
     // A crossover post counts toward both sides; each side's character stats get only its own tags.
     for (const universe of postUniverses) {
-      const personLabels = rawTags.filter((t: any) => t.type === "person" && t.universe === universe).map((t: any) => t.label);
+      const personLabels = [...new Set(
+        resolvedTags.filter((t) => t.type === "person" && t.universe === universe).map((t) => t.tag.label)
+      )];
       await analyticsService.recordPostCreated(universe, personLabels, postCreatedAt);
       await analyticsService.recordBulkTotals(universe, post.likeCount ?? 0, post.commentCount ?? 0);
     }
@@ -185,6 +287,9 @@ async function main() {
     }
   }
 
+  const tagCount = await dbConn.native.collection("tags").countDocuments();
+  const mappingCount = await dbConn.native.collection("tag_mappings").countDocuments();
+  console.log(`🏷️  Vocabulary: ${tagCount} tags, ${mappingCount} names mapped onto them`);
   console.log("✅ Seed complete");
   process.exit(0);
 }
