@@ -62,6 +62,8 @@ export function groupTagIds(resolved: ResolvedTag[]): GroupedTagIds {
 }
 
 type ResolveContext = { postText: string; postId?: string; requestId?: string };
+// save: false skips saving verified names to the map, so nothing is written (used by the evals).
+type ResolveOptions = { save?: boolean };
 
 const nameKey = (n: { type: string; universe: string; label: string }) => `${n.type}|${n.universe}|${tagNameKey(n.label)}`;
 
@@ -96,15 +98,15 @@ export class TagService {
   //   2. map:        a name seen before ("The Imp" → Tyrion Lannister)
   //      review queue: already pending → stays in review (no new check); rejected by a reviewer → dropped
   //   3. vectors:    embed the name, find the nearest vocabulary tags (same type + universe)
-  //   4. LLM:        verification picks exactly one → that tag, saved to the map for next time;
+  //   4. LLM:        verification picks exactly one → that tag, saved to the map for next time (unless save: false);
   //                  not an HP/GOT entity → notInUniverse; otherwise → toReview
-  async resolveTags(names: TagName[], context: ResolveContext): Promise<ResolveTagsResult> {
-    const result = await this.resolve(names, context);
+  async resolveTags(names: TagName[], context: ResolveContext, options: ResolveOptions = {}): Promise<ResolveTagsResult> {
+    const result = await this.resolve(names, context, options.save ?? true);
     this.countOutcomes(result);
     return result;
   }
 
-  private async resolve(names: TagName[], context: ResolveContext): Promise<ResolveTagsResult> {
+  private async resolve(names: TagName[], context: ResolveContext, save: boolean): Promise<ResolveTagsResult> {
     if (!this.resolution) throw new Error("TagService was created without tag resolution dependencies");
     const { mappingRepo, candidateRepo, verification } = this.resolution;
     const result: ResolveTagsResult = { resolved: [], toReview: [], notInUniverse: [], rejected: [] };
@@ -166,7 +168,7 @@ export class TagService {
       const name = toVerify[i].name;
       if (v.decision === "match") {
         result.resolved.push({ name, tagId: v.tagId, tagLabel: v.tagLabel, how: "llm" });
-        await mappingRepo.save(name, v.tagId, "llm");
+        if (save) await mappingRepo.save(name, v.tagId, "llm");
       } else if (v.decision === "not_in_universe") {
         result.notInUniverse.push(name);
       } else {

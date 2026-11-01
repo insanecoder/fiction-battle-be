@@ -1,7 +1,7 @@
 // Runs the tagger over the ~100 seed posts (src/data-seed.json) and measures it against the tags
 // written in that file:
 //   - agreement with the seed tags, raw (the tagger's names as returned) and after the vocabulary
-//     step (both sides mapped to vocabulary tag ids: vocabulary → map → vector search → verification)
+//     step (both sides mapped to vocabulary tag ids by TagService.resolveTags with save: false)
 //   - latency per post (p50 / p95 / max) and tokens per post
 //
 //   npm run eval:seed                         # default model / thinking / prompt "1", seed 42
@@ -15,7 +15,6 @@ import path from "path";
 import { parseArgs } from "util";
 import { z } from "zod";
 import { shortHash } from "../../lib/commonutils";
-import { MongooseAdapter } from "../../db/mongo-client";
 import { createLLMModel, DEFAULT_MODEL } from "../llm/model.factory";
 import { getTaggingPrompt } from "../post-tagging/prompts";
 import { PostTaggingSchema } from "../post-tagging/tagging.schema";
@@ -23,14 +22,8 @@ import { tagPost, TaggingRun } from "../post-tagging/tagger";
 import { OutputCache } from "./cache";
 import { aggregate, applyConfidenceThreshold, scoreCase, type EvalCase, type ScoredCase } from "./scoring";
 import { loadPostTaggingConfig } from "../post-tagging/post-tagging.config";
-import { TagRepository } from "../../features/tags/tag.repository";
-import { TagMappingRepository } from "../../features/tags/tag-mapping.repository";
-import { TagCandidateRepository } from "../../features/tags/tag-candidate.repository";
-import { TagService, type TagName } from "../../features/tags/tag.service";
-import { tagNameKey } from "../../models/tag-mapping.model";
-import { createEmbedder } from "../embeddings/embedder";
-import { VectorSearchService } from "../vector-search/vector-search.service";
-import { TagVerificationService } from "../tag-verification/tag-verification.service";
+import type { TagName } from "../../features/tags/tag.service";
+import { createEvalPipeline, usedVerification } from "./pipeline";
 import { TAG_TYPES, type TagType, type Universe } from "../../types/custom-types";
 
 const SEED_PATH = path.join("src", "data-seed.json");
@@ -89,44 +82,6 @@ async function runPool<T>(items: T[], concurrency: number, fn: (item: T) => Prom
     while (next < items.length) await fn(items[next++]);
   });
   await Promise.all(workers);
-}
-
-// Maps names to vocabulary tag ids without writing anything: vocabulary label → map → (optionally)
-// nearest tags + verification. Mirrors TagService.resolveTags, minus saving mappings and queueing.
-async function resolveReadOnly(
-  deps: { tagRepo: TagRepository; mappingRepo: TagMappingRepository; tagService: TagService; verification?: TagVerificationService },
-  names: TagName[],
-  postText: string,
-  useVectors: boolean
-): Promise<{ ids: Map<string, string>; verificationCalls: number }> {
-  const key = (n: { type: string; universe: string; label: string }) => `${n.type}|${n.universe}|${tagNameKey(n.label)}`;
-  const ids = new Map<string, string>(); // name key → tag id
-  const left = new Map(names.map((n) => [key(n), n]));
-
-  for (const t of await deps.tagRepo.findByLabels([...left.values()])) {
-    if (left.has(key(t))) {
-      ids.set(key(t), String(t._id));
-      left.delete(key(t));
-    }
-  }
-  for (const m of await deps.mappingRepo.findByNames([...left.values()])) {
-    const k = `${m.type}|${m.universe}|${m.labelKey}`;
-    if (left.has(k)) {
-      ids.set(k, String(m.tagId));
-      left.delete(k);
-    }
-  }
-  if (!useVectors || !left.size || !deps.verification) return { ids, verificationCalls: 0 };
-
-  const unknown = [...left.values()];
-  const nearest = await deps.tagService.findNearestTags(unknown);
-  const toVerify = unknown.map((name, i) => ({ name, candidates: nearest[i] })).filter((it) => it.candidates.length);
-  if (!toVerify.length) return { ids, verificationCalls: 0 };
-  const verdicts = await deps.verification.verify(toVerify, { postText });
-  verdicts.forEach((v, i) => {
-    if (v.decision === "match") ids.set(key(toVerify[i].name), v.tagId);
-  });
-  return { ids, verificationCalls: 1 };
 }
 
 async function main() {
@@ -200,15 +155,9 @@ async function main() {
     perCase: Record<string, { missing: string[]; extra: string[] }>;
   } = null;
   if (!args["skip-vocab"]) {
-    const mObj = new MongooseAdapter();
-    const db = await mObj.connect("primary");
-    const tagRepo = new TagRepository(db);
-    const mappingRepo = new TagMappingRepository(db);
-    const embedder = createEmbedder();
-    const verification = process.env.LLM_API_KEY ? new TagVerificationService({ start: async () => "", succeed: async () => {}, fail: async () => {} } as any) : undefined;
-    const tagService = new TagService(tagRepo, { mappingRepo, candidateRepo: new TagCandidateRepository(db), vectorSearch: new VectorSearchService(), embedder, verification });
-    const deps = { tagRepo, mappingRepo, tagService, verification };
-    const labelById = new Map((await tagRepo.findAll()).map((t) => [String(t._id), t.label]));
+    // Actual: the production resolution, read-only. Expected: the seed labels through the vocabulary
+    // and the map only (the seed built them).
+    const { tagService, lookupOnly, labelById, close } = await createEvalPipeline();
 
     let tp = 0, fp = 0, fn = 0, exact = 0, verificationCalls = 0;
     const resolveMs: number[] = [];
@@ -216,16 +165,16 @@ async function main() {
     done = 0;
     await runPool(cases, Number(args.concurrency), async (c) => {
       const run = outputs[c.id].run;
-      // Expected: the seed labels, resolved through the vocabulary and the map only (the seed built them).
-      const expected = new Set((await resolveReadOnly(deps, c.names, c.text, false)).ids.values());
+      const expectedResult = await lookupOnly.resolveTags(c.names, { postText: c.text }, { save: false });
+      const expected = new Set(expectedResult.resolved.map((r) => r.tagId));
       let actual = new Set<string>();
       if (run) {
         const names = applied(run).tags.map((t) => ({ type: t.type, label: t.tag, universe: t.universe }));
         const t0 = performance.now();
-        const r = await resolveReadOnly(deps, names, c.text, true);
+        const r = await tagService.resolveTags(names, { postText: c.text }, { save: false });
         resolveMs.push(performance.now() - t0);
-        verificationCalls += r.verificationCalls;
-        actual = new Set(r.ids.values());
+        if (usedVerification(r)) verificationCalls++;
+        actual = new Set(r.resolved.map((x) => x.tagId));
       }
       const missing = [...expected].filter((id) => !actual.has(id));
       const extra = [...actual].filter((id) => !expected.has(id));
@@ -250,7 +199,7 @@ async function main() {
       resolveLatency: { p50: Math.round(percentile(resolveMs, 50)), p95: Math.round(percentile(resolveMs, 95)), max: Math.round(Math.max(0, ...resolveMs)) },
       perCase,
     };
-    await mObj.disconnect("primary");
+    await close();
   }
 
   // Report

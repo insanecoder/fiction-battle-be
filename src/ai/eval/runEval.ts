@@ -4,6 +4,15 @@
 //   npm run eval -- --model gemini-3.8-flash --prompt 1 --thinking high
 //   npm run eval -- --seed 7                        # default seed is 42; same seed → comparable runs
 //   npm run eval -- --split holdout --note "final check before release"
+//   npm run eval -- --skip-pipeline                 # raw tagger names only, no database
+//
+// Two scores per case:
+//   - raw: the tagger's names as returned, compared as text with the expected labels
+//   - pipeline: what the post would actually get. The tagger's names go through the production tag
+//     resolution (TagService.resolveTags, save: false: vocabulary → map → vectors → verification), and
+//     the expected labels through the vocabulary and the map. Both sides become tag ids, or
+//     "review: <name>" for a name that isn't a tag yet and would go to the review queue.
+//   The pipeline needs the database (read-only) and makes embedding/verification calls, which aren't cached.
 //
 // LLM outputs are cached in results/cache.jsonl (not committed), keyed by model + thinking + seed +
 // prompt hash + schema hash + case qId. A cached case is reused; otherwise the model is called and
@@ -20,7 +29,12 @@ import { parseArgs } from "util";
 import { createLLMModel, DEFAULT_MODEL } from "../llm/model.factory";
 import { getTaggingPrompt } from "../post-tagging/prompts";
 import { tagPost, TaggingRun } from "../post-tagging/tagger";
-import { aggregate, aggregateByCategory, applyConfidenceThreshold, EvalCase, scoreCase, ScoredCase } from "./scoring";
+import { aggregate, aggregateByCategory, applyConfidenceThreshold, CaseScore, EvalCase, scoreCase, ScoredCase } from "./scoring";
+import { createEvalPipeline, EvalPipeline, usedVerification } from "./pipeline";
+import { tagNameKey } from "../../models/tag-mapping.model";
+import { PostTagging } from "../post-tagging/tagging.schema";
+import type { TagName } from "../../features/tags/tag.service";
+import type { TagType, Universe } from "../../types/custom-types";
 import { loadPostTaggingConfig } from "../post-tagging/post-tagging.config";
 import { OutputCache } from "./cache";
 import { shortHash } from "../../lib/commonutils";
@@ -42,6 +56,7 @@ const { values: args } = parseArgs({
     concurrency: { type: "string", default: "1" }, // keep low on Gemini free tier (per-minute limits)
     limit: { type: "string" },
     note: { type: "string", default: "" },
+    "skip-pipeline": { type: "boolean", default: false },
   },
 });
 
@@ -113,6 +128,34 @@ async function main() {
   const overall = aggregate(scored);
   const byCategory = aggregateByCategory(scored);
 
+  // After the pipeline: same cases, scored on tag ids.
+  let pipeline: null | {
+    overall: ReturnType<typeof aggregate>;
+    byCategory: Record<string, ReturnType<typeof aggregate>>;
+    scored: ScoredCase[];
+    perCase: Record<string, PipelineCase>;
+    verificationCalls: number;
+  } = null;
+  if (!args["skip-pipeline"]) {
+    const pipe = await createEvalPipeline();
+    const perCase: Record<string, PipelineCase> = {};
+    let verificationCalls = 0;
+    let doneP = 0;
+    await runPool(cases, Number(args.concurrency), async (c) => {
+      const i = cases.indexOf(c);
+      const run = outputs[c.id].run;
+      if (run && scored[i].score) {
+        perCase[c.id] = await scorePipelineCase(pipe, c, applyConfidenceThreshold(run.result, minUniverseConfidence), scored[i].score!.universeMatch);
+        if (perCase[c.id].verified) verificationCalls++;
+      }
+      process.stdout.write(`\rpipeline ${++doneP}/${cases.length}`);
+    });
+    process.stdout.write("\n");
+    await pipe.close();
+    const pScored = scored.map((s) => ({ ...s, score: perCase[s.id]?.score ?? null }));
+    pipeline = { overall: aggregate(pScored), byCategory: aggregateByCategory(pScored), scored: pScored, perCase, verificationCalls };
+  }
+
   const startedAt = new Date().toISOString();
   const config = {
     split,
@@ -141,6 +184,7 @@ async function main() {
         config,
         overall,
         byCategory,
+        pipeline: pipeline && { overall: pipeline.overall, byCategory: pipeline.byCategory, verificationCalls: pipeline.verificationCalls },
         cases: cases.map((c, i) => ({
           id: c.id,
           category: c.category,
@@ -152,16 +196,74 @@ async function main() {
           cached: outputs[c.id].cached ?? false,
           error: outputs[c.id].error ?? null,
           score: scored[i].score,
+          pipeline: pipeline?.perCase[c.id] ?? null,
         })),
       },
       null,
       2
     )
   );
-  fs.appendFileSync(SUMMARY_PATH, JSON.stringify({ hash, runId, startedAt, note: args.note, ...config, overall, byCategory }) + "\n");
+  fs.appendFileSync(SUMMARY_PATH, JSON.stringify({ hash, runId, startedAt, note: args.note, ...config, overall, byCategory, pipeline: pipeline && { overall: pipeline.overall, byCategory: pipeline.byCategory } }) + "\n");
 
-  printReport(overall, byCategory, scored, outputs);
+  printReport("Raw tagger names", overall, byCategory, scored, outputs);
+  if (pipeline) {
+    printReport("After the pipeline (what the post gets)", pipeline.overall, pipeline.byCategory, pipeline.scored, outputs);
+    console.log(`Verification calls: ${pipeline.verificationCalls} of ${cases.length} posts`);
+  }
   console.log(`\nSaved: ${path.join(RUNS_DIR, `${runId}.json`)}`);
+}
+
+type PipelineCase = {
+  score: CaseScore;
+  verified: boolean; // a verification call was made
+  resolved: { name: string; tag: string; how: string }[];
+  review: string[];
+  notInUniverse: string[];
+};
+
+// Expected: each label → its tag id (vocabulary or map), or "review: <label>" when it isn't a tag yet.
+// Actual: the tagger's names through the production resolution → tag ids, or "review: <name>" for names
+// that would be queued. Names judged not in universe, or rejected by a reviewer before, are dropped.
+async function scorePipelineCase(pipe: EvalPipeline, c: EvalCase, result: PostTagging, universeMatch: boolean): Promise<PipelineCase> {
+  const reviewKey = (type: string, label: string) => `review|${type}|${tagNameKey(label)}`;
+  const show = (key: string) => (key.startsWith("review|") ? `review: ${key.split("|")[2]}` : pipe.labelById.get(key) ?? key);
+
+  // The eval set's labels carry no universe: try each of the case's universes (a crossover has two).
+  const universes = (c.universe.length ? c.universe : ["HP", "GOT"]) as Universe[];
+  const expectedNames: TagName[] = c.tags.flatMap((t) =>
+    universes.map((universe) => ({ type: (t.type === "people" ? "person" : t.type) as TagType, label: t.tag, universe }))
+  );
+  const lookup = await pipe.lookupOnly.resolveTags(expectedNames, { postText: c.text }, { save: false });
+  // One answer per label: its tag in whichever universe has it, else review.
+  const expected = new Set(
+    c.tags.map((t) => {
+      const type = t.type === "people" ? "person" : t.type;
+      const hit = lookup.resolved.find((r) => r.name.type === type && tagNameKey(r.name.label) === tagNameKey(t.tag));
+      return hit ? hit.tagId : reviewKey(type, t.tag);
+    })
+  );
+
+  const names: TagName[] = result.tags.map((t) => ({ type: t.type, label: t.tag, universe: t.universe }));
+  const r = await pipe.tagService.resolveTags(names, { postText: c.text }, { save: false });
+  const actual = new Set([...r.resolved.map((x) => x.tagId), ...r.toReview.map((t) => reviewKey(t.name.type, t.name.label))]);
+
+  const missing = [...expected].filter((k) => !actual.has(k));
+  const extra = [...actual].filter((k) => !expected.has(k));
+  return {
+    score: {
+      universeMatch,
+      tagsExact: !missing.length && !extra.length,
+      tp: expected.size - missing.length,
+      fp: extra.length,
+      fn: missing.length,
+      missing: missing.map(show),
+      extra: extra.map(show),
+    },
+    verified: usedVerification(r),
+    resolved: r.resolved.map((x) => ({ name: x.name.label, tag: x.tagLabel, how: x.how })),
+    review: r.toReview.map((t) => `${t.name.label}${t.reason ? ` (${t.reason})` : ""}`),
+    notInUniverse: r.notInUniverse.map((n) => n.label),
+  };
 }
 
 function parseSeed(value: string): number {
@@ -179,6 +281,7 @@ async function runPool<T>(items: T[], concurrency: number, fn: (item: T) => Prom
 }
 
 function printReport(
+  title: string,
   overall: ReturnType<typeof aggregate>,
   byCategory: Record<string, ReturnType<typeof aggregate>>,
   scored: ScoredCase[],
@@ -195,6 +298,7 @@ function printReport(
     errors: m.errors,
     ms: m.avgLatencyMs,
   });
+  console.log(`\n${title}`);
   console.table([...Object.entries(byCategory).map(([k, m]) => row(k, m)), row("OVERALL", overall)]);
   console.log(`Tokens: ${overall.inputTokens} in / ${overall.outputTokens} out | refusals: ${overall.refusals}`);
 
