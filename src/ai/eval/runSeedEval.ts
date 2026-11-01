@@ -21,7 +21,8 @@ import { getTaggingPrompt } from "../post-tagging/prompts";
 import { PostTaggingSchema } from "../post-tagging/tagging.schema";
 import { tagPost, TaggingRun } from "../post-tagging/tagger";
 import { OutputCache } from "./cache";
-import { aggregate, scoreCase, type EvalCase, type ScoredCase } from "./scoring";
+import { aggregate, applyConfidenceThreshold, scoreCase, type EvalCase, type ScoredCase } from "./scoring";
+import { loadPostTaggingConfig } from "../post-tagging/post-tagging.config";
 import { TagRepository } from "../../features/tags/tag.repository";
 import { TagMappingRepository } from "../../features/tags/tag-mapping.repository";
 import { TagCandidateRepository } from "../../features/tags/tag-candidate.repository";
@@ -134,9 +135,12 @@ async function main() {
   const { thinkingLevel } = llm;
   const prompt = getTaggingPrompt(args.prompt!);
   const seed = Number(args.seed);
+  // Same threshold as production (TAGGING_MIN_CONFIDENCE): below it the post gets nothing.
+  const { minUniverseConfidence } = loadPostTaggingConfig();
+  const applied = (run: TaggingRun) => applyConfidenceThreshold(run.result, minUniverseConfidence);
   const { cases: allCases, raw } = loadSeedCases();
   const cases = args.limit ? allCases.slice(0, Number(args.limit)) : allCases;
-  console.log(`Running ${cases.length} seed posts | model=${model} thinking=${thinkingLevel} seed=${seed} prompt=${prompt.version} (${prompt.hash})`);
+  console.log(`Running ${cases.length} seed posts | model=${model} thinking=${thinkingLevel} seed=${seed} prompt=${prompt.version} (${prompt.hash}) minConfidence=${minUniverseConfidence}`);
 
   // 1. Tagger over every post (cached outputs are reused; their latency/tokens are from the original call)
   const cache = new OutputCache();
@@ -169,9 +173,10 @@ async function main() {
     return {
       id: c.id,
       category: c.category,
-      score: run ? scoreCase(c, run.result) : null,
+      score: run ? scoreCase(c, applied(run)) : null,
       expectedTagCount: c.tags.length,
       refused: run?.refused ?? false,
+      belowThreshold: run ? run.result.confidence_in_universe < minUniverseConfidence : false,
       latencyMs: run?.latencyMs ?? 0,
       inputTokens: run?.usage.inputTokens ?? 0,
       outputTokens: run?.usage.outputTokens ?? 0,
@@ -215,7 +220,7 @@ async function main() {
       const expected = new Set((await resolveReadOnly(deps, c.names, c.text, false)).ids.values());
       let actual = new Set<string>();
       if (run) {
-        const names = run.result.tags.map((t) => ({ type: t.type, label: t.tag, universe: t.universe }));
+        const names = applied(run).tags.map((t) => ({ type: t.type, label: t.tag, universe: t.universe }));
         const t0 = performance.now();
         const r = await resolveReadOnly(deps, names, c.text, true);
         resolveMs.push(performance.now() - t0);
@@ -261,7 +266,7 @@ async function main() {
   }
 
   const startedAt = new Date().toISOString();
-  const config = { split: "seed", model, thinkingLevel, seed, promptVersion: prompt.version, promptHash: prompt.hash, seedFileHash: shortHash(raw), limit: args.limit ? Number(args.limit) : null };
+  const config = { split: "seed", model, thinkingLevel, seed, promptVersion: prompt.version, promptHash: prompt.hash, minUniverseConfidence, seedFileHash: shortHash(raw), limit: args.limit ? Number(args.limit) : null };
   const hash = shortHash(JSON.stringify(config));
   const runId = `seed_${model}_prompt${prompt.version}-${prompt.hash}_${thinkingLevel}_seed${seed}_${startedAt.replace(/[:.]/g, "-")}`;
   const summary = { agreementRaw: raw_, agreementAfterVocabulary: vocab && { ...vocab, perCase: undefined }, latency, tokens };
@@ -275,7 +280,8 @@ async function main() {
           id: c.id,
           post: c.text,
           expected: { universe: c.universe, tags: c.tags },
-          actual: outputs[c.id].run?.result ?? null,
+          actual: outputs[c.id].run?.result ?? null, // as the model returned it, before the threshold
+          belowThreshold: scored[i].belowThreshold,
           latencyMs: scored[i].latencyMs,
           tokens: { in: scored[i].inputTokens, out: scored[i].outputTokens },
           cached: outputs[c.id].cached ?? false,

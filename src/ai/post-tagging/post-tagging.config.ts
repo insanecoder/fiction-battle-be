@@ -25,6 +25,6 @@ export function loadPostTaggingConfig(): PostTaggingConfig {
     seed: seed ? Number(seed) : undefined,
     slowThresholdMs: numberEnv("TAGGING_SLOW_THRESHOLD_MS", 5_000),
     timeoutMs: numberEnv("TAGGING_TIMEOUT_MS", 30_000),
-    minUniverseConfidence: numberEnv("TAGGING_MIN_CONFIDENCE", 0.6),
+    minUniverseConfidence: numberEnv("TAGGING_MIN_CONFIDENCE", 0.9),
   };
 }

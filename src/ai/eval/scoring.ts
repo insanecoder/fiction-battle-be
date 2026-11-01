@@ -39,6 +39,8 @@ export type ScoredCase = {
   score: CaseScore | null; // null when the call errored
   expectedTagCount: number;
   refused: boolean;
+  // The model's confidence was below the threshold, so it was scored as no universe and no tags.
+  belowThreshold?: boolean;
   latencyMs: number;
   inputTokens: number;
   outputTokens: number;
@@ -51,6 +53,13 @@ function tagKey(type: string, tag: string): string {
   const t = TYPE_ALIASES[type] ?? type;
   const name = tag.trim().toLowerCase().replace(/[’`]/g, "'").replace(/\s+/g, " ");
   return `${t}|${name}`;
+}
+
+// What the post actually gets: below the confidence threshold nothing is applied (as in
+// PostTaggingService), so the eval scores it as no universe and no tags.
+export function applyConfidenceThreshold(result: PostTagging, minConfidence: number): PostTagging {
+  if (result.confidence_in_universe >= minConfidence) return result;
+  return { ...result, universe: [], tags: [] };
 }
 
 export function scoreCase(expected: EvalCase, actual: PostTagging): CaseScore {

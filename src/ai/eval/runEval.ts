@@ -20,7 +20,8 @@ import { parseArgs } from "util";
 import { createLLMModel, DEFAULT_MODEL } from "../llm/model.factory";
 import { getTaggingPrompt } from "../post-tagging/prompts";
 import { tagPost, TaggingRun } from "../post-tagging/tagger";
-import { aggregate, aggregateByCategory, EvalCase, scoreCase, ScoredCase } from "./scoring";
+import { aggregate, aggregateByCategory, applyConfidenceThreshold, EvalCase, scoreCase, ScoredCase } from "./scoring";
+import { loadPostTaggingConfig } from "../post-tagging/post-tagging.config";
 import { OutputCache } from "./cache";
 import { shortHash } from "../../lib/commonutils";
 import { PostTaggingSchema } from "../post-tagging/tagging.schema";
@@ -54,6 +55,8 @@ async function main() {
   const { thinkingLevel } = llm;
   const prompt = getTaggingPrompt(args.prompt!);
   const seed = parseSeed(args.seed!);
+  // Same threshold as production (TAGGING_MIN_CONFIDENCE), applied when scoring, not cached.
+  const { minUniverseConfidence } = loadPostTaggingConfig();
 
   const evalSetRaw = fs.readFileSync(EVAL_SET_PATH, "utf8");
   const allCases: EvalCase[] = JSON.parse(evalSetRaw);
@@ -64,7 +67,7 @@ async function main() {
     console.warn("⚠️  Running on holdout. Don't tune the prompt against these results, or holdout stops being a fair test.");
   }
   console.log(
-    `Running ${cases.length} cases | model=${model} thinking=${thinkingLevel} seed=${seed} prompt=${prompt.version} (${prompt.hash}) split=${split}`
+    `Running ${cases.length} cases | model=${model} thinking=${thinkingLevel} seed=${seed} prompt=${prompt.version} (${prompt.hash}) split=${split} minConfidence=${minUniverseConfidence}`
   );
 
   const cache = new OutputCache();
@@ -97,9 +100,10 @@ async function main() {
     return {
       id: c.id,
       category: c.category,
-      score: run ? scoreCase(c, run.result) : null,
+      score: run ? scoreCase(c, applyConfidenceThreshold(run.result, minUniverseConfidence)) : null,
       expectedTagCount: c.tags.length,
       refused: run?.refused ?? false,
+      belowThreshold: run ? run.result.confidence_in_universe < minUniverseConfidence : false,
       latencyMs: run?.latencyMs ?? 0,
       inputTokens: run?.usage.inputTokens ?? 0,
       outputTokens: run?.usage.outputTokens ?? 0,
@@ -117,6 +121,7 @@ async function main() {
     seed,
     promptVersion: prompt.version,
     promptHash: prompt.hash,
+    minUniverseConfidence,
     evalSetHash: shortHash(evalSetRaw),
     limit: args.limit ? Number(args.limit) : null,
   };
@@ -141,7 +146,8 @@ async function main() {
           category: c.category,
           post: c.text,
           expected: { universe: c.universe, tags: c.tags },
-          actual: outputs[c.id].run?.result ?? null,
+          actual: outputs[c.id].run?.result ?? null, // as the model returned it, before the threshold
+          belowThreshold: scored[i].belowThreshold,
           servedBy: outputs[c.id].run?.servedBy ?? null,
           cached: outputs[c.id].cached ?? false,
           error: outputs[c.id].error ?? null,
@@ -202,6 +208,7 @@ function printReport(
       }
       const parts = [];
       if (!f.score.universeMatch) parts.push("universe mismatch");
+      if (f.belowThreshold) parts.push("below confidence threshold");
       if (f.score.missing.length) parts.push(`missing ${f.score.missing.join(", ")}`);
       if (f.score.extra.length) parts.push(`extra ${f.score.extra.join(", ")}`);
       console.log(`  ${f.id} [${f.category}] ${parts.join(" | ")}`);
