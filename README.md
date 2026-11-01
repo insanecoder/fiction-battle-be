@@ -524,19 +524,6 @@ production: it never reaches the review queue or any metric, only the eval sees 
 ### 2. Quotes without names
 *"'After all this time?' 'Always.'"* gets the universe but not Snape. Candidate for prompt v2, checked
 on validation.
-
-### 3. Actor-only posts: decide the policy
-The prompt lets an actor place a post in a universe ("Emma Watson wakes up at 6 am" → HP, 0.9); the eval
-labels say it shouldn't. Pick one, then change the prompt (v2) or the labels.
-
-### 4. Recheck the confidence threshold
-0.9 is based on 4 wrong universes. Recheck it against real posts in `llm_logging` once there are enough.
-
-### 5. Clean up the vocabulary
-"Pensieve" exists twice, as a place and as an artifact, both created by the seed (E36 misses on that).
-The seed resolves names within one type, so the same entity under two types becomes two tags. List
-labels that appear under more than one type, merge them into one tag and add a mapping for the other.
-
 ---
 
 ## Feed
