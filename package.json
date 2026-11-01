@@ -10,7 +10,8 @@
   "start": "node --env-file=.env dist/server.js",
   "seed": "node --env-file=.env --import tsx src/dataSeedScript.ts",
   "review-tags": "node --env-file=.env --import tsx src/reviewTags.ts",
-  "eval": "node --env-file=.env --import tsx src/ai/eval/runEval.ts"
+  "eval": "node --env-file=.env --import tsx src/ai/eval/runEval.ts",
+  "eval:seed": "node --env-file=.env --import tsx src/ai/eval/runSeedEval.ts"
  },
  "dependencies": {
   "@google/genai": "^2.27.0",
